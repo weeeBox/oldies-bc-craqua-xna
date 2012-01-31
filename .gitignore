@@ -1,0 +1,6 @@
+
+*.suo
+/CraquaLive/CraquaLive/Converted
+/CraquaLive/CraquaLiveContent/obj
+/CraquaLive/CraquaLive/obj
+/CraquaLive/CraquaLive/CraquaLive.csproj.user
