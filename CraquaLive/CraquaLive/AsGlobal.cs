@@ -26,5 +26,10 @@ namespace flash
         {
             return 0;
         }
+
+        public static void trace(String s)
+        {
+            
+        }
     }
 }

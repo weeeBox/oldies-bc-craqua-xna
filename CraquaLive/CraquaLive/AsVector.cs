@@ -8,7 +8,7 @@ namespace flash
 	public class AsVector<T> : AsObject, IEnumerable
 	{
 		public bool _fixed;
-		public int length;
+		public uint length;
 
         public AsVector(params T[] elements)
         {
