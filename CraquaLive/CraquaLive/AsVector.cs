@@ -1,11 +1,11 @@
 using System;
  
 using flash;
-using System.Collections;
+using System.Collections.Generic;
  
 namespace flash
 {
-	public class AsVector<T> : AsObject, IEnumerable
+	public class AsVector<T> : AsObject, IEnumerable<T>
 	{
 		public bool _fixed;
 		public uint length;
@@ -47,13 +47,13 @@ namespace flash
 		{
 			return indexOf(searchElement, 0);
 		}
-		public virtual AsString _join(AsString sep)
+		public virtual String _join(String sep)
 		{
 			return null;
 		}
-		public virtual AsString _join()
+		public virtual String _join()
 		{
-			return _join((new AsString(",")));
+			return _join(",");
 		}
 		public virtual int lastIndexOf(AsObject searchElement, int fromIndex)
 		{
@@ -95,12 +95,13 @@ namespace flash
 		{
 			return null;
 		}
-		public virtual AsString toString()
-		{
-			return null;
-		}
 
-        public IEnumerator GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             throw new NotImplementedException();
         }
