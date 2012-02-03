@@ -52,6 +52,26 @@ namespace flash
             }
         }
 
+        public T this[uint i]
+        {
+            get
+            {
+                return data[(int)i];
+            }
+            set
+            {
+                data[(int)i] = value;
+            }
+        }
+
+        public virtual int getLength()
+        {
+            return 0;
+        }
+        public virtual void setLength(int newLength)
+        {
+        }
+
         public virtual int indexOf(AsObject searchElement, int fromIndex)
         {
             return -1;
