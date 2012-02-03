@@ -1,109 +1,122 @@
 using System;
- 
+
 using flash;
 using System.Collections.Generic;
- 
+using System.Collections;
+
 namespace flash
 {
-	public class AsVector<T> : AsObject, IEnumerable<T>
-	{
-		public bool _fixed;
-		public uint length;
+    public class AsVector<T> : AsObject, IEnumerable<T>
+    {
+        public bool _fixed;
+        public uint length;
+
+        private List<T> data;
 
         public AsVector(params T[] elements)
         {
+            data = new List<T>(elements.Length);
+            init(elements);
         }
 
-		public AsVector(uint length, bool _fixed)
-		{
-		}
-		public AsVector(uint length)
-		{
-		}
-		public AsVector()
-		{
-		}
+        public AsVector(uint length, bool _fixed)
+        {
+            data = new List<T>((int)length);
+        }
+        public AsVector(uint length)
+            : this(length, false)
+        {
+        }
+        public AsVector()
+        {
+            data = new List<T>();
+        }
 
         public void init(params T[] values)
         {
+            foreach (T obj in values)
+            {
+                data.Add(obj);
+            }
         }
 
         public T this[int i]
         {
             get
             {
-                return default(T);
+                return data[i];
             }
             set
-            {                
+            {
+                data[i] = value;
             }
         }
 
-		public virtual int indexOf(AsObject searchElement, int fromIndex)
-		{
-			return -1;
-		}
-		public virtual int indexOf(AsObject searchElement)
-		{
-			return indexOf(searchElement, 0);
-		}
-		public virtual String _join(String sep)
-		{
-			return null;
-		}
-		public virtual String _join()
-		{
-			return _join(",");
-		}
-		public virtual int lastIndexOf(AsObject searchElement, int fromIndex)
-		{
-			return -1;
-		}
-		public virtual int lastIndexOf(AsObject searchElement)
-		{
-			return lastIndexOf(searchElement, 0x7fffffff);
-		}
-		public virtual AsObject pop()
-		{
-			return null;
-		}
-		public virtual int push(AsObject arg)
-		{
-			return -1;
-		}
-		public virtual AsVector<T> reverse()
-		{
-			return null;
-		}
-		public virtual AsVector<T> slice(int startIndex, int endIndex)
-		{
-			return null;
-		}
-		public virtual AsVector<T> slice(int startIndex)
-		{
-			return slice(0, 16777215);
-		}
-		public virtual AsVector<T> slice()
-		{
-			return slice(0);
-		}
-		public virtual AsVector<T> sort(AsFunction compareFunction)
-		{
-			return null;
-		}
-		public virtual AsVector<T> splice(int startIndex, int deleteCount)
-		{
-			return null;
-		}
+        public virtual int indexOf(AsObject searchElement, int fromIndex)
+        {
+            return -1;
+        }
+        public virtual int indexOf(AsObject searchElement)
+        {
+            return indexOf(searchElement, 0);
+        }
+        public virtual String _join(String sep)
+        {
+            return null;
+        }
+        public virtual String _join()
+        {
+            return _join(",");
+        }
+        public virtual int lastIndexOf(AsObject searchElement, int fromIndex)
+        {
+            return -1;
+        }
+        public virtual int lastIndexOf(AsObject searchElement)
+        {
+            return lastIndexOf(searchElement, 0x7fffffff);
+        }
+        public virtual AsObject pop()
+        {
+            return null;
+        }
+        public virtual int push(AsObject arg)
+        {
+            return -1;
+        }
+        public virtual AsVector<T> reverse()
+        {
+            return null;
+        }
+        public virtual AsVector<T> slice(int startIndex, int endIndex)
+        {
+            return null;
+        }
+        public virtual AsVector<T> slice(int startIndex)
+        {
+            return slice(0, 16777215);
+        }
+        public virtual AsVector<T> slice()
+        {
+            return slice(0);
+        }
+        public virtual AsVector<T> sort(AsFunction compareFunction)
+        {
+            return null;
+        }
+        public virtual AsVector<T> splice(int startIndex, int deleteCount)
+        {
+            return null;
+        }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return data.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }
