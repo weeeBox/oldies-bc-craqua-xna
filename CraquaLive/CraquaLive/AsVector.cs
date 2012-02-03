@@ -66,15 +66,16 @@ namespace flash
 
         public virtual int getLength()
         {
-            return 0;
+            throw new NotImplementedException();
         }
         public virtual void setLength(int newLength)
         {
+            throw new NotImplementedException();
         }
 
         public virtual int indexOf(AsObject searchElement, int fromIndex)
         {
-            return -1;
+            throw new NotImplementedException();
         }
         public virtual int indexOf(AsObject searchElement)
         {
@@ -82,7 +83,7 @@ namespace flash
         }
         public virtual String _join(String sep)
         {
-            return null;
+            throw new NotImplementedException();
         }
         public virtual String _join()
         {
@@ -90,27 +91,27 @@ namespace flash
         }
         public virtual int lastIndexOf(AsObject searchElement, int fromIndex)
         {
-            return -1;
+            throw new NotImplementedException();
         }
         public virtual int lastIndexOf(AsObject searchElement)
         {
             return lastIndexOf(searchElement, 0x7fffffff);
         }
-        public virtual AsObject pop()
+        public virtual T pop()
         {
-            return null;
+            throw new NotImplementedException();
         }
-        public virtual int push(AsObject arg)
+        public virtual int push(T arg)
         {
-            return -1;
+            throw new NotImplementedException();
         }
         public virtual AsVector<T> reverse()
         {
-            return null;
+            throw new NotImplementedException();
         }
         public virtual AsVector<T> slice(int startIndex, int endIndex)
         {
-            return null;
+            throw new NotImplementedException();
         }
         public virtual AsVector<T> slice(int startIndex)
         {
@@ -122,11 +123,11 @@ namespace flash
         }
         public virtual AsVector<T> sort(AsFunction compareFunction)
         {
-            return null;
+            throw new NotImplementedException();
         }
-        public virtual AsVector<T> splice(int startIndex, int deleteCount)
+        public virtual AsVector<T> splice(int startIndex, uint deleteCount)
         {
-            return null;
+            throw new NotImplementedException();
         }
 
         public IEnumerator<T> GetEnumerator()

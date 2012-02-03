@@ -288,7 +288,7 @@
     <Compile Include="Converted\bc\world\player\AsBcPlayerSprite.cs" />
     <Compile Include="Converted\bc\world\player\AsBcPlayerWeapon.cs" />
     <Compile Include="Converted\flash\AsClass.cs" />
-    <Compile Include="Converted\flash\AsDictionary.cs" />
+    <Compile Include="AsDictionary.cs" />
     <Compile Include="Converted\flash\AsFunction.cs" />
     <Compile Include="Converted\flash\AsMath.cs" />
     <Compile Include="Converted\flash\display\AsBitmap.cs" />

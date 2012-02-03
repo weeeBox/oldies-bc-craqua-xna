@@ -1,27 +1,37 @@
 using System;
- 
+
 using flash;
- 
+
 namespace flash
 {
-	public class AsObject
-	{
-		public static AsObject prototype;
-		public AsObject constructor;
-		
-		public bool hasOwnProperty(String name)
-		{
-			return false;
-		}
+    public class AsObject
+    {
+        public static AsObject prototype;
+        public AsObject constructor;
 
-        public Object getOwnProperty(String name)
+        public bool hasOwnProperty(String name)
         {
-            return null;
+            throw new NotImplementedException();
         }
 
-		public virtual String toString()
-		{
-			return null;
-		}
-	}
+        public AsObject getOwnProperty(String name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void setOwnProperty(String name, AsObject value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void deleteOwnProperty(String name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual String toString()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

@@ -10,7 +10,7 @@ namespace flash
 		{
 			return null;
 		}
-		public virtual AsXMLList attribute(String arg)
+		public virtual String attribute(String arg)
 		{
 			return null;
 		}
