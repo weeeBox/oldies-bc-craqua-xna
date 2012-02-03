@@ -4,7 +4,7 @@ using flash;
 
 namespace flash
 {
-    public class AsObject
+    public class AsObject : Object
     {
         public static AsObject prototype;
         public AsObject constructor;
@@ -32,6 +32,11 @@ namespace flash
         public virtual String toString()
         {
             throw new NotImplementedException();
+        }
+
+        public override String ToString()
+        {
+            return toString();
         }
     }
 }
