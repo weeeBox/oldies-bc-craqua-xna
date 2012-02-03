@@ -6,7 +6,7 @@ namespace flash
 {
 	public class AsDictionary : AsObject
 	{
-        public AsObject this[String key]
+        public Object this[String key]
         {
             get
             {
