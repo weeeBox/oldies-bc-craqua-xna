@@ -21,7 +21,10 @@ namespace CraquaLive
 
         public CraquaGame()
         {
-            graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);            
+            graphics.PreferredBackBufferWidth = 640;
+            graphics.PreferredBackBufferHeight = 480;
+
             Content.RootDirectory = "Content";
         }
 
@@ -33,7 +36,9 @@ namespace CraquaLive
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+#if WINDOWS
+            IsMouseVisible = true;
+#endif
 
             base.Initialize();
         }
