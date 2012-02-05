@@ -6,20 +6,17 @@ namespace flash
 {
     public class AsObject : Object
     {
-        public static AsObject prototype;
-        public AsObject constructor;
-
         public bool hasOwnProperty(String name)
         {
             throw new NotImplementedException();
         }
 
-        public AsObject getOwnProperty(String name)
+        public Object getOwnProperty(String name)
         {
             throw new NotImplementedException();
         }
 
-        public void setOwnProperty(String name, AsObject value)
+        public void setOwnProperty(String name, Object value)
         {
             throw new NotImplementedException();
         }
