@@ -3,6 +3,7 @@ using System;
 using flash;
 using System.Collections.Generic;
 using System.Collections;
+using System.Diagnostics;
 
 namespace flash
 {
@@ -10,9 +11,6 @@ namespace flash
 
     public class AsVector<T> : AsObject, IEnumerable<T>
     {
-        public bool _fixed;
-        public uint length;
-
         private List<T> data;
 
         public AsVector(params T[] elements)
@@ -25,10 +23,12 @@ namespace flash
         {
             data = new List<T>((int)length);
         }
+
         public AsVector(uint length)
             : this(length, false)
         {
         }
+
         public AsVector()
         {
             data = new List<T>();
@@ -46,10 +46,12 @@ namespace flash
         {
             get
             {
+                Debug.Assert(i >= 0 && i < data.Count, i + ">=" + 0 + "&&" + i + "<" + data.Count);
                 return data[i];
             }
             set
             {
+                Debug.Assert(i >= 0 && i < data.Count, i + ">=" + 0 + "&&" + i + "<" + data.Count);
                 data[i] = value;
             }
         }
@@ -58,54 +60,84 @@ namespace flash
         {
             get
             {
+                Debug.Assert(i >= 0 && i < data.Count, i + ">=" + 0 + "&&" + i + "<" + data.Count);
                 return data[(int)i];
             }
             set
             {
+                Debug.Assert(i >= 0 && i < data.Count, i + ">=" + 0 + "&&" + i + "<" + data.Count);
                 data[(int)i] = value;
             }
         }
 
         public virtual int getLength()
         {
-            throw new NotImplementedException();
-        }
-        public virtual void setLength(int newLength)
-        {
-            throw new NotImplementedException();
+            return data.Count;
         }
 
-        public virtual int indexOf(AsObject searchElement, int fromIndex)
+        public virtual void setLength(int newLength)
         {
-            throw new NotImplementedException();
+            if (data.Count > newLength)
+            {
+                List<T> newData = new List<T>(newLength);
+                for (int i = 0; i < newLength; ++i)
+                {
+                    newData.Add(data[i]);
+                }
+                data = newData;
+            }
+            else if (data.Count < newLength)
+            {
+                int diff = newLength - data.Count;
+                for (int i = 0; i < diff; ++i)
+                {
+                    data.Add(default(T));
+                }
+            }
         }
-        public virtual int indexOf(AsObject searchElement)
+
+        public virtual int indexOf(T searchElement, int fromIndex)
+        {
+            return data.IndexOf(searchElement, fromIndex);
+        }
+
+        public virtual int indexOf(T searchElement)
         {
             return indexOf(searchElement, 0);
         }
+
         public virtual String _join(String sep)
         {
             throw new NotImplementedException();
         }
+
         public virtual String _join()
         {
             return _join(",");
         }
-        public virtual int lastIndexOf(AsObject searchElement, int fromIndex)
+
+        public virtual int lastIndexOf(T searchElement, int fromIndex)
         {
-            throw new NotImplementedException();
+            return data.LastIndexOf(searchElement, fromIndex);
         }
-        public virtual int lastIndexOf(AsObject searchElement)
+
+        public virtual int lastIndexOf(T searchElement)
         {
-            return lastIndexOf(searchElement, 0x7fffffff);
+            return lastIndexOf(searchElement);
         }
+
         public virtual T pop()
         {
-            throw new NotImplementedException();
+            Debug.Assert(data.Count > 0);
+            int lastIndex = data.Count - 1;
+            T lastElement = data[lastIndex];
+            data.RemoveAt(lastIndex);
+            return lastElement;
         }
         public virtual int push(T arg)
         {
-            throw new NotImplementedException();
+            data.Add(arg);
+            return data.Count;
         }
         public virtual AsVector<T> reverse()
         {
