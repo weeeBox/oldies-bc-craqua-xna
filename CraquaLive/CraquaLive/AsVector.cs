@@ -6,6 +6,8 @@ using System.Collections;
 
 namespace flash
 {
+    public delegate float AsVectorSorter<T>(T a, T b);
+
     public class AsVector<T> : AsObject, IEnumerable<T>
     {
         public bool _fixed;
@@ -121,7 +123,7 @@ namespace flash
         {
             return slice(0);
         }
-        public virtual AsVector<T> sort(AsFunction compareFunction)
+        public virtual AsVector<T> sort(AsVectorSorter<T> sorter)
         {
             throw new NotImplementedException();
         }
