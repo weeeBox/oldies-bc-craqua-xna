@@ -70,16 +70,16 @@ namespace flash
             }
         }
 
-        public virtual int getLength()
+        public virtual uint getLength()
         {
-            return data.Count;
+            return (uint)data.Count;
         }
 
-        public virtual void setLength(int newLength)
+        public virtual void setLength(uint newLength)
         {
             if (data.Count > newLength)
             {
-                List<T> newData = new List<T>(newLength);
+                List<T> newData = new List<T>((int)newLength);
                 for (int i = 0; i < newLength; ++i)
                 {
                     newData.Add(data[i]);
@@ -88,7 +88,7 @@ namespace flash
             }
             else if (data.Count < newLength)
             {
-                int diff = newLength - data.Count;
+                int diff = ((int)newLength) - data.Count;
                 for (int i = 0; i < diff; ++i)
                 {
                     data.Add(default(T));
