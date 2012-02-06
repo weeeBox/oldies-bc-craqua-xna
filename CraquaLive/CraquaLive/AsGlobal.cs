@@ -8,28 +8,32 @@ namespace flash
     public class AsGlobal
     {
         public static int getTimer() 
-        { 
-            return 0; 
+        {
+            return System.DateTime.Now.Millisecond; 
         }
 
         public static int parseInt(String s)
         {
-            return 0;
+            int val = 0;
+            int.TryParse(s, out val);
+            return val;
         }
 
         public static int parseInt(String s, int radix)
-        { 
-            return 0; 
+        {
+            throw new NotImplementedException();
         }
 
         public static float parseFloat(String s)
         {
-            return 0;
+            float val = 0;
+            float.TryParse(s, out val);
+            return val;
         }
 
         public static void trace(String s)
         {
-            
+            Console.WriteLine(s);
         }
     }
 }
