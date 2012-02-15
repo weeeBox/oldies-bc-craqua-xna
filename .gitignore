@@ -1,6 +1,8 @@
 
 *.suo
-/CraquaLive/CraquaLive/Converted
+
+/CraquaLive/CraquaLive/Code/Converted
+/CraquaLive/CraquaLive/Code/Api
 /CraquaLive/CraquaLiveContent/obj
 /CraquaLive/CraquaLive/obj
 /CraquaLive/CraquaLive/bin
