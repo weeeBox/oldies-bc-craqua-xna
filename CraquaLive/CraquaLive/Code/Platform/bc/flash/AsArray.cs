@@ -1,8 +1,8 @@
 using System;
  
-using flash;
+using bc.flash;
  
-namespace flash
+namespace bc.flash
 {
 	public class AsArray : AsVector<Object>
 	{

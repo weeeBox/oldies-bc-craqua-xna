@@ -1,11 +1,11 @@
 using System;
 
-using flash;
+using bc.flash;
 using System.Collections.Generic;
 using System.Collections;
 using System.Diagnostics;
 
-namespace flash
+namespace bc.flash
 {
     public delegate float AsVectorSorter<T>(T a, T b);
 

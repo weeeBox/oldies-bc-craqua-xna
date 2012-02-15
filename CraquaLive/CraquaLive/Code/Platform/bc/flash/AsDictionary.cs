@@ -1,9 +1,9 @@
 using System;
  
-using flash;
+using bc.flash;
 using System.Collections.Generic;
  
-namespace flash
+namespace bc.flash
 {
 	public class AsDictionary : AsObject
 	{

@@ -1,12 +1,12 @@
 using System;
- 
-using flash;
+
+using bc.flash;
 using System.Collections;
 
-namespace flash
+namespace bc.flash
 {
     public class AsXMLList : AsObject, IEnumerable
-	{
+    {
         public AsXML this[int i]
         {
             get
@@ -21,42 +21,42 @@ namespace flash
             }
         }
 
-		public virtual AsXMLList attribute(String arg)
-		{
-			return null;
-		}
-		public virtual AsXMLList attributes()
-		{
-			return null;
-		}
-		public virtual AsXMLList child(String propertyName)
-		{
-			return null;
-		}
-		public virtual int childIndex()
-		{
-			return 0;
-		}
-		public virtual AsXMLList children()
-		{
-			return null;
-		}
-		public virtual AsXMLList copy()
-		{
-			return null;
-		}
-		public virtual int length()
-		{
-			return 0;
-		}
-		public virtual String name()
-		{
-			return null;
-		}
-		public virtual String nodeKind()
-		{
-			return null;
-		}
+        public virtual AsXMLList attribute(String arg)
+        {
+            return null;
+        }
+        public virtual AsXMLList attributes()
+        {
+            return null;
+        }
+        public virtual AsXMLList child(String propertyName)
+        {
+            return null;
+        }
+        public virtual int childIndex()
+        {
+            return 0;
+        }
+        public virtual AsXMLList children()
+        {
+            return null;
+        }
+        public virtual AsXMLList copy()
+        {
+            return null;
+        }
+        public virtual int length()
+        {
+            return 0;
+        }
+        public virtual String name()
+        {
+            return null;
+        }
+        public virtual String nodeKind()
+        {
+            return null;
+        }
 
         public IEnumerator GetEnumerator()
         {
