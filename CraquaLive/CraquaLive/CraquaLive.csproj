@@ -325,6 +325,8 @@
     <Compile Include="Code\Converted\bc\world\player\AsBcPlayerLevel.cs" />
     <Compile Include="Code\Converted\bc\world\player\AsBcPlayerSprite.cs" />
     <Compile Include="Code\Converted\bc\world\player\AsBcPlayerWeapon.cs" />
+    <Compile Include="Code\Native\bc\flash\native\NativeApplication.cs" />
+    <Compile Include="Code\Native\bc\flash\resources\BinaryContentReader.cs" />
     <Compile Include="Code\Platform\bc\flash\AsArray.cs" />
     <Compile Include="Code\Platform\bc\flash\AsDebug.cs" />
     <Compile Include="Code\Platform\bc\flash\AsDictionary.cs" />

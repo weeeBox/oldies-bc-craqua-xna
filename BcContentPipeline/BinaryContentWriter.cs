@@ -35,9 +35,7 @@ namespace bc.content
 
         public override string GetRuntimeReader(TargetPlatform targetPlatform)
         {
-            // TODO: change this to the name of your ContentTypeReader
-            // class which will be used to load this data.
-            return "fp.framework.core.BinaryContentReader, FingerPhysics," +
+            return "bc.flash.resources.BinaryContentReader, CraquaLive," +
                 " Version=1.0.0.0, Culture=neutral"; ;
         }
     }

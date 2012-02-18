@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using bc.flash.native;
 
 namespace CraquaLive
 {
@@ -16,16 +17,23 @@ namespace CraquaLive
     /// </summary>
     public class CraquaGame : Microsoft.Xna.Framework.Game
     {
+        const int WIDTH = 640;
+        const int HEIGHT = 480;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        NativeApplication app;
 
         public CraquaGame()
         {
             graphics = new GraphicsDeviceManager(this);            
-            graphics.PreferredBackBufferWidth = 640;
-            graphics.PreferredBackBufferHeight = 480;
+            graphics.PreferredBackBufferWidth = WIDTH;
+            graphics.PreferredBackBufferHeight = HEIGHT;
 
             Content.RootDirectory = "Content";
+
+            app = new NativeApplication(WIDTH, HEIGHT);
         }
 
         /// <summary>
@@ -72,6 +80,9 @@ namespace CraquaLive
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            app.tick(deltaTime);                
         }
 
         /// <summary>
