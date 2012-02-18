@@ -288,9 +288,11 @@ namespace bc.flash.native.input
 
         private void UpdatePointer()
         {
+            ButtonState buttonState = Mouse.GetState().LeftButton;
+
             if (pointerDown)
             {
-                if (Mouse.GetState().LeftButton == ButtonState.Released)
+                if (buttonState == ButtonState.Released)
                 {
                     pointerDown = false;
                     pointerLastX = Mouse.GetState().X;
@@ -311,13 +313,26 @@ namespace bc.flash.native.input
             }
             else
             {
-                if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+                if (buttonState == ButtonState.Pressed)
                 {
                     pointerDown = true;
                     pointerLastX = Mouse.GetState().X;
                     pointerLastY = Mouse.GetState().Y;
                     FirePointerPressed(pointerLastX, pointerLastY);
                 }
+#if WINDOWS
+                else if (buttonState == ButtonState.Released)
+                {
+                    int pointerX = Mouse.GetState().X;
+                    int pointerY = Mouse.GetState().Y;
+                    if (pointerX != pointerLastX || pointerY != pointerLastY)
+                    {
+                        FirePointerMoved(pointerX, pointerY);
+                    }
+                    pointerLastX = pointerX;
+                    pointerLastY = pointerY;
+                }
+#endif // WINDOWS
             }
         }
 
@@ -329,6 +344,14 @@ namespace bc.flash.native.input
         public void RemoveTouchListener(TouchListener listener)
         {
             touchListeners.Remove(listener);
+        }
+
+        private void FirePointerMoved(int x, int y)
+        {
+            foreach (TouchListener l in touchListeners)
+            {
+                l.PointerMoved(x, y);
+            }
         }
 
         private void FilePointerReleased(int x, int y)
@@ -353,6 +376,10 @@ namespace bc.flash.native.input
             {
                 l.PointerPressed(x, y);
             }
+        }
+
+        public void Dispose()
+        {            
         }
     }
 }

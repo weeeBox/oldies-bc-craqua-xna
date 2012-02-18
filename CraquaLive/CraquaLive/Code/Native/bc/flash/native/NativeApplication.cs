@@ -1,4 +1,6 @@
-﻿using bc.flash.native.input;
+﻿using bc.flash.core.natives;
+using bc.flash.native.input;
+using bc.flash.resources;
 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,20 +14,23 @@ namespace bc.flash.native
         // private Graphics appGraphics;
 
         private NativeInput input;
+        private ResFactory resFactory;
+        private AsBcNativeStage stage;
+
         private bool running;
 
         public NativeApplication(int width, int height, ContentManager content)
         {
-            // new ResFactory(content);            
+            resFactory = new ResFactory(content);            
 
-            // appGraphics = new Graphics(width, height);
-            // application = new Application(width, height);
+            // appGraphics = new Graphics(width, height);            
             input = new NativeInput();
             input.AddGamePadListener(this);
             input.AddKeyboardListener(this);
             input.AddTouchListener(this);            
             running = true;
 
+            stage = new AsBcNativeStage(width, height);
             // application.Start();
         }        
         
@@ -36,8 +41,8 @@ namespace bc.flash.native
 
         public void Tick(float deltaTime)
         {
-            input.Tick();
-            // application.Tick(deltaTime);
+            input.Tick();            
+            stage.tick(deltaTime);
         }
 
         public void Draw(GraphicsDevice device)
@@ -47,33 +52,40 @@ namespace bc.flash.native
             // appGraphics.End();
         }
 
-        public void PointerPressed(int x, int y)
+        public void PointerMoved(int x, int y)
         {
-            // application.PointerPressed(x, y, 0);
+            stage.touchMove(x, y, 0);
+        }
+
+        public void PointerPressed(int x, int y)
+        {            
+            stage.touchDown(x, y, 0);
         }
 
         public void PointerDragged(int x, int y)
-        {
-            // application.PointerDragged(x, y, 0);
+        {            
+            stage.touchDragged(x, y, 0);
         }
 
         public void PointerReleased(int x, int y)
-        {
-            // application.PointerReleased(x, y, 0);
+        {            
+            stage.touchUp(x, y, 0);
         }
 
         public void ButtonPressed(ButtonEventArg e)
         {
-            // KeyCode code = InputHelper.GetKeyCode(e.button);
+            KeyCode code = InputHelper.GetKeyCode(e.button);
             // KeyAction action = InputHelper.GetKeyAction(e.button);
             // application.KeyPressed(new KeyEvent(e.playerIndex, code, action));
+            stage.keyPressed((uint)code);
         }
 
         public void ButtonReleased(ButtonEventArg e)
-        {           
-            // KeyCode code = InputHelper.GetKeyCode(e.button);
+        {
+            KeyCode code = InputHelper.GetKeyCode(e.button);
             // KeyAction action = InputHelper.GetKeyAction(e.button);
-            // application.KeyReleased(new KeyEvent(e.playerIndex, code, action));
+            // application.KeyPressed(new KeyEvent(e.playerIndex, code, action));
+            stage.keyReleased((uint)code);
         }
 
         public void GamePadConnected(int playerIndex)
@@ -89,17 +101,19 @@ namespace bc.flash.native
         public void KeyPressed(Keys key)
         {
             // int playerIndex = InputHelper.GetPlayerIndex(key);
-            // KeyCode code = InputHelper.GetKeyCode(key);
+            KeyCode code = InputHelper.GetKeyCode(key);
             // KeyAction action = InputHelper.GetKeyAction(key);
             // application.KeyPressed(new KeyEvent(playerIndex, code, action));
+            stage.keyPressed((uint)code);
         }
 
         public void KeyReleased(Keys key)
         {
             // int playerIndex = InputHelper.GetPlayerIndex(key);
-            // KeyCode code = InputHelper.GetKeyCode(key);
+            KeyCode code = InputHelper.GetKeyCode(key);
             // KeyAction action = InputHelper.GetKeyAction(key);
             // application.KeyReleased(new KeyEvent(playerIndex, code, action));
+            stage.keyReleased((uint)code);
         }
 
         public bool isRunning()
@@ -108,8 +122,9 @@ namespace bc.flash.native
         }
 
         public void Dispose()
-        {
-            // ResFactory.GetInstance().Dispose();
+        {            
+            resFactory.Dispose();
+            input.Dispose();
         }
     }
 }
