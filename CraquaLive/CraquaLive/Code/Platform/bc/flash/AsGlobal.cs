@@ -38,12 +38,12 @@ namespace bc.flash
             Console.WriteLine(s);
         }
 
-        public static String getQualifiedClassName(AsDisplayObject asDisplayObject)
+        public static String getQualifiedClassName(AsObject obj)
         {
-            throw new NotImplementedException();
+            return obj.GetType().Name;
         }
 
-        public static void transformCoords(AsMatrix sHelperMatrix, float p, float p_2, AsPoint sHelperPoint)
+        public static void transformCoords(AsMatrix matrix, float x, float y, AsPoint resultPoint)
         {
             throw new NotImplementedException();
         }
