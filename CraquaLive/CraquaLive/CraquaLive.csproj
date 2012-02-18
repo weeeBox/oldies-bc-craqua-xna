@@ -148,6 +148,7 @@
     <Compile Include="Code\Api\bc\flash\geom\AsVector3D.cs" />
     <Compile Include="Code\Api\bc\flash\media\AsSound.cs" />
     <Compile Include="Code\Api\bc\flash\media\AsSoundChannel.cs" />
+    <Compile Include="Code\Api\bc\flash\media\AsSoundLoaderContext.cs" />
     <Compile Include="Code\Api\bc\flash\media\AsSoundTransform.cs" />
     <Compile Include="Code\Api\bc\flash\net\AsURLLoader.cs" />
     <Compile Include="Code\Api\bc\flash\net\AsURLRequest.cs" />
@@ -354,8 +355,6 @@
     <Compile Include="Code\Platform\bc\flash\AsObject.cs" />
     <Compile Include="Code\Platform\bc\flash\AsString.cs" />
     <Compile Include="Code\Platform\bc\flash\AsVector.cs" />
-    <Compile Include="Code\Platform\bc\flash\AsXML.cs" />
-    <Compile Include="Code\Platform\bc\flash\AsXMLList.cs" />
     <Compile Include="Code\Platform\bc\flash\error\AsAbstractClassError.cs" />
     <Compile Include="Code\Platform\bc\flash\error\AsAbstractMethodError.cs" />
     <Compile Include="Code\Platform\bc\flash\error\AsArgumentError.cs" />
@@ -365,6 +364,10 @@
     <Compile Include="Code\Platform\bc\flash\error\AsRangeError.cs" />
     <Compile Include="Code\Platform\bc\flash\system\AsLoaderContext.cs" />
     <Compile Include="Code\Platform\bc\flash\utils\AsByteArray.cs" />
+    <Compile Include="Code\Platform\bc\flash\xml\AsXML.cs" />
+    <Compile Include="Code\Platform\bc\flash\xml\AsXMLAttribute.cs" />
+    <Compile Include="Code\Platform\bc\flash\xml\AsXMLElement.cs" />
+    <Compile Include="Code\Platform\bc\flash\xml\AsXMLList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="CraquaGame.cs" />
