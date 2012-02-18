@@ -1,18 +1,34 @@
 using System;
  
 using bc.flash;
+using bc.flash.error;
+using bc.flash.xml;
  
-namespace bc.flash
+namespace bc.flash.xml
 {
 	public class AsXML : AsObject
 	{
-		public virtual String attributeValue(String arg)
+		private AsXML mParent;
+		private String mName;
+		public AsXML(String name)
+		{
+			mName = name;
+		}
+		public AsXML()
+		 : this(null)
+		{
+		}
+		public virtual AsXML appendChild(AsXML child)
+		{
+			return child;
+		}
+		public virtual String attributeValue(String name)
 		{
 			return null;
 		}
-		public virtual String attribute(String arg)
+		public virtual String attribute(String name)
 		{
-			return null;
+			return attributeValue(name);
 		}
 		public virtual AsXMLList attributes()
 		{
@@ -24,7 +40,7 @@ namespace bc.flash
 		}
 		public virtual int childIndex()
 		{
-			return -1;
+			throw new AsNotImplementedError();
 		}
 		public virtual AsXMLList children()
 		{
@@ -32,7 +48,7 @@ namespace bc.flash
 		}
 		public virtual AsXMLList comments()
 		{
-			return null;
+			throw new AsNotImplementedError();
 		}
 		public virtual bool contains(String _value)
 		{
@@ -40,7 +56,7 @@ namespace bc.flash
 		}
 		public virtual AsXML copy()
 		{
-			return null;
+			throw new AsNotImplementedError();
 		}
 		public virtual AsXMLList elements(String name)
 		{
@@ -52,21 +68,21 @@ namespace bc.flash
 		}
 		public virtual int length()
 		{
-			return -1;
+			return 1;
 		}
 		public virtual String name()
 		{
-			return null;
+			return mName;
 		}
 		public virtual String nodeKind()
 		{
-			return null;
+			throw new AsAbstractClassError();
 		}
-		public virtual AsObject parent()
+		public virtual AsXML parent()
 		{
-			return null;
+			return mParent;
 		}
-		public virtual AsXMLList text()
+		public virtual String text()
 		{
 			return null;
 		}
