@@ -2,33 +2,117 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using bc.flash.native.input;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace bc.flash.native
 {
-    public class NativeApplication
+    public class NativeApplication : GamePadListener, KeyboardListener, TouchListener
     {
-        private int width;
-        private int height;
+        // private Application application;        
+        // private Graphics appGraphics;
 
-        public NativeApplication(int width, int height)
-        {            
-            this.width = width;
-            this.height = height;
+        private NativeInput input;
+        private bool running;
+
+        public NativeApplication(int width, int height, ContentManager content)
+        {
+            // new ResFactory(content);            
+
+            // appGraphics = new Graphics(width, height);
+            // application = new Application(width, height);
+            input = new NativeInput();
+            input.AddGamePadListener(this);
+            input.AddKeyboardListener(this);
+            input.AddTouchListener(this);            
+            running = true;
+
+            // application.Start();
+        }        
+        
+        public void Stop()
+        {
+            running = false;
+        }                
+
+        public void Tick(float deltaTime)
+        {
+            input.Tick();
+            // application.Tick(deltaTime);
         }
 
-        public int Width
+        public void Draw(GraphicsDevice device)
         {
-            get { return width; }
+            // appGraphics.Begin(device);
+            // application.Draw(appGraphics);
+            // appGraphics.End();
         }
 
-        public int Height
+        public void PointerPressed(int x, int y)
         {
-            get { return Height; }
+            // application.PointerPressed(x, y, 0);
         }
 
-        public void tick(float deltaTime)
+        public void PointerDragged(int x, int y)
         {
-            Console.WriteLine(deltaTime);
+            // application.PointerDragged(x, y, 0);
+        }
+
+        public void PointerReleased(int x, int y)
+        {
+            // application.PointerReleased(x, y, 0);
+        }
+
+        public void ButtonPressed(ButtonEventArg e)
+        {
+            // KeyCode code = InputHelper.GetKeyCode(e.button);
+            // KeyAction action = InputHelper.GetKeyAction(e.button);
+            // application.KeyPressed(new KeyEvent(e.playerIndex, code, action));
+        }
+
+        public void ButtonReleased(ButtonEventArg e)
+        {           
+            // KeyCode code = InputHelper.GetKeyCode(e.button);
+            // KeyAction action = InputHelper.GetKeyAction(e.button);
+            // application.KeyReleased(new KeyEvent(e.playerIndex, code, action));
+        }
+
+        public void GamePadConnected(int playerIndex)
+        {
+            // application.GamePadConnected(playerIndex);
+        }
+
+        public void GamePadDisconnected(int playerIndex)
+        {
+            // application.GamePadDisconnected(playerIndex);
+        }
+
+        public void KeyPressed(Keys key)
+        {
+            // int playerIndex = InputHelper.GetPlayerIndex(key);
+            // KeyCode code = InputHelper.GetKeyCode(key);
+            // KeyAction action = InputHelper.GetKeyAction(key);
+            // application.KeyPressed(new KeyEvent(playerIndex, code, action));
+        }
+
+        public void KeyReleased(Keys key)
+        {
+            // int playerIndex = InputHelper.GetPlayerIndex(key);
+            // KeyCode code = InputHelper.GetKeyCode(key);
+            // KeyAction action = InputHelper.GetKeyAction(key);
+            // application.KeyReleased(new KeyEvent(playerIndex, code, action));
+        }
+
+        public bool isRunning()
+        {
+            return running;
+        }
+
+        public void Dispose()
+        {
+            // ResFactory.GetInstance().Dispose();
         }
     }
 }

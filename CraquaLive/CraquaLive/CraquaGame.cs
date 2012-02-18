@@ -21,8 +21,6 @@ namespace CraquaLive
         const int HEIGHT = 480;
 
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-
         NativeApplication app;
 
         public CraquaGame()
@@ -32,8 +30,6 @@ namespace CraquaLive
             graphics.PreferredBackBufferHeight = HEIGHT;
 
             Content.RootDirectory = "Content";
-
-            app = new NativeApplication(WIDTH, HEIGHT);
         }
 
         /// <summary>
@@ -57,10 +53,7 @@ namespace CraquaLive
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
+            app = new NativeApplication(WIDTH, HEIGHT, Content);
         }
 
         /// <summary>
@@ -81,8 +74,15 @@ namespace CraquaLive
         {
             base.Update(gameTime);
 
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            app.tick(deltaTime);                
+            if (app.isRunning())
+            {
+                float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                app.Tick(deltaTime);
+            }
+            else
+            {
+                Exit();
+            }
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace CraquaLive
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            app.Draw(GraphicsDevice);
 
             base.Draw(gameTime);
         }
