@@ -1,6 +1,7 @@
 using System;
  
 using bc.flash;
+using bc.flash.error;
  
 namespace bc.flash
 {
@@ -10,6 +11,7 @@ namespace bc.flash
 		{
 			if(!(condition))
 			{
+				throw new AsError(("Assertion error: " + message));
 			}
 		}
 		public static void assert(bool condition)

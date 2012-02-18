@@ -4,10 +4,11 @@ using bc.flash;
  
 namespace bc.flash.error
 {
-	public class AsError : AsObject
+	public class AsError : Exception
 	{
 		public String message;
 		public String name;
+
 		public AsError(String message)
 		{
 		}

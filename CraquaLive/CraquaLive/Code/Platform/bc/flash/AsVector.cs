@@ -155,6 +155,10 @@ namespace bc.flash
         {
             return slice(0);
         }
+        public AsVector<T> concat()
+        {
+            throw new NotImplementedException();
+        }
         public virtual AsVector<T> sort(AsVectorSorter<T> sorter)
         {
             throw new NotImplementedException();
@@ -163,7 +167,10 @@ namespace bc.flash
         {
             throw new NotImplementedException();
         }
-
+        public virtual AsVector<T> splice(int startIndex, uint deleteCount, T element)
+        {
+            throw new NotImplementedException();
+        }
         public IEnumerator<T> GetEnumerator()
         {
             return data.GetEnumerator();

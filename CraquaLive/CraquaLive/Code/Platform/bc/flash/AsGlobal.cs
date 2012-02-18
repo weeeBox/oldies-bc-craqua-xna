@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using bc.flash.display;
+using bc.flash.geom;
 
 namespace bc.flash
 {
@@ -34,6 +36,16 @@ namespace bc.flash
         public static void trace(String s)
         {
             Console.WriteLine(s);
+        }
+
+        public static String getQualifiedClassName(AsDisplayObject asDisplayObject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static void transformCoords(AsMatrix sHelperMatrix, float p, float p_2, AsPoint sHelperPoint)
+        {
+            throw new NotImplementedException();
         }
     }
 }

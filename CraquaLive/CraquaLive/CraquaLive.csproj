@@ -129,7 +129,6 @@
     <Compile Include="Code\Api\bc\flash\events\AsEnterFrameEvent.cs" />
     <Compile Include="Code\Api\bc\flash\events\AsEvent.cs" />
     <Compile Include="Code\Api\bc\flash\events\AsEventDispatcher.cs" />
-    <Compile Include="Code\Api\bc\flash\events\AsIEventDispatcher.cs" />
     <Compile Include="Code\Api\bc\flash\events\AsIOErrorEvent.cs" />
     <Compile Include="Code\Api\bc\flash\events\AsKeyboardEvent.cs" />
     <Compile Include="Code\Api\bc\flash\events\AsMouseEvent.cs" />
@@ -330,6 +329,7 @@
     <Compile Include="Code\Platform\bc\flash\AsDebug.cs" />
     <Compile Include="Code\Platform\bc\flash\AsDictionary.cs" />
     <Compile Include="Code\Platform\bc\flash\AsGlobal.cs" />
+    <Compile Include="Code\Platform\bc\flash\AsMath.cs" />
     <Compile Include="Code\Platform\bc\flash\AsObject.cs" />
     <Compile Include="Code\Platform\bc\flash\AsString.cs" />
     <Compile Include="Code\Platform\bc\flash\AsVector.cs" />
@@ -351,6 +351,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BcContentPipeline\BcContentPipeline.csproj">
+      <Project>{667F8A45-AC54-4558-875A-F3140FF29D93}</Project>
+      <Name>BcContentPipeline</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CraquaLiveContent\CraquaLiveContent.contentproj">
       <Name>CraquaLiveContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>
