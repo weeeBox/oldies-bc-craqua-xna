@@ -118,6 +118,8 @@
     <Compile Include="Code\Api\bc\flash\display\AsGraphics.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsIBitmapDrawable.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsInteractiveObject.cs" />
+    <Compile Include="Code\Api\bc\flash\display\AsLoader.cs" />
+    <Compile Include="Code\Api\bc\flash\display\AsLoaderInfo.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsMovieClip.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsPixelSnapping.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsSprite.cs" />
@@ -147,6 +149,8 @@
     <Compile Include="Code\Api\bc\flash\media\AsSound.cs" />
     <Compile Include="Code\Api\bc\flash\media\AsSoundChannel.cs" />
     <Compile Include="Code\Api\bc\flash\media\AsSoundTransform.cs" />
+    <Compile Include="Code\Api\bc\flash\net\AsURLLoader.cs" />
+    <Compile Include="Code\Api\bc\flash\net\AsURLRequest.cs" />
     <Compile Include="Code\Api\bc\flash\ui\AsKeyboard.cs" />
     <Compile Include="Code\Api\bc\flash\ui\AsMouse.cs" />
     <Compile Include="Code\Api\bc\flash\ui\AsMouseCursor.cs" />
@@ -169,7 +173,10 @@
     <Compile Include="Code\Converted\bc\core\device\AsBcAsset.cs" />
     <Compile Include="Code\Converted\bc\core\device\AsBcAssetCallback.cs" />
     <Compile Include="Code\Converted\bc\core\device\AsBcAssetSingleton.cs" />
+    <Compile Include="Code\Converted\bc\core\device\AsBcDevice.cs" />
+    <Compile Include="Code\Converted\bc\core\device\AsBcDeviceSingleton.cs" />
     <Compile Include="Code\Converted\bc\core\device\AsBcIApplication.cs" />
+    <Compile Include="Code\Converted\bc\core\device\AsBcTimer.cs" />
     <Compile Include="Code\Converted\bc\core\device\messages\AsBcKeyboardMessage.cs" />
     <Compile Include="Code\Converted\bc\core\device\messages\AsBcMouseMessage.cs" />
     <Compile Include="Code\Converted\bc\core\display\AsBcApplication.cs" />
@@ -210,8 +217,12 @@
     <Compile Include="Code\Converted\bc\core\motion\tweens\AsBcScaleTween.cs" />
     <Compile Include="Code\Converted\bc\core\motion\tweens\AsBcTweenFactory.cs" />
     <Compile Include="Code\Converted\bc\core\resources\AsBcResLoaderListener.cs" />
+    <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcBitmapLoader.cs" />
+    <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcFlashResLoaderFactory.cs" />
     <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcResLoader.cs" />
     <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcResLoaderFactory.cs" />
+    <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcSoundLoader.cs" />
+    <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcXmlLoader.cs" />
     <Compile Include="Code\Converted\bc\core\ui\AsIUIShape.cs" />
     <Compile Include="Code\Converted\bc\core\ui\AsUI.cs" />
     <Compile Include="Code\Converted\bc\core\ui\AsUIButton.cs" />
@@ -352,6 +363,8 @@
     <Compile Include="Code\Platform\bc\flash\error\AsIllegalOperationError.cs" />
     <Compile Include="Code\Platform\bc\flash\error\AsNotImplementedError.cs" />
     <Compile Include="Code\Platform\bc\flash\error\AsRangeError.cs" />
+    <Compile Include="Code\Platform\bc\flash\system\AsLoaderContext.cs" />
+    <Compile Include="Code\Platform\bc\flash\utils\AsByteArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="CraquaGame.cs" />
