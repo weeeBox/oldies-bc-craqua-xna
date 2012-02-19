@@ -5,7 +5,7 @@ using System.Text;
 
 namespace bc.flash.resources
 {
-    public class BcBinaryData
+    public class BcBinaryData : BcManagedResource
     {
         private byte[] data;
 
@@ -23,6 +23,11 @@ namespace bc.flash.resources
         public int Lenght
         {
             get { return data.Length; }
+        }
+
+        public void Dispose()
+        {
+            data = null;
         }
     }
 }
