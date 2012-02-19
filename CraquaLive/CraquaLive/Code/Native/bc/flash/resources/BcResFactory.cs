@@ -122,8 +122,17 @@ namespace bc.flash.resources
                 {
                     XmlDocument doc = new XmlDocument();
                     doc.Load(stream);
-                                         
-                    return ExtractXML(doc.FirstChild);
+
+                    XmlNodeList childs = doc.ChildNodes;
+                    foreach (XmlNode node in childs)
+                    {
+                        if (node.NodeType == XmlNodeType.Element)
+                        {
+                            return ExtractXML(node);
+                        }
+                    }
+
+                    throw new NotImplementedException("Can't find root element: " + path);
                 }
             }
         }
