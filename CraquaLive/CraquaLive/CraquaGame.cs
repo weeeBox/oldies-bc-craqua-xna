@@ -52,7 +52,7 @@ namespace CraquaLive
 
             new AsBcResLoaderFactory();
             AsBcAsset.initialize();
-            AsBcAsset.loadPath("game.xml", null);
+            AsBcAsset.loadPath("asset/game.xml", null);
         }
 
         /// <summary>

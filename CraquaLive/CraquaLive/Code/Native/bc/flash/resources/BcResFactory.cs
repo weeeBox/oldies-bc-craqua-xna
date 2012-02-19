@@ -33,7 +33,7 @@ namespace bc.flash.resources
         {
             using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
             {
-                return manager.Load<BcBinaryData>(path);
+                return manager.Load<BcBinaryData>(CreateSafePath(path));
             }
         }
 
@@ -105,6 +105,16 @@ namespace bc.flash.resources
         {
             Debug.Assert(!usedReferences.ContainsKey(name), name);
             usedReferences.Add(name, obj);
+        }
+
+        private String CreateSafePath(String path)
+        {
+            int dotIndex = path.LastIndexOf('.');
+            if (dotIndex != -1)
+            {
+                return path.Substring(0, dotIndex);
+            }
+            return path;
         }
     }
 }

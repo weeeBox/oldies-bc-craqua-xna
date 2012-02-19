@@ -347,7 +347,7 @@
     <Compile Include="Code\Native\bc\flash\native\NativeApplication.cs" />
     <Compile Include="Code\Native\bc\flash\resources\BcBinaryData.cs" />
     <Compile Include="Code\Native\bc\flash\resources\BinaryContentReader.cs" />
-    <Compile Include="Code\Native\bc\flash\resources\ResFactory.cs" />
+    <Compile Include="Code\Native\bc\flash\resources\BcResFactory.cs" />
     <Compile Include="Code\Platform\bc\flash\AsArray.cs" />
     <Compile Include="Code\Platform\bc\flash\AsDebug.cs" />
     <Compile Include="Code\Platform\bc\flash\AsDictionary.cs" />

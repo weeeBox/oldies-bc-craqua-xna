@@ -42,11 +42,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="asset\game.xml">
+    <Compile Include="asset\game.xml">
       <Name>game</Name>
       <Importer>BinaryContentImporter</Importer>
       <Processor>BinaryContentProcessor</Processor>
-    </None>
+    </Compile>
     <Compile Include="asset\game\audio\bio_death1.mp3">
       <Name>bio_death1</Name>
       <Importer>Mp3Importer</Importer>
