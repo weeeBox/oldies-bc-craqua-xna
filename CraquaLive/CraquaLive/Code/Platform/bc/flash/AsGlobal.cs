@@ -21,6 +21,13 @@ namespace bc.flash
             return val;
         }
 
+        public static uint parseUInt(String s)
+        {
+            uint val = 0;
+            uint.TryParse(s, out val);
+            return val;
+        }
+
         public static int parseInt(String s, int radix)
         {
             throw new NotImplementedException();
@@ -30,6 +37,20 @@ namespace bc.flash
         {
             float val = 0;
             float.TryParse(s, out val);
+            return val;
+        }
+
+        public static long parseLong(String s)
+        {
+            long val = 0;
+            long.TryParse(s, out val);
+            return val;
+        }
+
+        public static bool parseBool(string s)
+        {
+            bool val = false;
+            bool.TryParse(s, out val);
             return val;
         }
 
@@ -46,6 +67,6 @@ namespace bc.flash
         public static void transformCoords(AsMatrix matrix, float x, float y, AsPoint resultPoint)
         {
             throw new NotImplementedException();
-        }
+        }        
     }
 }

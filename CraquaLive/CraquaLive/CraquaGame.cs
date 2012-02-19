@@ -2,6 +2,8 @@ using bc.flash.native;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using bc.core.device;
+using bc.core.resources.loaders;
 
 namespace CraquaLive
 {
@@ -47,6 +49,10 @@ namespace CraquaLive
         protected override void LoadContent()
         {
             app = new NativeApplication(WIDTH, HEIGHT, Content);
+
+            new AsBcResLoaderFactory();
+            AsBcAsset.initialize();
+            AsBcAsset.loadPath("game.xml", null);
         }
 
         /// <summary>
