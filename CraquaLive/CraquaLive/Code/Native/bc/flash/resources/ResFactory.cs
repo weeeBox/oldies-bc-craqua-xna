@@ -9,14 +9,14 @@ using System.Diagnostics;
 
 namespace bc.flash.resources
 {
-    public class ResFactory
+    public class BcResFactory
     {
         private ContentManager content;        
         private Dictionary<string, object> usedReferences;
 
-        private static ResFactory instance;
+        private static BcResFactory instance;
 
-        public ResFactory(ContentManager content)
+        public BcResFactory(ContentManager content)
         {
             this.content = content;
             usedReferences = new Dictionary<string, object>();
@@ -24,7 +24,7 @@ namespace bc.flash.resources
             instance = this;            
         }
 
-        public static ResFactory GetInstance()
+        public static BcResFactory GetInstance()
         {
             return instance;
         }

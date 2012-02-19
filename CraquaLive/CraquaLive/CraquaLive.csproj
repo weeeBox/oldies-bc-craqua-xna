@@ -107,7 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BcResLoaderFactory.cs" />
     <Compile Include="Code\Api\bc\flash\core\AsRenderSupport.cs" />
     <Compile Include="Code\Api\bc\flash\core\AsStarling.cs" />
     <Compile Include="Code\Api\bc\flash\core\natives\AsBcNativeStage.cs" />
@@ -346,6 +345,7 @@
     <Compile Include="Code\Native\bc\flash\native\input\NativeInput.cs" />
     <Compile Include="Code\Native\bc\flash\native\input\TouchListener.cs" />
     <Compile Include="Code\Native\bc\flash\native\NativeApplication.cs" />
+    <Compile Include="Code\Native\bc\flash\resources\BcBinaryData.cs" />
     <Compile Include="Code\Native\bc\flash\resources\BinaryContentReader.cs" />
     <Compile Include="Code\Native\bc\flash\resources\ResFactory.cs" />
     <Compile Include="Code\Platform\bc\flash\AsArray.cs" />

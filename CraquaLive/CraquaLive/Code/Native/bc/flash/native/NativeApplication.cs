@@ -14,14 +14,14 @@ namespace bc.flash.native
         // private Graphics appGraphics;
 
         private NativeInput input;
-        private ResFactory resFactory;
+        private BcResFactory resFactory;
         private AsBcNativeStage stage;
 
         private bool running;
 
         public NativeApplication(int width, int height, ContentManager content)
         {
-            resFactory = new ResFactory(content);            
+            resFactory = new BcResFactory(content);            
 
             // appGraphics = new Graphics(width, height);            
             input = new NativeInput();
