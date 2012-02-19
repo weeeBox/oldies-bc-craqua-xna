@@ -5,14 +5,12 @@ using bc.flash.error;
  
 namespace bc.flash.error
 {
-	public class AsNotImplementedError : AsError
+	public class AsNotImplementedError : Exception
 	{
-		public AsNotImplementedError(String message)
-		 : base(message)
+		public AsNotImplementedError(String message) : base(message)
 		{
 		}
-		public AsNotImplementedError()
-		 : this("")
+		public AsNotImplementedError() : this("")
 		{
 		}
 	}

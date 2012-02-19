@@ -11,5 +11,9 @@ namespace bc.flash.error
 		 : base(message)
 		{
 		}
+		public AsIllegalOperationError()
+		 : this(null)
+		{
+		}
 	}
 }
