@@ -141,7 +141,7 @@ namespace bc.flash.resources
                 }
 
                 XmlNodeList childs = node.ChildNodes;
-                foreach (XmlNode child in attributes)
+                foreach (XmlNode child in childs)
                 {
                     AsXMLElement childElement = ExtractXML(child);
                     if (childElement != null)
