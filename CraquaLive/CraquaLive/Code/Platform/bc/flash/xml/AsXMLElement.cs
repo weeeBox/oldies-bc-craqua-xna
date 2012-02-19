@@ -19,6 +19,10 @@ namespace bc.flash.xml
 		{
 			return mChildren.appendChild(child);
 		}
+		public virtual AsXML appendAttribute(String name, String _value)
+		{
+			return mAttributes.appendChild(new AsXMLAttribute(name, _value));
+		}
 		public override String attributeValue(String arg)
 		{
 			foreach (AsXML attr in mAttributes.list())

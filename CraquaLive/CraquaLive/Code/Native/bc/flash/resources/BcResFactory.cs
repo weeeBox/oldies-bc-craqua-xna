@@ -6,12 +6,15 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using System.Diagnostics;
+using System.Xml;
+using System.IO;
+using bc.flash.xml;
 
 namespace bc.flash.resources
 {
     public class BcResFactory
     {
-        private ContentManager content;        
+        private ContentManager content;
         private Dictionary<string, object> usedReferences;
 
         private const string EXT_PNG = ".png";
@@ -27,7 +30,7 @@ namespace bc.flash.resources
             this.content = content;
             usedReferences = new Dictionary<string, object>();
 
-            instance = this;            
+            instance = this;
         }
 
         public static BcResFactory GetInstance()
@@ -38,35 +41,29 @@ namespace bc.flash.resources
         public AsObject LoadResource(String path)
         {
             String ext = ExtractExt(path);
+            String contentPath = CreateContentPath(path);
+
             if (ext == EXT_PNG || ext == EXT_JPG)
             {
-                return LoadImage(path);
+                return LoadImage(contentPath);
             }
 
             if (ext == EXT_WAV)
             {
-                return LoadSound(path);
+                return LoadSound(contentPath);
             }
 
             if (ext == EXT_MP3)
             {
-                return LoadMusic(path);
+                return LoadMusic(contentPath);
             }
 
             if (ext == EXT_XML)
             {
-                return LoadXML(path);
+                return LoadXML(contentPath);
             }
 
             throw new NotImplementedException("Unknown type: " + ext);
-        }
-
-        public BcBinaryData LoadBinary(string path)
-        {
-            using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
-            {
-                return manager.Load<BcBinaryData>(CreateSafePath(path));
-            }
         }
 
         //public BitmapFont LoadFont(string path)
@@ -118,7 +115,45 @@ namespace bc.flash.resources
 
         public AsObject LoadXML(String path)
         {
-            throw new NotImplementedException();
+            using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
+            {
+                BcBinaryData data = manager.Load<BcBinaryData>(path);
+                using (MemoryStream stream = new MemoryStream(data.Data))
+                {
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(stream);
+                                         
+                    return ExtractXML(doc.FirstChild);
+                }
+            }
+        }
+
+        private AsXMLElement ExtractXML(XmlNode node)
+        {
+            if (node.NodeType == XmlNodeType.Element)
+            {
+                AsXMLElement element = new AsXMLElement(node.Name);
+
+                XmlAttributeCollection attributes = node.Attributes;
+                foreach (XmlAttribute attr in attributes)
+                {
+                    element.appendAttribute(attr.Name, attr.Value);
+                }
+
+                XmlNodeList childs = node.ChildNodes;
+                foreach (XmlNode child in attributes)
+                {
+                    AsXMLElement childElement = ExtractXML(child);
+                    if (childElement != null)
+                    {
+                        element.appendChild(childElement);
+                    }
+                }
+
+                return element;
+            }
+
+            return null;
         }
 
         //public StringsPack LoadStrings(string path)
@@ -127,7 +162,7 @@ namespace bc.flash.resources
         //}
 
         public void Dispose()
-        {            
+        {
         }
 
         public T FindUsedReference<T>(string name)
@@ -143,7 +178,7 @@ namespace bc.flash.resources
             usedReferences.Add(name, obj);
         }
 
-        private String CreateSafePath(String path)
+        private String CreateContentPath(String path)
         {
             int dotIndex = path.LastIndexOf('.');
             if (dotIndex != -1)
