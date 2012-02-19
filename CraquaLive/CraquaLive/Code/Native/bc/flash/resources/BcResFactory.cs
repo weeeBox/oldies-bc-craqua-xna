@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Audio;
 using System.Diagnostics;
-using System.Xml;
 using System.IO;
+using System.Xml;
+
 using bc.flash.xml;
+
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace bc.flash.resources
 {
@@ -76,7 +75,10 @@ namespace bc.flash.resources
 
         public AsObject LoadImage(String path)
         {
-            throw new NotImplementedException();
+            using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
+            {
+                return manager.Load<Texture2D>(path);
+            }
         }
 
         //public GameTexture LoadManagedImage(string path)
