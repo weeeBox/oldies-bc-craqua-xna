@@ -14,6 +14,12 @@ namespace bc.flash.resources
         private ContentManager content;        
         private Dictionary<string, object> usedReferences;
 
+        private const string EXT_PNG = ".png";
+        private const string EXT_JPG = ".jpg";
+        private const string EXT_WAV = ".wav";
+        private const string EXT_MP3 = ".mp3";
+        private const string EXT_XML = ".xml";
+
         private static BcResFactory instance;
 
         public BcResFactory(ContentManager content)
@@ -27,6 +33,32 @@ namespace bc.flash.resources
         public static BcResFactory GetInstance()
         {
             return instance;
+        }
+
+        public AsObject LoadResource(String path)
+        {
+            String ext = ExtractExt(path);
+            if (ext == EXT_PNG || ext == EXT_JPG)
+            {
+                return LoadImage(path);
+            }
+
+            if (ext == EXT_WAV)
+            {
+                return LoadSound(path);
+            }
+
+            if (ext == EXT_MP3)
+            {
+                return LoadMusic(path);
+            }
+
+            if (ext == EXT_XML)
+            {
+                return LoadXML(path);
+            }
+
+            throw new NotImplementedException("Unknown type: " + ext);
         }
 
         public BcBinaryData LoadBinary(string path)
@@ -45,11 +77,10 @@ namespace bc.flash.resources
         //    }
         //}
 
-        //public GameTexture LoadImage(string resname)
-        //{
-        //    Texture2D texture = content.Load<Texture2D>(resname);
-        //    return new GameTexture(texture);
-        //}
+        public AsObject LoadImage(String path)
+        {
+            throw new NotImplementedException();
+        }
 
         //public GameTexture LoadManagedImage(string path)
         //{
@@ -75,15 +106,20 @@ namespace bc.flash.resources
         //    }
         //}
 
-        //public GameMusic LoadMusic(string resName)
-        //{
-        //    return new GameMusic(content.Load<Song>(resName));
-        //}
+        public AsObject LoadMusic(String path)
+        {
+            throw new NotImplementedException();
+        }
 
-        //public GameSound LoadSound(string resName)
-        //{
-        //    return new GameSound(content.Load<SoundEffect>(resName));
-        //}
+        public AsObject LoadSound(String path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public AsObject LoadXML(String path)
+        {
+            throw new NotImplementedException();
+        }
 
         //public StringsPack LoadStrings(string path)
         //{
@@ -115,6 +151,16 @@ namespace bc.flash.resources
                 return path.Substring(0, dotIndex);
             }
             return path;
+        }
+
+        private String ExtractExt(String path)
+        {
+            int dotIndex = path.LastIndexOf('.');
+            if (dotIndex != -1)
+            {
+                return path.Substring(dotIndex, path.Length - dotIndex).ToLower();
+            }
+            return "";
         }
     }
 }

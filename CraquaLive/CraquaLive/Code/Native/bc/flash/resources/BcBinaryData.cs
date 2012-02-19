@@ -5,7 +5,7 @@ using System.Text;
 
 namespace bc.flash.resources
 {
-    public class BcBinaryData : BcManagedResource
+    public class BcBinaryData : AsObject, BcManagedResource
     {
         private byte[] data;
 
