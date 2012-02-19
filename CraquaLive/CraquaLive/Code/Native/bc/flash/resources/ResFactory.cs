@@ -29,6 +29,14 @@ namespace bc.flash.resources
             return instance;
         }
 
+        public BcBinaryData LoadBinary(string path)
+        {
+            using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
+            {
+                return manager.Load<BcBinaryData>(path);
+            }
+        }
+
         //public BitmapFont LoadFont(string path)
         //{
         //    using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
