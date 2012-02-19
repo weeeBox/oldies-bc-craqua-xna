@@ -180,6 +180,8 @@ namespace bc.flash.resources
 
         private String CreateContentPath(String path)
         {
+            path = path.Replace("../", "");
+
             int dotIndex = path.LastIndexOf('.');
             if (dotIndex != -1)
             {

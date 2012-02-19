@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using bc.flash.display;
 using bc.flash.geom;
+using System.Diagnostics;
 
 namespace bc.flash
 {
@@ -67,6 +68,16 @@ namespace bc.flash
         public static void transformCoords(AsMatrix matrix, float x, float y, AsPoint resultPoint)
         {
             throw new NotImplementedException();
-        }        
+        }
+
+        public static void assert(bool condition)
+        {
+            Debug.Assert(condition);
+        }
+
+        public static void assert(bool condition, String message)
+        {
+            Debug.Assert(condition, message);
+        }
     }
 }
