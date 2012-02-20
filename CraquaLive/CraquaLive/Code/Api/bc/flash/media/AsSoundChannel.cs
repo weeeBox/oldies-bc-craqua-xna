@@ -8,6 +8,7 @@ namespace bc.flash.media
 {
 	public class AsSoundChannel : AsObject
 	{
+		private AsSoundTransform mSoundTransform;
 		public virtual float getLeftPeak()
 		{
 			throw new AsNotImplementedError();
@@ -22,11 +23,11 @@ namespace bc.flash.media
 		}
 		public virtual AsSoundTransform getSoundTransform()
 		{
-			throw new AsNotImplementedError();
+			return mSoundTransform;
 		}
 		public virtual void setSoundTransform(AsSoundTransform sndTransform)
 		{
-			throw new AsNotImplementedError();
+			mSoundTransform = sndTransform;
 		}
 		public virtual void stop()
 		{

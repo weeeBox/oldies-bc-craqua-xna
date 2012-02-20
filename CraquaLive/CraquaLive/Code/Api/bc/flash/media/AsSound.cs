@@ -10,11 +10,14 @@ namespace bc.flash.media
 {
 	public class AsSound : AsEventDispatcher
 	{
-		public AsSound(AsURLRequest stream, AsSoundLoaderContext context)
+		private AsURLRequest mRequest;
+		private AsSoundLoaderContext mContext;
+		public AsSound(AsURLRequest request, AsSoundLoaderContext context)
 		{
-			throw new AsNotImplementedError();
+			mRequest = request;
+			mContext = context;
 		}
-		public AsSound(AsURLRequest stream)
+		public AsSound(AsURLRequest request)
 		 : this(null, null)
 		{
 		}
@@ -38,13 +41,15 @@ namespace bc.flash.media
 		{
 			throw new AsNotImplementedError();
 		}
-		public virtual void load(AsURLRequest stream, AsSoundLoaderContext context)
+		public virtual void load(AsURLRequest request, AsSoundLoaderContext context)
 		{
+			mRequest = request;
+			mContext = context;
 			throw new AsNotImplementedError();
 		}
-		public virtual void load(AsURLRequest stream)
+		public virtual void load(AsURLRequest request)
 		{
-			load(stream, null);
+			load(request, null);
 		}
 		public virtual AsSoundChannel play(float startTime, int loops, AsSoundTransform sndTransform)
 		{
@@ -64,7 +69,7 @@ namespace bc.flash.media
 		}
 		public virtual String getUrl()
 		{
-			throw new AsNotImplementedError();
+			return mRequest.getUrl();
 		}
 	}
 }

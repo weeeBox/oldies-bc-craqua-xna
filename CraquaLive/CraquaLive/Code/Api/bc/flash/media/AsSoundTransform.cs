@@ -1,15 +1,21 @@
 using System;
  
 using bc.flash;
-using bc.flash.error;
  
 namespace bc.flash.media
 {
 	public class AsSoundTransform : AsObject
 	{
+		private float mVolume;
+		private float mPanning;
+		private float mLeftToLeft;
+		private float mLeftToRight;
+		private float mRightToLeft;
+		private float mRightToRight;
 		public AsSoundTransform(float vol, float panning)
 		{
-			throw new AsNotImplementedError();
+			mVolume = vol;
+			mPanning = panning;
 		}
 		public AsSoundTransform(float vol)
 		 : this(1, 0)
@@ -21,51 +27,51 @@ namespace bc.flash.media
 		}
 		public virtual float getLeftToLeft()
 		{
-			throw new AsNotImplementedError();
+			return mLeftToLeft;
 		}
 		public virtual void setLeftToLeft(float leftToLeft)
 		{
-			throw new AsNotImplementedError();
+			mLeftToLeft = leftToLeft;
 		}
 		public virtual float getLeftToRight()
 		{
-			throw new AsNotImplementedError();
+			return mLeftToRight;
 		}
 		public virtual void setLeftToRight(float leftToRight)
 		{
-			throw new AsNotImplementedError();
+			mLeftToRight = leftToRight;
 		}
 		public virtual float getPan()
 		{
-			throw new AsNotImplementedError();
+			return mPanning;
 		}
 		public virtual void setPan(float panning)
 		{
-			throw new AsNotImplementedError();
+			mPanning = panning;
 		}
 		public virtual float getRightToLeft()
 		{
-			throw new AsNotImplementedError();
+			return mRightToLeft;
 		}
 		public virtual void setRightToLeft(float rightToLeft)
 		{
-			throw new AsNotImplementedError();
+			mRightToLeft = rightToLeft;
 		}
 		public virtual float getRightToRight()
 		{
-			throw new AsNotImplementedError();
+			return mRightToRight;
 		}
 		public virtual void setRightToRight(float rightToRight)
 		{
-			throw new AsNotImplementedError();
+			mRightToRight = rightToRight;
 		}
 		public virtual float getVolume()
 		{
-			throw new AsNotImplementedError();
+			return mVolume;
 		}
 		public virtual void setVolume(float volume)
 		{
-			throw new AsNotImplementedError();
+			mVolume = volume;
 		}
 	}
 }
