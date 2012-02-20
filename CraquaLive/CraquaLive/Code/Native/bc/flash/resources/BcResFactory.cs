@@ -64,14 +64,6 @@ namespace bc.flash.resources
             throw new NotImplementedException("Unknown type: " + ext);
         }
 
-        //public BitmapFont LoadFont(string path)
-        //{
-        //    using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
-        //    {
-        //        return manager.Load<BitmapFont>(path);
-        //    }
-        //}
-
         public BcTexture2D LoadImage(String path)
         {
             using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
@@ -81,30 +73,6 @@ namespace bc.flash.resources
                 return new BcTexture2D(texture);
             }
         }
-
-        //public GameTexture LoadManagedImage(string path)
-        //{
-        //    GameTexture instance = FindUsedReference<GameTexture>(path);
-        //    if (instance == null)
-        //    {
-        //        instance = LoadImage(path);
-        //        AddReference(path, instance);
-        //    }
-        //    return instance;
-        //}
-
-        //public AtlasRes loadAtlas(string resName)
-        //{
-        //    return content.Load<AtlasRes>(resName);
-        //}
-
-        //public SwfMovie LoadSwfMovie(string path)
-        //{
-        //    using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
-        //    {
-        //        return manager.Load<SwfMovie>(path);
-        //    }
-        //}
 
         public BcSound LoadSound(String path)
         {
@@ -196,26 +164,8 @@ namespace bc.flash.resources
             return null;
         }
 
-        //public StringsPack LoadStrings(string path)
-        //{
-        //    return content.Load<StringsPack>(path);
-        //}
-
         public void Dispose()
         {
-        }
-
-        public T FindUsedReference<T>(string name)
-        {
-            if (!usedReferences.ContainsKey(name))
-                return default(T);
-            return (T)usedReferences[name];
-        }
-
-        public void AddReference(string name, object obj)
-        {
-            Debug.Assert(!usedReferences.ContainsKey(name), name);
-            usedReferences.Add(name, obj);
         }
 
         private String CreateContentPath(String path)
