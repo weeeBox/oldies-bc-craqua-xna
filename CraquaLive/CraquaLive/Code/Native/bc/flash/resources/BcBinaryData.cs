@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace bc.flash.resources
 {
-    public class BcBinaryData : AsObject, BcManagedResource
+    public class BcBinaryData : BcManagedResource
     {
         private byte[] data;
 
@@ -25,7 +21,7 @@ namespace bc.flash.resources
             get { return data.Length; }
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             data = null;
         }

@@ -39,27 +39,26 @@ namespace bc.flash.resources
 
         public AsObject LoadResource(String path)
         {
-            String ext = ExtractExt(path);
-            String contentPath = CreateContentPath(path);
+            String ext = ExtractExt(path);            
 
             if (ext == EXT_PNG || ext == EXT_JPG)
             {
-                return LoadImage(contentPath);
+                return LoadImage(path);
             }
 
             if (ext == EXT_WAV)
             {
-                return LoadSound(contentPath);
+                return LoadSound(path);
             }
 
             if (ext == EXT_MP3)
             {
-                return LoadMusic(contentPath);
+                return LoadMusic(path);
             }
 
             if (ext == EXT_XML)
             {
-                return LoadXML(contentPath);
+                return LoadXML(path);
             }
 
             throw new NotImplementedException("Unknown type: " + ext);
@@ -73,11 +72,13 @@ namespace bc.flash.resources
         //    }
         //}
 
-        public AsObject LoadImage(String path)
+        public BcTexture2D LoadImage(String path)
         {
             using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
             {
-                return manager.Load<Texture2D>(path);
+                String contentPath = CreateContentPath(path);
+                Texture2D texture = manager.Load<Texture2D>(contentPath);
+                return new BcTexture2D(texture);
             }
         }
 
@@ -107,11 +108,13 @@ namespace bc.flash.resources
 
         public AsObject LoadMusic(String path)
         {
+            String contentPath = CreateContentPath(path);
             throw new NotImplementedException();
         }
 
         public AsObject LoadSound(String path)
         {
+            String contentPath = CreateContentPath(path);
             throw new NotImplementedException();
         }
 
@@ -119,7 +122,8 @@ namespace bc.flash.resources
         {
             using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
             {
-                BcBinaryData data = manager.Load<BcBinaryData>(path);
+                String contentPath = CreateContentPath(path);
+                BcBinaryData data = manager.Load<BcBinaryData>(contentPath);
                 using (MemoryStream stream = new MemoryStream(data.Data))
                 {
                     XmlDocument doc = new XmlDocument();
@@ -134,7 +138,7 @@ namespace bc.flash.resources
                         }
                     }
 
-                    throw new NotImplementedException("Can't find root element: " + path);
+                    throw new NotImplementedException("Can't find root element: " + contentPath);
                 }
             }
         }

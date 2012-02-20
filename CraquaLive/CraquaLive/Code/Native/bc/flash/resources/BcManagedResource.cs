@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace bc.flash.resources
 {
-    public interface BcManagedResource : IDisposable
+    public class BcManagedResource : AsObject, IDisposable
     {
-        void Dispose();
+        public virtual void Dispose()
+        {
+        }
     }
 }
