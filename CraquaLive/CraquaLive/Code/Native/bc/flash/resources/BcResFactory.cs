@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Xml;
-
 using bc.flash.xml;
-
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace bc.flash.resources
 {
@@ -39,7 +39,7 @@ namespace bc.flash.resources
 
         public AsObject LoadResource(String path)
         {
-            String ext = ExtractExt(path);            
+            String ext = ExtractExt(path);
 
             if (ext == EXT_PNG || ext == EXT_JPG)
             {
@@ -106,16 +106,41 @@ namespace bc.flash.resources
         //    }
         //}
 
-        public AsObject LoadMusic(String path)
+        public BcSound LoadSound(String path)
         {
-            String contentPath = CreateContentPath(path);
+            String ext = ExtractExt(path);
+
+            if (ext == EXT_WAV)
+            {
+                return LoadSoundEffect(path);
+            }
+
+            if (ext == EXT_MP3)
+            {
+                return LoadMusic(path);
+            }
+
             throw new NotImplementedException();
         }
 
-        public AsObject LoadSound(String path)
+        private BcMusic LoadMusic(String path)
         {
-            String contentPath = CreateContentPath(path);
-            throw new NotImplementedException();
+            using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
+            {
+                String contentPath = CreateContentPath(path);
+                Song song = manager.Load<Song>(contentPath);
+                return new BcMusic(song);
+            }
+        }
+
+        private BcSoundEffect LoadSoundEffect(String path)
+        {
+            using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
+            {
+                String contentPath = CreateContentPath(path);
+                SoundEffect effect = manager.Load<SoundEffect>(contentPath);
+                return new BcSoundEffect(effect);
+            }
         }
 
         public AsObject LoadXML(String path)

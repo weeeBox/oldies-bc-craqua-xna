@@ -1,20 +1,20 @@
 ﻿using System;
 using bc.flash.media;
-using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 namespace bc.flash.resources
 {
-    public class BcMusic : BcSound
+    public class BcSoundEffect : BcSound
     {
-        private Song mSong;
+        private SoundEffect mEffect;
 
-        public BcMusic(Song song)
+        public BcSoundEffect(SoundEffect effect)
         {
-            mSong = song;
+            mEffect = effect;
         }
         public override float Length
         {
-            get { return (float)mSong.Duration.TotalSeconds; }
+            get { return (float)mEffect.Duration.TotalSeconds; }
         }
 
         public override AsSoundChannel Play(float startTime, int loops, AsSoundTransform sndTransform)
@@ -31,11 +31,11 @@ namespace bc.flash.resources
         {
             base.Dispose();
 
-            if (mSong != null)
+            if (mEffect != null)
             {
-                mSong.Dispose();
-                mSong = null;
-            }
+                mEffect.Dispose();
+                mEffect = null;
+            }            
         }
     }
 }

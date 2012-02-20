@@ -347,6 +347,9 @@
     <Compile Include="Code\Native\bc\flash\native\NativeApplication.cs" />
     <Compile Include="Code\Native\bc\flash\resources\BcBinaryData.cs" />
     <Compile Include="Code\Native\bc\flash\resources\BcManagedResource.cs" />
+    <Compile Include="Code\Native\bc\flash\resources\BcMusic.cs" />
+    <Compile Include="Code\Native\bc\flash\resources\BcSound.cs" />
+    <Compile Include="Code\Native\bc\flash\resources\BcSoundEffect.cs" />
     <Compile Include="Code\Native\bc\flash\resources\BcTexture2D.cs" />
     <Compile Include="Code\Native\bc\flash\resources\BinaryContentReader.cs" />
     <Compile Include="Code\Native\bc\flash\resources\BcResFactory.cs" />
