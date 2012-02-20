@@ -41,11 +41,11 @@ namespace bc.flash.core
 		}
 		public virtual void setOrthographicProjection(float width, float height, float near)
 		{
-			setOrthographicProjection(width, height, -1.0f, 1.0f);
+			setOrthographicProjection(width, height, near, 1.0f);
 		}
 		public virtual void setOrthographicProjection(float width, float height)
 		{
-			setOrthographicProjection(width, height, -1.0f);
+			setOrthographicProjection(width, height, -1.0f, 1.0f);
 		}
 		public virtual void loadIdentity()
 		{

@@ -4,13 +4,15 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using bc.core.device;
 using bc.core.resources.loaders;
+using bc.game;
+using System.Diagnostics;
 
 namespace CraquaLive
 {
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class CraquaGame : Microsoft.Xna.Framework.Game
+    public class CraquaGame : Microsoft.Xna.Framework.Game, AsBcAssetCallback
     {
         const int WIDTH = 640;
         const int HEIGHT = 480;
@@ -52,7 +54,7 @@ namespace CraquaLive
 
             new AsBcResLoaderFactory();
             AsBcAsset.initialize();
-            AsBcAsset.loadPath("asset/game.xml", null);
+            AsBcAsset.loadPath("asset/game.xml", this);
         }
 
         /// <summary>
@@ -95,6 +97,12 @@ namespace CraquaLive
             app.Draw(GraphicsDevice);
 
             base.Draw(gameTime);
+        }
+
+        public void assetLoadingCompleted()
+        {
+            Debug.WriteLine("Loading completed");
+            new AsBcGame();
         }
     }
 }

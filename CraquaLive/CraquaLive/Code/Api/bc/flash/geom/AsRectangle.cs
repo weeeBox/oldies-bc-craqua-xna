@@ -20,19 +20,19 @@ namespace bc.flash.geom
 			this.height = height;
 		}
 		public AsRectangle(float x, float y, float width)
-		 : this(0, 0, 0, 0)
+		 : this(x, y, width, 0)
 		{
 		}
 		public AsRectangle(float x, float y)
-		 : this(0, 0, 0)
+		 : this(x, y, 0, 0)
 		{
 		}
 		public AsRectangle(float x)
-		 : this(0, 0)
+		 : this(x, 0, 0, 0)
 		{
 		}
 		public AsRectangle()
-		 : this(0)
+		 : this(0, 0, 0, 0)
 		{
 		}
 		public virtual float getBottom()

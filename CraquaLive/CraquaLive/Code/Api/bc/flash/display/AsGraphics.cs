@@ -49,35 +49,35 @@ namespace bc.flash.display
 		}
 		public virtual void lineStyle(float thickness, uint color, float alpha, bool pixelHinting, String scaleMode, String caps, String joints)
 		{
-			lineStyle(0, (uint)(0), 1.0f, false, "normal", null, null, 3);
+			lineStyle(thickness, color, alpha, pixelHinting, scaleMode, caps, joints, 3);
 		}
 		public virtual void lineStyle(float thickness, uint color, float alpha, bool pixelHinting, String scaleMode, String caps)
 		{
-			lineStyle(0, (uint)(0), 1.0f, false, "normal", null, null);
+			lineStyle(thickness, color, alpha, pixelHinting, scaleMode, caps, null, 3);
 		}
 		public virtual void lineStyle(float thickness, uint color, float alpha, bool pixelHinting, String scaleMode)
 		{
-			lineStyle(0, (uint)(0), 1.0f, false, "normal", null);
+			lineStyle(thickness, color, alpha, pixelHinting, scaleMode, null, null, 3);
 		}
 		public virtual void lineStyle(float thickness, uint color, float alpha, bool pixelHinting)
 		{
-			lineStyle(0, (uint)(0), 1.0f, false, "normal");
+			lineStyle(thickness, color, alpha, pixelHinting, "normal", null, null, 3);
 		}
 		public virtual void lineStyle(float thickness, uint color, float alpha)
 		{
-			lineStyle(0, (uint)(0), 1.0f, false);
+			lineStyle(thickness, color, alpha, false, "normal", null, null, 3);
 		}
 		public virtual void lineStyle(float thickness, uint color)
 		{
-			lineStyle(0, (uint)(0), 1.0f);
+			lineStyle(thickness, color, 1.0f, false, "normal", null, null, 3);
 		}
 		public virtual void lineStyle(float thickness)
 		{
-			lineStyle(0, (uint)(0));
+			lineStyle(thickness, (uint)(0), 1.0f, false, "normal", null, null, 3);
 		}
 		public virtual void lineStyle()
 		{
-			lineStyle(0);
+			lineStyle(0, (uint)(0), 1.0f, false, "normal", null, null, 3);
 		}
 		public virtual void lineTo(float x, float y)
 		{

@@ -17,15 +17,15 @@ namespace bc.flash.display
 			mSmoothing = smoothing;
 		}
 		public AsBitmap(AsBitmapData bitmapData, String pixelSnapping)
-		 : this(null, "auto", false)
+		 : this(bitmapData, pixelSnapping, false)
 		{
 		}
 		public AsBitmap(AsBitmapData bitmapData)
-		 : this(null, "auto")
+		 : this(bitmapData, "auto", false)
 		{
 		}
 		public AsBitmap()
-		 : this(null)
+		 : this(null, "auto", false)
 		{
 		}
 		public virtual AsBitmapData getBitmapData()

@@ -124,11 +124,11 @@ namespace bc.flash.geom
 		}
 		public virtual void copyRawDataFrom(AsVector<float> vector, uint index)
 		{
-			copyRawDataFrom(vector, (uint)(0), false);
+			copyRawDataFrom(vector, index, false);
 		}
 		public virtual void copyRawDataFrom(AsVector<float> vector)
 		{
-			copyRawDataFrom(vector, (uint)(0));
+			copyRawDataFrom(vector, (uint)(0), false);
 		}
 		public virtual void copyRawDataTo(AsVector<float> vector, uint index, bool transpose)
 		{
@@ -136,11 +136,11 @@ namespace bc.flash.geom
 		}
 		public virtual void copyRawDataTo(AsVector<float> vector, uint index)
 		{
-			copyRawDataTo(vector, (uint)(0), false);
+			copyRawDataTo(vector, index, false);
 		}
 		public virtual void copyRawDataTo(AsVector<float> vector)
 		{
-			copyRawDataTo(vector, (uint)(0));
+			copyRawDataTo(vector, (uint)(0), false);
 		}
 		public virtual void copyRowFrom(uint row, AsVector3D vector3D)
 		{
@@ -192,11 +192,11 @@ namespace bc.flash.geom
 		}
 		public virtual void pointAt(AsVector3D pos, AsVector3D at)
 		{
-			pointAt(pos, null, null);
+			pointAt(pos, at, null);
 		}
 		public virtual void pointAt(AsVector3D pos)
 		{
-			pointAt(pos, null);
+			pointAt(pos, null, null);
 		}
 		public virtual AsVector3D getPosition()
 		{

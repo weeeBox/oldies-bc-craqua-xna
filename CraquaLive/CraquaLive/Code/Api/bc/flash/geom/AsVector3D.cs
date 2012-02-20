@@ -23,19 +23,19 @@ namespace bc.flash.geom
 			this.w = w;
 		}
 		public AsVector3D(float x, float y, float z)
-		 : this(0.0f, 0.0f, 0.0f, 0.0f)
+		 : this(x, y, z, 0.0f)
 		{
 		}
 		public AsVector3D(float x, float y)
-		 : this(0.0f, 0.0f, 0.0f)
+		 : this(x, y, 0.0f, 0.0f)
 		{
 		}
 		public AsVector3D(float x)
-		 : this(0.0f, 0.0f)
+		 : this(x, 0.0f, 0.0f, 0.0f)
 		{
 		}
 		public AsVector3D()
-		 : this(0.0f)
+		 : this(0.0f, 0.0f, 0.0f, 0.0f)
 		{
 		}
 		public virtual AsVector3D _add(AsVector3D a)

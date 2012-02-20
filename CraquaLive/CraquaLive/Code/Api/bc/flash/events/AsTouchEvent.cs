@@ -46,15 +46,15 @@ namespace bc.flash.events
 			}
 		}
 		public AsTouchEvent(String type, AsVector<AsTouch> touches, bool shiftKey, bool ctrlKey)
-		 : this(type, touches, false, false, true)
+		 : this(type, touches, shiftKey, ctrlKey, true)
 		{
 		}
 		public AsTouchEvent(String type, AsVector<AsTouch> touches, bool shiftKey)
-		 : this(type, touches, false, false)
+		 : this(type, touches, shiftKey, false, true)
 		{
 		}
 		public AsTouchEvent(String type, AsVector<AsTouch> touches)
-		 : this(type, touches, false)
+		 : this(type, touches, false, false, true)
 		{
 		}
 		public virtual AsVector<AsTouch> getTouches(AsDisplayObject target, String phase)

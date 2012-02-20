@@ -21,35 +21,35 @@ namespace bc.flash.geom
 			throw new AsNotImplementedError();
 		}
 		public AsColorTransform(float redMultiplier, float greenMultiplier, float blueMultiplier, float alphaMultiplier, float redOffset, float greenOffset, float blueOffset)
-		 : this(1.0f, 1.0f, 1.0f, 1.0f, 0, 0, 0, 0)
+		 : this(redMultiplier, greenMultiplier, blueMultiplier, alphaMultiplier, redOffset, greenOffset, blueOffset, 0)
 		{
 		}
 		public AsColorTransform(float redMultiplier, float greenMultiplier, float blueMultiplier, float alphaMultiplier, float redOffset, float greenOffset)
-		 : this(1.0f, 1.0f, 1.0f, 1.0f, 0, 0, 0)
+		 : this(redMultiplier, greenMultiplier, blueMultiplier, alphaMultiplier, redOffset, greenOffset, 0, 0)
 		{
 		}
 		public AsColorTransform(float redMultiplier, float greenMultiplier, float blueMultiplier, float alphaMultiplier, float redOffset)
-		 : this(1.0f, 1.0f, 1.0f, 1.0f, 0, 0)
+		 : this(redMultiplier, greenMultiplier, blueMultiplier, alphaMultiplier, redOffset, 0, 0, 0)
 		{
 		}
 		public AsColorTransform(float redMultiplier, float greenMultiplier, float blueMultiplier, float alphaMultiplier)
-		 : this(1.0f, 1.0f, 1.0f, 1.0f, 0)
+		 : this(redMultiplier, greenMultiplier, blueMultiplier, alphaMultiplier, 0, 0, 0, 0)
 		{
 		}
 		public AsColorTransform(float redMultiplier, float greenMultiplier, float blueMultiplier)
-		 : this(1.0f, 1.0f, 1.0f, 1.0f)
+		 : this(redMultiplier, greenMultiplier, blueMultiplier, 1.0f, 0, 0, 0, 0)
 		{
 		}
 		public AsColorTransform(float redMultiplier, float greenMultiplier)
-		 : this(1.0f, 1.0f, 1.0f)
+		 : this(redMultiplier, greenMultiplier, 1.0f, 1.0f, 0, 0, 0, 0)
 		{
 		}
 		public AsColorTransform(float redMultiplier)
-		 : this(1.0f, 1.0f)
+		 : this(redMultiplier, 1.0f, 1.0f, 1.0f, 0, 0, 0, 0)
 		{
 		}
 		public AsColorTransform()
-		 : this(1.0f)
+		 : this(1.0f, 1.0f, 1.0f, 1.0f, 0, 0, 0, 0)
 		{
 		}
 		public virtual uint getColor()

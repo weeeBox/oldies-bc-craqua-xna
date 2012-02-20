@@ -15,11 +15,11 @@ namespace bc.flash.geom
 			this.y = y;
 		}
 		public AsPoint(float x)
-		 : this(0, 0)
+		 : this(x, 0)
 		{
 		}
 		public AsPoint()
-		 : this(0)
+		 : this(0, 0)
 		{
 		}
 		public virtual AsPoint _add(AsPoint v)

@@ -8,6 +8,7 @@ using bc.flash.utils;
 using bc.flash.resources;
 using bc.flash.events;
 using bc.core.display;
+using System.Diagnostics;
 
 namespace bc.flash.display
 {
@@ -48,8 +49,21 @@ namespace bc.flash.display
             AsBitmapData bitmapData = new AsBitmapData(image);
             mContent = new AsBitmap(bitmapData);
 
+            Debug.WriteLine("Image loaded: " + url);
             dispatchEvent(new AsEvent(AsEvent.COMPLETE));
         }
+        public override void dispatchEvent(AsEvent _event)
+        {
+            if (mContentLoaderInfo.hasEventListener(_event.getType()))
+            {
+                mContentLoaderInfo.dispatchEvent(_event);
+            }
+            else
+            {
+                base.dispatchEvent(_event);
+            }            
+        }
+
         public virtual void load(AsURLRequest request)
         {
             load(request, null);

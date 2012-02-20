@@ -102,15 +102,15 @@ namespace bc.flash.display
 		}
 		public virtual void removeChildren(int beginIndex, int endIndex)
 		{
-			removeChildren(0, -1, false);
+			removeChildren(beginIndex, endIndex, false);
 		}
 		public virtual void removeChildren(int beginIndex)
 		{
-			removeChildren(0, -1);
+			removeChildren(beginIndex, -1, false);
 		}
 		public virtual void removeChildren()
 		{
-			removeChildren(0);
+			removeChildren(0, -1, false);
 		}
 		public virtual AsDisplayObject getChildAt(int index)
 		{

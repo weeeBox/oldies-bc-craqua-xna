@@ -26,27 +26,27 @@ namespace bc.flash.events
 			mShiftKey = shiftKey;
 		}
 		public AsKeyboardEvent(String type, uint charCode, uint keyCode, uint keyLocation, bool ctrlKey, bool altKey)
-		 : this(type, 0, 0, 0, false, false, false)
+		 : this(type, charCode, keyCode, keyLocation, ctrlKey, altKey, false)
 		{
 		}
 		public AsKeyboardEvent(String type, uint charCode, uint keyCode, uint keyLocation, bool ctrlKey)
-		 : this(type, 0, 0, 0, false, false)
+		 : this(type, charCode, keyCode, keyLocation, ctrlKey, false, false)
 		{
 		}
 		public AsKeyboardEvent(String type, uint charCode, uint keyCode, uint keyLocation)
-		 : this(type, 0, 0, 0, false)
+		 : this(type, charCode, keyCode, keyLocation, false, false, false)
 		{
 		}
 		public AsKeyboardEvent(String type, uint charCode, uint keyCode)
-		 : this(type, 0, 0, 0)
+		 : this(type, charCode, keyCode, 0, false, false, false)
 		{
 		}
 		public AsKeyboardEvent(String type, uint charCode)
-		 : this(type, 0, 0)
+		 : this(type, charCode, 0, 0, false, false, false)
 		{
 		}
 		public AsKeyboardEvent(String type)
-		 : this(type, 0)
+		 : this(type, 0, 0, 0, false, false, false)
 		{
 		}
 		public virtual uint getCharCode()

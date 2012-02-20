@@ -4,6 +4,7 @@ using bc.flash.error;
 using bc.flash.events;
 using bc.flash.net;
 using bc.flash.resources;
+using System.Diagnostics;
 
 namespace bc.flash.media
 {
@@ -64,6 +65,7 @@ namespace bc.flash.media
             mSound = BcResFactory.GetInstance().LoadSound(url);
             AsDebug.assert(mSound != null, url);
 
+            Debug.WriteLine("Sound loaded: " + url);
             dispatchEvent(new AsEvent(AsEvent.COMPLETE));
         }
 

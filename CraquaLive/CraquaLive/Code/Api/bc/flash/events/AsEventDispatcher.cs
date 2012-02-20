@@ -29,15 +29,15 @@ namespace bc.flash.events
 		}
 		public virtual void addEventListener(String type, AsEventListenerCallback listener, bool useCapture, int priority)
 		{
-			addEventListener(type, listener, false, 0, false);
+			addEventListener(type, listener, useCapture, priority, false);
 		}
 		public virtual void addEventListener(String type, AsEventListenerCallback listener, bool useCapture)
 		{
-			addEventListener(type, listener, false, 0);
+			addEventListener(type, listener, useCapture, 0, false);
 		}
 		public virtual void addEventListener(String type, AsEventListenerCallback listener)
 		{
-			addEventListener(type, listener, false);
+			addEventListener(type, listener, false, 0, false);
 		}
 		public virtual void removeEventListener(String type, AsEventListenerCallback listener)
 		{

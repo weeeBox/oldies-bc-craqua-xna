@@ -14,11 +14,11 @@ namespace bc.flash.media
 			this.checkPolicyFile = checkPolicyFile;
 		}
 		public AsSoundLoaderContext(float bufferTime)
-		 : this(1000, false)
+		 : this(bufferTime, false)
 		{
 		}
 		public AsSoundLoaderContext()
-		 : this(1000)
+		 : this(1000, false)
 		{
 		}
 	}

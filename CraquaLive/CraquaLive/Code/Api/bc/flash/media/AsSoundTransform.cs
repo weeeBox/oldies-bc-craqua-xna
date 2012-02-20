@@ -18,11 +18,11 @@ namespace bc.flash.media
 			mPanning = panning;
 		}
 		public AsSoundTransform(float vol)
-		 : this(1, 0)
+		 : this(vol, 0)
 		{
 		}
 		public AsSoundTransform()
-		 : this(1)
+		 : this(1, 0)
 		{
 		}
 		public virtual float getLeftToLeft()

@@ -21,27 +21,27 @@ namespace bc.flash.geom
 			setValues(a, b, c, d, tx, ty);
 		}
 		public AsMatrix(float a, float b, float c, float d, float tx)
-		 : this(1, 0, 0, 1, 0, 0)
+		 : this(a, b, c, d, tx, 0)
 		{
 		}
 		public AsMatrix(float a, float b, float c, float d)
-		 : this(1, 0, 0, 1, 0)
+		 : this(a, b, c, d, 0, 0)
 		{
 		}
 		public AsMatrix(float a, float b, float c)
-		 : this(1, 0, 0, 1)
+		 : this(a, b, c, 1, 0, 0)
 		{
 		}
 		public AsMatrix(float a, float b)
-		 : this(1, 0, 0)
+		 : this(a, b, 0, 1, 0, 0)
 		{
 		}
 		public AsMatrix(float a)
-		 : this(1, 0)
+		 : this(a, 0, 0, 1, 0, 0)
 		{
 		}
 		public AsMatrix()
-		 : this(1)
+		 : this(1, 0, 0, 1, 0, 0)
 		{
 		}
 		private void setValues(float a, float b, float c, float d, float tx, float ty)
@@ -70,30 +70,30 @@ namespace bc.flash.geom
 		}
 		public virtual void createBox(float scaleX, float scaleY, float rotation, float tx)
 		{
-			createBox(scaleX, scaleY, 0, 0, 0);
+			createBox(scaleX, scaleY, rotation, tx, 0);
 		}
 		public virtual void createBox(float scaleX, float scaleY, float rotation)
 		{
-			createBox(scaleX, scaleY, 0, 0);
+			createBox(scaleX, scaleY, rotation, 0, 0);
 		}
 		public virtual void createBox(float scaleX, float scaleY)
 		{
-			createBox(scaleX, scaleY, 0);
+			createBox(scaleX, scaleY, 0, 0, 0);
 		}
 		public virtual void createGradientBox(float width, float height, float rotation, float tx, float ty)
 		{
 		}
 		public virtual void createGradientBox(float width, float height, float rotation, float tx)
 		{
-			createGradientBox(width, height, 0, 0, 0);
+			createGradientBox(width, height, rotation, tx, 0);
 		}
 		public virtual void createGradientBox(float width, float height, float rotation)
 		{
-			createGradientBox(width, height, 0, 0);
+			createGradientBox(width, height, rotation, 0, 0);
 		}
 		public virtual void createGradientBox(float width, float height)
 		{
-			createGradientBox(width, height, 0);
+			createGradientBox(width, height, 0, 0, 0);
 		}
 		public virtual AsPoint deltaTransformPoint(AsPoint point)
 		{

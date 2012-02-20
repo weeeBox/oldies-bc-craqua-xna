@@ -25,7 +25,7 @@ namespace bc.flash.display
 
         public AsBitmapData(int width, int height, bool transparent, uint fillColor)
         {
-            throw new AsNotImplementedError();
+            init(width, height, transparent, fillColor);
         }
 
         public AsBitmapData(int width, int height, bool transparent)
