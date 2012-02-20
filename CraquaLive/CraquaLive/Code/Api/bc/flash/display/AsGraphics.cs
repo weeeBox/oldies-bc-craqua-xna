@@ -87,5 +87,25 @@ namespace bc.flash.display
 		{
 			throw new AsAbstractClassError();
 		}
+		public virtual void scale(float scaleX, float scaleY)
+		{
+			throw new AsAbstractClassError();
+		}
+		public virtual void rotate(float a)
+		{
+			throw new AsAbstractClassError();
+		}
+		public virtual void translate(float x, float y)
+		{
+			throw new AsAbstractClassError();
+		}
+		public virtual void pushMatrix()
+		{
+			throw new AsAbstractClassError();
+		}
+		public virtual void popMatrix()
+		{
+			throw new AsAbstractClassError();
+		}
 	}
 }

@@ -1,7 +1,6 @@
 using System;
  
 using bc.flash;
-using bc.flash.core;
 using bc.flash.display;
 using bc.flash.error;
 using bc.flash.events;
@@ -269,22 +268,16 @@ namespace bc.flash.display
 		{
 			return hitTest(localPoint, false);
 		}
-		public override void render(AsRenderSupport support, float alpha)
+		protected override void postDraw(AsGraphics g)
 		{
-			setAlpha((alpha * this.getAlpha()));
-			int numChildren = (int)(mChildren.getLength());
-			int i = 0;
-			for (; (i < numChildren); ++i)
+			foreach (AsDisplayObject child in mChildren)
 			{
-				AsDisplayObject child = mChildren[i];
 				if(((((child.getAlpha() != 0.0f) && child.getVisible()) && (child.getScaleX() != 0.0f)) && (child.getScaleY() != 0.0f)))
 				{
-					support.pushMatrix();
-					support.transformMatrix(child);
-					child.render(support, alpha);
-					support.popMatrix();
+					child.draw(g);
 				}
 			}
+			restoreDrawState(g);
 		}
 		public virtual void broadcastEvent(AsEvent _event)
 		{

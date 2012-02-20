@@ -30,9 +30,9 @@ namespace bc.flash.display
 		 : this(width, height, 0)
 		{
 		}
-		public virtual void advanceTime(float passedTime)
+		public virtual void tick(float dt)
 		{
-			dispatchEventOnChildren(new AsEnterFrameEvent(AsEvent.ENTER_FRAME, passedTime));
+			dispatchEventOnChildren(new AsEnterFrameEvent(AsEvent.ENTER_FRAME, dt));
 		}
 		public override AsDisplayObject hitTest(AsPoint localPoint, bool forTouch)
 		{
@@ -158,6 +158,26 @@ namespace bc.flash.display
 		public virtual void setTabChildren(bool _value)
 		{
 			mTabChildren = _value;
+		}
+		public virtual void keyPressed(uint code)
+		{
+			dispatchEvent(new AsKeyboardEvent(AsKeyboardEvent.KEY_DOWN, code));
+		}
+		public virtual void keyReleased(uint code)
+		{
+			dispatchEvent(new AsKeyboardEvent(AsKeyboardEvent.KEY_UP, code));
+		}
+		public virtual void touchDown(float x, float y, int touchId)
+		{
+		}
+		public virtual void touchMove(float x, float y, int touchId)
+		{
+		}
+		public virtual void touchDragged(float x, float y, int touchId)
+		{
+		}
+		public virtual void touchUp(float x, float y, int touchId)
+		{
 		}
 	}
 }

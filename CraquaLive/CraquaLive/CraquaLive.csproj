@@ -107,9 +107,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Api\bc\flash\core\AsRenderSupport.cs" />
-    <Compile Include="Code\Api\bc\flash\core\AsStarling.cs" />
-    <Compile Include="Code\Api\bc\flash\core\natives\AsBcNativeStage.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsBitmap.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsBitmapData.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsBlendMode.cs" />

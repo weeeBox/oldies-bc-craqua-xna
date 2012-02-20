@@ -1,10 +1,11 @@
-﻿using bc.flash.core.natives;
-using bc.flash.native.input;
+﻿using bc.flash.native.input;
 using bc.flash.resources;
 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using bc.core.device;
+using bc.flash.display;
 
 namespace bc.flash.native
 {
@@ -15,7 +16,7 @@ namespace bc.flash.native
 
         private NativeInput input;
         private BcResFactory resFactory;
-        private AsBcNativeStage stage;
+        private AsStage stage;
 
         private bool running;
 
@@ -30,8 +31,8 @@ namespace bc.flash.native
             input.AddTouchListener(this);            
             running = true;
 
-            stage = new AsBcNativeStage(width, height);
-            // application.Start();
+            stage = new AsStage(width, height);
+            AsBcDevice.initialize(stage);
         }        
         
         public void Stop()

@@ -1,39 +1,48 @@
 using System;
 
 using bc.flash;
+using System.Collections.Generic;
 
 namespace bc.flash
 {
-    public class AsObject : Object
+    public class AsObject
     {
-        public bool hasOwnProperty(String name)
+        private Dictionary<String, Object> mProperties;
+
+        public virtual bool hasOwnProperty(String name)
         {
-            throw new NotImplementedException();
+            return mProperties != null && mProperties.ContainsKey(name);
         }
 
-        public Object getOwnProperty(String name)
+        public virtual Object getOwnProperty(String name)
         {
-            throw new NotImplementedException();
+            return hasOwnProperty(name) ? mProperties[name] : null;
         }
 
-        public void setOwnProperty(String name, Object value)
+        public virtual void setOwnProperty(String name, Object _value)
         {
-            throw new NotImplementedException();
+            if (mProperties == null)
+            {
+                mProperties = new Dictionary<String, Object>();
+            }
+            if (mProperties.ContainsKey(name))
+            {
+                mProperties.Remove(name);
+            }
+            mProperties[name] = _value;
         }
 
-        public void deleteOwnProperty(String name)
+        public virtual void deleteOwnProperty(String name)
         {
-            throw new NotImplementedException();
+            if (hasOwnProperty(name))
+            {
+                mProperties.Remove(name);
+            }
         }
 
         public virtual String toString()
         {
-            throw new NotImplementedException();
-        }
-
-        public override String ToString()
-        {
-            return toString();
+            return "Object";
         }
     }
 }

@@ -11,17 +11,17 @@ namespace bc.flash
 
     public class AsVector<T> : AsObject, IEnumerable<T>
     {
-        private List<T> data;
+        private List<T> mData;
 
         public AsVector(params T[] elements)
         {
-            data = new List<T>(elements.Length);
+            mData = new List<T>(elements.Length);
             init(elements);
         }
 
         public AsVector(uint length, bool _fixed)
         {
-            data = new List<T>((int)length);
+            mData = new List<T>((int)length);
         }
 
         public AsVector(uint length)
@@ -31,14 +31,14 @@ namespace bc.flash
 
         public AsVector()
         {
-            data = new List<T>();
+            mData = new List<T>();
         }
 
         public void init(params T[] values)
         {
             foreach (T obj in values)
             {
-                data.Add(obj);
+                mData.Add(obj);
             }
         }
 
@@ -46,13 +46,13 @@ namespace bc.flash
         {
             get
             {
-                Debug.Assert(i >= 0 && i < data.Count, i + ">=" + 0 + "&&" + i + "<" + data.Count);
-                return data[i];
+                Debug.Assert(i >= 0 && i < mData.Count, i + ">=" + 0 + "&&" + i + "<" + mData.Count);
+                return mData[i];
             }
             set
             {
-                Debug.Assert(i >= 0 && i < data.Count, i + ">=" + 0 + "&&" + i + "<" + data.Count);
-                data[i] = value;
+                Debug.Assert(i >= 0 && i < mData.Count, i + ">=" + 0 + "&&" + i + "<" + mData.Count);
+                mData[i] = value;
             }
         }
 
@@ -60,45 +60,45 @@ namespace bc.flash
         {
             get
             {
-                Debug.Assert(i >= 0 && i < data.Count, i + ">=" + 0 + "&&" + i + "<" + data.Count);
-                return data[(int)i];
+                Debug.Assert(i >= 0 && i < mData.Count, i + ">=" + 0 + "&&" + i + "<" + mData.Count);
+                return mData[(int)i];
             }
             set
             {
-                Debug.Assert(i >= 0 && i < data.Count, i + ">=" + 0 + "&&" + i + "<" + data.Count);
-                data[(int)i] = value;
+                Debug.Assert(i >= 0 && i < mData.Count, i + ">=" + 0 + "&&" + i + "<" + mData.Count);
+                mData[(int)i] = value;
             }
         }
 
         public virtual uint getLength()
         {
-            return (uint)data.Count;
+            return (uint)mData.Count;
         }
 
         public virtual void setLength(uint newLength)
         {
-            if (data.Count > newLength)
+            if (mData.Count > newLength)
             {
                 List<T> newData = new List<T>((int)newLength);
                 for (int i = 0; i < newLength; ++i)
                 {
-                    newData.Add(data[i]);
+                    newData.Add(mData[i]);
                 }
-                data = newData;
+                mData = newData;
             }
-            else if (data.Count < newLength)
+            else if (mData.Count < newLength)
             {
-                int diff = ((int)newLength) - data.Count;
+                int diff = ((int)newLength) - mData.Count;
                 for (int i = 0; i < diff; ++i)
                 {
-                    data.Add(default(T));
+                    mData.Add(default(T));
                 }
             }
         }
 
         public virtual int indexOf(T searchElement, int fromIndex)
         {
-            return data.IndexOf(searchElement, fromIndex);
+            return mData.IndexOf(searchElement, fromIndex);
         }
 
         public virtual int indexOf(T searchElement)
@@ -118,7 +118,7 @@ namespace bc.flash
 
         public virtual int lastIndexOf(T searchElement, int fromIndex)
         {
-            return data.LastIndexOf(searchElement, fromIndex);
+            return mData.LastIndexOf(searchElement, fromIndex);
         }
 
         public virtual int lastIndexOf(T searchElement)
@@ -128,16 +128,16 @@ namespace bc.flash
 
         public virtual T pop()
         {
-            Debug.Assert(data.Count > 0);
-            int lastIndex = data.Count - 1;
-            T lastElement = data[lastIndex];
-            data.RemoveAt(lastIndex);
+            Debug.Assert(mData.Count > 0);
+            int lastIndex = mData.Count - 1;
+            T lastElement = mData[lastIndex];
+            mData.RemoveAt(lastIndex);
             return lastElement;
         }
         public virtual int push(T arg)
         {
-            data.Add(arg);
-            return data.Count;
+            mData.Add(arg);
+            return mData.Count;
         }
         public virtual AsVector<T> reverse()
         {
@@ -145,15 +145,26 @@ namespace bc.flash
         }
         public virtual AsVector<T> slice(int startIndex, int endIndex)
         {
-            throw new NotImplementedException();
+            int count = endIndex - startIndex;
+            if (count < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            T[] data = new T[count];
+            for (int i = startIndex; i < endIndex; ++i)
+            {
+                data[i] = mData[i];
+            }
+
+            return new AsVector<T>(data);
         }
         public virtual AsVector<T> slice(int startIndex)
         {
-            return slice(0, 16777215);
+            return slice(0, (int)getLength());
         }
         public virtual AsVector<T> slice()
         {
-            return slice(0);
+            return new AsVector<T>(mData.ToArray());
         }
         public AsVector<T> concat()
         {
@@ -163,17 +174,46 @@ namespace bc.flash
         {
             throw new NotImplementedException();
         }
+        public virtual AsVector<T> splice(int startIndex)
+        {
+            return splice(startIndex, (uint)(getLength() - startIndex));
+        }
+
         public virtual AsVector<T> splice(int startIndex, uint deleteCount)
         {
-            throw new NotImplementedException();
+            if (startIndex < 0)
+            {
+                throw new NotImplementedException();
+            }
+
+            if (deleteCount > 0)
+            {
+                mData.RemoveRange(startIndex, (int)deleteCount);
+            }            
+            return this;
         }
-        public virtual AsVector<T> splice(int startIndex, uint deleteCount, T element)
+        public virtual AsVector<T> splice(int startIndex, uint deleteCount, params T[] elements)
         {
-            throw new NotImplementedException();
+            if (startIndex < 0)
+            {
+                throw new NotImplementedException();
+            }
+
+            if (deleteCount > 0)
+            {
+                mData.RemoveRange(startIndex, (int)deleteCount);
+            }
+
+            if (elements.Length > 0)
+            {
+                mData.InsertRange(startIndex, elements);
+            }
+
+            return this;
         }
         public IEnumerator<T> GetEnumerator()
         {
-            return data.GetEnumerator();
+            return mData.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

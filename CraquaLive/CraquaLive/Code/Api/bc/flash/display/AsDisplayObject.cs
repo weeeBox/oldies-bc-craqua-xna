@@ -1,7 +1,6 @@
 using System;
  
 using bc.flash;
-using bc.flash.core;
 using bc.flash.display;
 using bc.flash.error;
 using bc.flash.events;
@@ -29,6 +28,7 @@ namespace bc.flash.display
 		private static AsMatrix sHelperMatrix = new AsMatrix();
 		private static AsMatrix sTargetMatrix = new AsMatrix();
 		protected static int sRectCount = 0;
+		private AsRectangle mScrollRect;
 		public AsDisplayObject()
 		{
 			if((AsGlobal.getQualifiedClassName(this) == "starling.display::DisplayObject"))
@@ -217,9 +217,67 @@ namespace bc.flash.display
 			sTargetMatrix.invert();
 			return sTargetMatrix.transformPoint(globalPoint);
 		}
-		public virtual void render(AsRenderSupport support, float alpha)
+		public virtual void draw(AsGraphics g)
 		{
-			throw new AsAbstractMethodError("Method needs to be implemented in subclass");
+			preDraw(g);
+			postDraw(g);
+		}
+		protected virtual void preDraw(AsGraphics g)
+		{
+			applyDrawState(g);
+		}
+		protected virtual void postDraw(AsGraphics g)
+		{
+			restoreDrawState(g);
+		}
+		protected virtual void applyDrawState(AsGraphics g)
+		{
+			applyTransformations(g);
+			applyEffect();
+			g.translate(getX(), getY());
+		}
+		protected virtual void applyTransformations(AsGraphics g)
+		{
+			bool changeScale = ((getScaleX() != 1.0f) || (getScaleY() != 1.0f));
+			bool changeRotation = (getRotation() != 0.0f);
+			if((changeScale || changeRotation))
+			{
+				g.pushMatrix();
+				if((changeScale || changeRotation))
+				{
+					float rotationOffsetX = (getX() + (0.5f * getWidth()));
+					float rotationOffsetY = (getY() + (0.5f * getHeight()));
+					g.translate(rotationOffsetX, rotationOffsetY);
+					if(changeRotation)
+					{
+						g.rotate(getRotation());
+					}
+					if(changeScale)
+					{
+						g.scale(getScaleX(), getScaleY());
+					}
+					g.translate(-rotationOffsetX, -rotationOffsetY);
+				}
+			}
+		}
+		private void applyEffect()
+		{
+		}
+		protected virtual void restoreDrawState(AsGraphics g)
+		{
+			g.translate(-getX(), -getY());
+			restoreEffect();
+			restoreTransformations(g);
+		}
+		protected virtual void restoreTransformations(AsGraphics g)
+		{
+			if((((getRotation() != 0.0f) || (getScaleX() != 1.0f)) || (getScaleY() != 1.0f)))
+			{
+				g.popMatrix();
+			}
+		}
+		private void restoreEffect()
+		{
 		}
 		public override void dispatchEvent(AsEvent _event)
 		{
@@ -410,19 +468,18 @@ namespace bc.flash.display
 		}
 		public virtual AsRectangle getScrollRect()
 		{
-			throw new AsNotImplementedError();
+			return mScrollRect;
 		}
 		public virtual void setScrollRect(AsRectangle _value)
 		{
-			throw new AsNotImplementedError();
+			mScrollRect = _value;
 		}
 		public virtual uint getOpaqueBackground()
 		{
-			throw new AsNotImplementedError();
+			return (uint)(0xffffffff);
 		}
 		public virtual void setOpaqueBackground(uint _value)
 		{
-			throw new AsNotImplementedError();
 		}
 	}
 }
