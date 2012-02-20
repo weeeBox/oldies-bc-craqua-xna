@@ -18,7 +18,14 @@ namespace bc.flash.geom
 		public float alphaOffset;
 		public AsColorTransform(float redMultiplier, float greenMultiplier, float blueMultiplier, float alphaMultiplier, float redOffset, float greenOffset, float blueOffset, float alphaOffset)
 		{
-			throw new AsNotImplementedError();
+			this.redMultiplier = redMultiplier;
+			this.greenMultiplier = greenMultiplier;
+			this.blueMultiplier = blueMultiplier;
+			this.alphaMultiplier = alphaMultiplier;
+			this.redOffset = redOffset;
+			this.greenOffset = greenOffset;
+			this.blueOffset = blueOffset;
+			this.alphaOffset = alphaOffset;
 		}
 		public AsColorTransform(float redMultiplier, float greenMultiplier, float blueMultiplier, float alphaMultiplier, float redOffset, float greenOffset, float blueOffset)
 		 : this(redMultiplier, greenMultiplier, blueMultiplier, alphaMultiplier, redOffset, greenOffset, blueOffset, 0)
