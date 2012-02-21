@@ -8,8 +8,7 @@ namespace bc.flash.display
 	public class AsGraphics : AsObject
 	{
 		public virtual void beginFill(uint color, float alpha)
-		{
-			throw new AsAbstractClassError();
+		{			
 		}
 		public virtual void beginFill(uint color)
 		{
@@ -17,35 +16,35 @@ namespace bc.flash.display
 		}
 		public virtual void clear()
 		{
-			throw new AsAbstractClassError();
+			
 		}
 		public virtual void curveTo(float controlX, float controlY, float anchorX, float anchorY)
 		{
-			throw new AsAbstractClassError();
+			
 		}
 		public virtual void drawCircle(float x, float y, float radius)
 		{
-			throw new AsAbstractClassError();
+			
 		}
 		public virtual void drawEllipse(float x, float y, float width, float height)
 		{
-			throw new AsAbstractClassError();
+			
 		}
 		public virtual void drawRect(float x, float y, float width, float height)
 		{
-			throw new AsAbstractClassError();
+			
 		}
 		public virtual void drawRoundRect(float x, float y, float width, float height, float ellipseWidth, float ellipseHeight)
 		{
-			throw new AsAbstractClassError();
+			
 		}
 		public virtual void endFill()
 		{
-			throw new AsAbstractClassError();
+			
 		}
 		public virtual void lineStyle(float thickness, uint color, float alpha, bool pixelHinting, String scaleMode, String caps, String joints, float miterLimit)
 		{
-			throw new AsAbstractClassError();
+			
 		}
 		public virtual void lineStyle(float thickness, uint color, float alpha, bool pixelHinting, String scaleMode, String caps, String joints)
 		{
@@ -81,11 +80,11 @@ namespace bc.flash.display
 		}
 		public virtual void lineTo(float x, float y)
 		{
-			throw new AsAbstractClassError();
+			
 		}
 		public virtual void moveTo(float x, float y)
 		{
-			throw new AsAbstractClassError();
+			
 		}
 		public virtual void scale(float scaleX, float scaleY)
 		{

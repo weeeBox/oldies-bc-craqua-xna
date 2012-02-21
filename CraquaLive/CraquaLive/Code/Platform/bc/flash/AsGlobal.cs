@@ -65,9 +65,14 @@ namespace bc.flash
             return obj.GetType().Name;
         }
 
-        public static void transformCoords(AsMatrix matrix, float x, float y, AsPoint resultPoint)
+        public static AsPoint transformCoords(AsMatrix matrix, float x, float y, AsPoint resultPoint)
         {
-            throw new NotImplementedException();
+            if (resultPoint == null) resultPoint = new AsPoint();
+
+            resultPoint.x = matrix.a * x + matrix.c * y + matrix.tx;
+            resultPoint.y = matrix.d * y + matrix.b * x + matrix.ty;
+
+            return resultPoint;
         }
 
         public static void assert(bool condition)

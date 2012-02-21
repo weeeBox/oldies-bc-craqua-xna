@@ -1,7 +1,6 @@
 using System;
  
 using bc.flash.display;
-using bc.flash.error;
 using bc.flash.events;
 using bc.flash.ui;
  
@@ -9,11 +8,13 @@ namespace bc.flash.display
 {
 	public class AsSprite : AsDisplayObjectContainer
 	{
+		private AsGraphics mGraphics;
 		private bool mUseHandCursor;
 		private bool mMouseChildren;
 		public AsSprite()
 		 : base()
 		{
+			mGraphics = new AsGraphics();
 		}
 		public override void dispose()
 		{
@@ -41,7 +42,7 @@ namespace bc.flash.display
 		}
 		public virtual AsGraphics getGraphics()
 		{
-			throw new AsNotImplementedError();
+			return mGraphics;
 		}
 		private void onTouch(AsEvent evt)
 		{

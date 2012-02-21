@@ -37,7 +37,7 @@ namespace bc.flash.geom
 		}
 		public virtual float getBottom()
 		{
-			throw new AsNotImplementedError();
+			return (y + height);
 		}
 		public virtual void setBottom(float _value)
 		{
@@ -45,7 +45,7 @@ namespace bc.flash.geom
 		}
 		public virtual AsPoint getBottomRight()
 		{
-			throw new AsNotImplementedError();
+			return new AsPoint((x + width), (y + height));
 		}
 		public virtual void setBottomRight(AsPoint _value)
 		{
@@ -53,7 +53,7 @@ namespace bc.flash.geom
 		}
 		public virtual AsRectangle clone()
 		{
-			throw new AsNotImplementedError();
+			return new AsRectangle(x, y, width, height);
 		}
 		public virtual bool contains(float x, float y)
 		{
@@ -69,7 +69,7 @@ namespace bc.flash.geom
 		}
 		public virtual bool equals(AsRectangle toCompare)
 		{
-			throw new AsNotImplementedError();
+			return ((((x == toCompare.x) && (y == toCompare.y)) && (width == toCompare.width)) && (height == toCompare.height));
 		}
 		public virtual void inflate(float dx, float dy)
 		{
@@ -93,11 +93,11 @@ namespace bc.flash.geom
 		}
 		public virtual float getLeft()
 		{
-			throw new AsNotImplementedError();
+			return x;
 		}
 		public virtual void setLeft(float _value)
 		{
-			throw new AsNotImplementedError();
+			x = _value;
 		}
 		public virtual void offset(float dx, float dy)
 		{
@@ -109,7 +109,7 @@ namespace bc.flash.geom
 		}
 		public virtual float getRight()
 		{
-			throw new AsNotImplementedError();
+			return (x + width);
 		}
 		public virtual void setRight(float _value)
 		{
@@ -121,27 +121,29 @@ namespace bc.flash.geom
 		}
 		public virtual AsPoint getSize()
 		{
-			throw new AsNotImplementedError();
+			return new AsPoint(width, height);
 		}
 		public virtual void setSize(AsPoint _value)
 		{
-			throw new AsNotImplementedError();
+			width = _value.x;
+			height = _value.y;
 		}
 		public virtual float getTop()
 		{
-			throw new AsNotImplementedError();
+			return y;
 		}
 		public virtual void setTop(float _value)
 		{
-			throw new AsNotImplementedError();
+			y = _value;
 		}
 		public virtual AsPoint getTopLeft()
 		{
-			throw new AsNotImplementedError();
+			return new AsPoint(x, y);
 		}
 		public virtual void setTopLeft(AsPoint _value)
 		{
-			throw new AsNotImplementedError();
+			x = _value.x;
+			y = _value.y;
 		}
 		public virtual AsRectangle union(AsRectangle toUnion)
 		{
