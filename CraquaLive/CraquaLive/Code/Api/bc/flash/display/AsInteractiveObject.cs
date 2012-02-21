@@ -1,6 +1,5 @@
 using System;
  
-using bc.flash;
 using bc.flash.display;
  
 namespace bc.flash.display
@@ -9,6 +8,7 @@ namespace bc.flash.display
 	{
 		private bool m_mouseEnabled;
 		private bool m_doubleClickEnabled;
+		private bool mFocusRect;
 		public virtual bool getDoubleClickEnabled()
 		{
 			return m_doubleClickEnabled;
@@ -17,14 +17,13 @@ namespace bc.flash.display
 		{
 			m_doubleClickEnabled = enabled;
 		}
-		public virtual AsObject getFocusRect()
+		public virtual bool getFocusRect()
 		{
-			AsDebug.implementMe("get focusRect");
-			return null;
+			return mFocusRect;
 		}
 		public virtual void setFocusRect(bool focusRect)
 		{
-			AsDebug.implementMe("set focusRect");
+			mFocusRect = focusRect;
 		}
 		public virtual bool getMouseEnabled()
 		{

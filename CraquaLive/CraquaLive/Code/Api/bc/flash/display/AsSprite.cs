@@ -10,6 +10,7 @@ namespace bc.flash.display
 	public class AsSprite : AsDisplayObjectContainer
 	{
 		private bool mUseHandCursor;
+		private bool mMouseChildren;
 		public AsSprite()
 		 : base()
 		{
@@ -49,19 +50,18 @@ namespace bc.flash.display
 		}
 		public virtual bool getMouseChildren()
 		{
-			throw new AsNotImplementedError();
+			return mMouseChildren;
 		}
 		public virtual void setMouseChildren(bool enable)
 		{
-			throw new AsNotImplementedError();
+			mMouseChildren = enable;
 		}
 		public virtual bool getTabChildren()
 		{
-			throw new AsNotImplementedError();
+			return false;
 		}
 		public virtual void setTabChildren(bool enable)
 		{
-			throw new AsNotImplementedError();
 		}
 	}
 }

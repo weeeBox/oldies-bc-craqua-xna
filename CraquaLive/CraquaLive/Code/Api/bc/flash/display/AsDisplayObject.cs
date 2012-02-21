@@ -456,7 +456,7 @@ namespace bc.flash.display
 		}
 		public virtual AsStage getStage()
 		{
-			return ((AsStage)(this.getRoot()));
+			return AsStage.getInstance();
 		}
 		public virtual AsTransform getTransform()
 		{

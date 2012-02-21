@@ -20,15 +20,21 @@ namespace bc.flash.display
 		private AsRectangle mFullScreenSourceRect;
 		private bool mStageFocusRect;
 		private bool mTabChildren;
+		private static AsStage mCurrentStage;
 		public AsStage(int width, int height, uint color)
 		{
 			mWidth = width;
 			mHeight = height;
 			mColor = color;
+			mCurrentStage = this;
 		}
 		public AsStage(int width, int height)
 		 : this(width, height, 0)
 		{
+		}
+		public static AsStage getInstance()
+		{
+			return mCurrentStage;
 		}
 		public virtual void tick(float dt)
 		{
