@@ -22,6 +22,7 @@ namespace bc.flash
         public AsVector(uint length, bool _fixed)
         {
             mData = new List<T>((int)length);
+            setLength(length);
         }
 
         public AsVector(uint length)
