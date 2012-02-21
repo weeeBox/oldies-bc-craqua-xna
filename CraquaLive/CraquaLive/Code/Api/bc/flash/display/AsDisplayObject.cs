@@ -29,6 +29,7 @@ namespace bc.flash.display
 		private static AsMatrix sTargetMatrix = new AsMatrix();
 		protected static int sRectCount = 0;
 		private AsRectangle mScrollRect;
+		private AsTransform mTransform;
 		public AsDisplayObject()
 		{
 			if((AsGlobal.getQualifiedClassName(this) == "starling.display::DisplayObject"))
@@ -39,6 +40,7 @@ namespace bc.flash.display
 			mScaleX = mScaleY = mAlpha = 1.0f;
 			mVisible = mTouchable = true;
 			mLastTouchTimestamp = -1;
+			mTransform = new AsTransform(this);
 		}
 		public virtual void dispose()
 		{
@@ -460,11 +462,11 @@ namespace bc.flash.display
 		}
 		public virtual AsTransform getTransform()
 		{
-			throw new AsNotImplementedError();
+			return mTransform;
 		}
 		public virtual void setTransform(AsTransform _value)
 		{
-			throw new AsNotImplementedError();
+			mTransform = _value;
 		}
 		public virtual AsRectangle getScrollRect()
 		{

@@ -173,7 +173,9 @@ namespace bc.flash
         }
         public virtual AsVector<T> sort(AsVectorSorter<T> sorter)
         {
-            throw new NotImplementedException();
+            ComparationHelper comparation = new ComparationHelper(sorter);
+            mData.Sort(comparation.compare);
+            return this;
         }
         public virtual AsVector<T> splice(int startIndex)
         {
@@ -221,5 +223,21 @@ namespace bc.flash
         {
             return GetEnumerator();
         }
-    }
+
+        private class ComparationHelper
+        {
+            private AsVectorSorter<T> sorter;
+
+            public ComparationHelper(AsVectorSorter<T> sorter)
+            {
+                this.sorter = sorter;
+            }
+
+            public int compare(T x, T y)
+            {
+                sorter(x, y);
+                return 0;
+            }
+        }
+    }    
 }

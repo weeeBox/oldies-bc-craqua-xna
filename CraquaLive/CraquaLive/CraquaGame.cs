@@ -6,6 +6,7 @@ using bc.core.device;
 using bc.core.resources.loaders;
 using bc.game;
 using System.Diagnostics;
+using bc.ui;
 
 namespace CraquaLive
 {
@@ -102,6 +103,7 @@ namespace CraquaLive
         public void assetLoadingCompleted()
         {
             Debug.WriteLine("Loading completed");
+            new AsBcGameUI();
             new AsBcGame();
         }
     }

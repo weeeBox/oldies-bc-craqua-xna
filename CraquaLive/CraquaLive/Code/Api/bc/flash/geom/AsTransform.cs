@@ -9,16 +9,20 @@ namespace bc.flash.geom
 {
 	public class AsTransform : AsObject
 	{
+		private AsDisplayObject mDisplayObject;
+		private AsColorTransform mColorTransform;
 		public AsTransform(AsDisplayObject displayObject)
 		{
+			mDisplayObject = displayObject;
+			mColorTransform = new AsColorTransform();
 		}
 		public virtual AsColorTransform getColorTransform()
 		{
-			throw new AsNotImplementedError();
+			return mColorTransform;
 		}
 		public virtual void setColorTransform(AsColorTransform _value)
 		{
-			throw new AsNotImplementedError();
+			mColorTransform = _value;
 		}
 		public virtual AsColorTransform getConcatenatedColorTransform()
 		{

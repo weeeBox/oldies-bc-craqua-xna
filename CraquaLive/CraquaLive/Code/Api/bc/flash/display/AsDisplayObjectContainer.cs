@@ -38,11 +38,6 @@ namespace bc.flash.display
 				child.removeFromParent();
 				mChildren.splice(index, (uint)(0), child);
 				child.setParent(this);
-				child.dispatchEvent(new AsEvent(AsEvent.ADDED, true));
-				if((getStage()) != null)
-				{
-					child.dispatchEventOnChildren(new AsEvent(AsEvent.ADDED_TO_STAGE));
-				}
 			}
 			else
 			{

@@ -45,7 +45,7 @@
     <Compile Include="asset\game.xml">
       <Name>game</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\audio\bio_death1.mp3">
       <Name>bio_death1</Name>
@@ -65,7 +65,7 @@
     <Compile Include="asset\game\audio\data.xml">
       <Name>data</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\audio\enemy_death1.mp3">
       <Name>enemy_death1</Name>
@@ -205,17 +205,17 @@
     <Compile Include="asset\game\data\items.xml">
       <Name>items</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\data\player.xml">
       <Name>player</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\data\player_init.xml">
       <Name>player_init</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\fx\air\16.png">
       <Name>16</Name>
@@ -370,7 +370,7 @@
     <Compile Include="asset\game\level\data.xml">
       <Name>data</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\level\digit\0.png">
       <Name>0</Name>
@@ -480,7 +480,7 @@
     <Compile Include="asset\game\level\level.xml">
       <Name>level</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\level\score.png">
       <Name>score</Name>
@@ -497,13 +497,13 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="asset\game\level\sea_back_.jpg">
-      <Name>sea_back_</Name>
+    <Compile Include="asset\game\level\sea_back.jpg">
+      <Name>sea_back</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="asset\game\level\sea_back_night_.jpg">
-      <Name>sea_back_night_</Name>
+    <Compile Include="asset\game\level\sea_back_night.jpg">
+      <Name>sea_back_night</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -530,7 +530,7 @@
     <Compile Include="asset\game\mob\bank.xml">
       <Name>bank</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\bank\body.png">
       <Name>body</Name>
@@ -565,12 +565,12 @@
     <Compile Include="asset\game\mob\enemies.xml">
       <Name>enemies</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\fish.xml">
       <Name>fish</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\fish\body.png">
       <Name>body</Name>
@@ -580,7 +580,7 @@
     <Compile Include="asset\game\mob\fly.xml">
       <Name>fly</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\fly\body.png">
       <Name>body</Name>
@@ -600,7 +600,7 @@
     <Compile Include="asset\game\mob\goo.xml">
       <Name>goo</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\goo\body1.png">
       <Name>body1</Name>
@@ -625,7 +625,7 @@
     <Compile Include="asset\game\mob\h1n1.xml">
       <Name>h1n1</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\h1n1\body.png">
       <Name>body</Name>
@@ -655,7 +655,7 @@
     <Compile Include="asset\game\mob\jelly.xml">
       <Name>jelly</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\jelly\body.png">
       <Name>body</Name>
@@ -710,7 +710,7 @@
     <Compile Include="asset\game\mob\nuke.xml">
       <Name>nuke</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\nuke\barrel.png">
       <Name>barrel</Name>
@@ -735,7 +735,7 @@
     <Compile Include="asset\game\mob\pig.xml">
       <Name>pig</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\pig\head.png">
       <Name>head</Name>
@@ -750,7 +750,7 @@
     <Compile Include="asset\game\mob\pinkhead.xml">
       <Name>pinkhead</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\pinkhead\body.png">
       <Name>body</Name>
@@ -785,7 +785,7 @@
     <Compile Include="asset\game\mob\thorn.xml">
       <Name>thorn</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\thorn\body.png">
       <Name>body</Name>
@@ -815,7 +815,7 @@
     <Compile Include="asset\game\mob\tooth.xml">
       <Name>tooth</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\tooth\body.png">
       <Name>body</Name>
@@ -845,7 +845,7 @@
     <Compile Include="asset\game\mob\vision.xml">
       <Name>vision</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\mob\vision\body.png">
       <Name>body</Name>
@@ -890,7 +890,7 @@
     <Compile Include="asset\game\music.xml">
       <Name>music</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\music\boss.mp3">
       <Name>boss</Name>
@@ -990,12 +990,12 @@
     <Compile Include="asset\game\prop\bitmaps.xml">
       <Name>bitmaps</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\prop\particles.xml">
       <Name>particles</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\sponsor\logo.png">
       <Name>logo</Name>
@@ -1075,12 +1075,12 @@
     <Compile Include="asset\preloader.xml">
       <Name>preloader</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\preloader\data.xml">
       <Name>data</Name>
       <Importer>BinaryContentImporter</Importer>
-      <Processor>BinaryContentProcessor</Processor>
+      <Processor>PassThroughProcessor</Processor>
     </Compile>
     <Compile Include="asset\preloader\sponsor\logo.png">
       <Name>logo</Name>
@@ -1092,20 +1092,20 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="asset\preloader\ui\bg_.png">
-      <Name>bg_</Name>
+    <Compile Include="asset\preloader\ui\bg.jpg">
+      <Name>bg</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="asset\game\level\images\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\BcContentPipeline\BcContentPipeline.csproj">
       <Project>{667F8A45-AC54-4558-875A-F3140FF29D93}</Project>
       <Name>BcContentPipeline</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="asset\game\level\images\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
