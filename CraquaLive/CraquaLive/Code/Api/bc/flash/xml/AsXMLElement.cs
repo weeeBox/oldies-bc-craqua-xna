@@ -23,6 +23,10 @@ namespace bc.flash.xml
 		{
 			return mAttributes.appendChild(new AsXMLAttribute(name, _value));
 		}
+		public override bool hasOwnProperty(String name)
+		{
+			return mAttributes.containsChild(name);
+		}
 		public override String attributeValue(String arg)
 		{
 			foreach (AsXML attr in mAttributes.list())

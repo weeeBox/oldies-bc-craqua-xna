@@ -154,6 +154,10 @@
     <Compile Include="Code\Api\bc\flash\ui\AsMouseCursor.cs" />
     <Compile Include="Code\Api\bc\flash\ui\AsMultitouch.cs" />
     <Compile Include="Code\Api\bc\flash\ui\AsMultitouchInputMode.cs" />
+    <Compile Include="Code\Api\bc\flash\xml\AsXML.cs" />
+    <Compile Include="Code\Api\bc\flash\xml\AsXMLAttribute.cs" />
+    <Compile Include="Code\Api\bc\flash\xml\AsXMLElement.cs" />
+    <Compile Include="Code\Api\bc\flash\xml\AsXMLList.cs" />
     <Compile Include="Code\Converted\bc\core\audio\AsBcAudio.cs" />
     <Compile Include="Code\Converted\bc\core\audio\AsBcAudioImpl.cs" />
     <Compile Include="Code\Converted\bc\core\audio\AsBcMusic.cs" />
@@ -367,10 +371,6 @@
     <Compile Include="Code\Platform\bc\flash\error\AsRangeError.cs" />
     <Compile Include="Code\Platform\bc\flash\system\AsLoaderContext.cs" />
     <Compile Include="Code\Platform\bc\flash\utils\AsByteArray.cs" />
-    <Compile Include="Code\Platform\bc\flash\xml\AsXML.cs" />
-    <Compile Include="Code\Platform\bc\flash\xml\AsXMLAttribute.cs" />
-    <Compile Include="Code\Platform\bc\flash\xml\AsXMLElement.cs" />
-    <Compile Include="Code\Platform\bc\flash\xml\AsXMLList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="CraquaGame.cs" />
