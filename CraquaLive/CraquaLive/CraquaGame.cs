@@ -13,7 +13,7 @@ namespace CraquaLive
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class CraquaGame : Microsoft.Xna.Framework.Game, AsBcAssetCallback
+    public class CraquaGame : Microsoft.Xna.Framework.Game
     {
         const int WIDTH = 640;
         const int HEIGHT = 480;
@@ -52,10 +52,6 @@ namespace CraquaLive
         protected override void LoadContent()
         {
             app = new NativeApplication(WIDTH, HEIGHT, Content);
-
-            new AsBcResLoaderFactory();
-            AsBcAsset.initialize();
-            AsBcAsset.loadPath("asset/game.xml", this);
         }
 
         /// <summary>
@@ -98,13 +94,6 @@ namespace CraquaLive
             app.Draw(GraphicsDevice);
 
             base.Draw(gameTime);
-        }
-
-        public void assetLoadingCompleted()
-        {
-            Debug.WriteLine("Loading completed");
-            new AsBcGameUI();
-            new AsBcGame();
         }
     }
 }

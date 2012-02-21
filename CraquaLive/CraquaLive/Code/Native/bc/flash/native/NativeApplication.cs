@@ -6,6 +6,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using bc.core.device;
 using bc.flash.display;
+using bc.core.resources.loaders;
+using bc.core.data;
+using System;
+using bc.ui;
+using bc.game;
 
 namespace bc.flash.native
 {
@@ -32,7 +37,18 @@ namespace bc.flash.native
             running = true;
 
             stage = new AsStage(width, height);
+
+            // TODO: remove the shit
+            new AsBcResLoaderFactory();
             AsBcDevice.initialize(stage);
+
+            AsBcAsset.loadPath("../asset/preloader.xml", null);
+            AsBcData.load(new AsVector<String>("data"));
+
+            new AsBcGameUI();
+            AsBcAsset.loadPath("../asset/game.xml", null);
+
+            new AsBcGame();
         }        
         
         public void Stop()
