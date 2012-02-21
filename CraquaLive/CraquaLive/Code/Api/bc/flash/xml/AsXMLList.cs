@@ -12,6 +12,10 @@ namespace bc.flash.xml
     public class AsXMLList : AsObject
     {
         private AsVector<AsXML> mElements;
+        public AsXMLList()
+        {
+            mElements = new AsVector<AsXML>(0);
+        }
         public virtual AsXML appendChild(AsXML child)
         {
             mElements.push(child);
@@ -66,7 +70,7 @@ namespace bc.flash.xml
         public virtual AsXMLList copy()
         {
             throw new AsNotImplementedError();
-        }        
+        }
         public virtual int length()
         {
             return (int)(mElements.getLength());
