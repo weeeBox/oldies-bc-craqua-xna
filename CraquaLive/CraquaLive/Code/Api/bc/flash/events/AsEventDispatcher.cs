@@ -111,7 +111,7 @@ namespace bc.flash.events
 			}
 			if((((!(stopImmediatePropagation) && _event.getBubbles()) && !(_event.getStopsPropagation())) && this is AsDisplayObject))
 			{
-				AsDisplayObject targetDisplayObject = ((AsDisplayObject)(this));
+				AsDisplayObject targetDisplayObject = ((this is AsDisplayObject) ? ((AsDisplayObject)(this)) : null);
 				if((targetDisplayObject.getParent() != null))
 				{
 					_event.setCurrentTarget(null);

@@ -285,7 +285,7 @@ namespace bc.flash.display
 		{
 			if(_event is AsTouchEvent)
 			{
-				AsTouchEvent touchEvent = ((AsTouchEvent)(_event));
+				AsTouchEvent touchEvent = ((_event is AsTouchEvent) ? ((AsTouchEvent)(_event)) : null);
 				if((touchEvent.getTimestamp() == mLastTouchTimestamp))
 				{
 					return;

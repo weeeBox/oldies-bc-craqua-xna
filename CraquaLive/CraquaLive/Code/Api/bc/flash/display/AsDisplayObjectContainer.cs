@@ -38,6 +38,11 @@ namespace bc.flash.display
 				child.removeFromParent();
 				mChildren.splice(index, (uint)(0), child);
 				child.setParent(this);
+				child.dispatchEvent(new AsEvent(AsEvent.ADDED, true));
+				if((getStage()) != null)
+				{
+					child.dispatchEventOnChildren(new AsEvent(AsEvent.ADDED_TO_STAGE));
+				}
 			}
 			else
 			{
@@ -172,7 +177,7 @@ namespace bc.flash.display
 			for (; (i < numChildren); ++i)
 			{
 				AsDisplayObject currentChild = mChildren[i];
-				AsDisplayObjectContainer currentChildContainer = ((AsDisplayObjectContainer)(currentChild));
+				AsDisplayObjectContainer currentChildContainer = ((currentChild is AsDisplayObjectContainer) ? ((AsDisplayObjectContainer)(currentChild)) : null);
 				if(((currentChildContainer != null) && currentChildContainer.contains(child)))
 				{
 					return true;
@@ -295,7 +300,7 @@ namespace bc.flash.display
 		}
 		private void getChildEventListeners(AsDisplayObject _object, String eventType, AsVector<AsDisplayObject> listeners)
 		{
-			AsDisplayObjectContainer container = ((AsDisplayObjectContainer)(_object));
+			AsDisplayObjectContainer container = ((_object is AsDisplayObjectContainer) ? ((AsDisplayObjectContainer)(_object)) : null);
 			if(_object.hasEventListener(eventType))
 			{
 				listeners.push(_object);

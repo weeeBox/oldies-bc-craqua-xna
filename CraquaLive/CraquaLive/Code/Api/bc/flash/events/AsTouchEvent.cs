@@ -65,7 +65,7 @@ namespace bc.flash.events
 			for (; (i < numTouches); ++i)
 			{
 				AsTouch touch = mTouches[i];
-				bool correctTarget = ((touch.getTarget() == target) || (target is AsDisplayObjectContainer && ((AsDisplayObjectContainer)(target)).contains(touch.getTarget())));
+				bool correctTarget = ((touch.getTarget() == target) || (target is AsDisplayObjectContainer && ((target is AsDisplayObjectContainer) ? ((AsDisplayObjectContainer)(target)) : null).contains(touch.getTarget())));
 				bool correctPhase = ((phase == null) || (phase == touch.getPhase()));
 				if((correctTarget && correctPhase))
 				{
