@@ -362,6 +362,7 @@
     <Compile Include="Code\Platform\bc\flash\AsObject.cs" />
     <Compile Include="Code\Platform\bc\flash\AsString.cs" />
     <Compile Include="Code\Platform\bc\flash\AsVector.cs" />
+    <Compile Include="Code\Platform\bc\flash\display\AsBcRenderSupport.cs" />
     <Compile Include="Code\Platform\bc\flash\error\AsAbstractClassError.cs" />
     <Compile Include="Code\Platform\bc\flash\error\AsAbstractMethodError.cs" />
     <Compile Include="Code\Platform\bc\flash\error\AsArgumentError.cs" />
