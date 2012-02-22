@@ -2,6 +2,7 @@ using System;
  
 using bc.flash;
 using bc.flash.display;
+using bc.flash.geom;
  
 namespace bc.flash.display
 {
@@ -10,6 +11,8 @@ namespace bc.flash.display
 		private AsBitmapData mBitmapData;
 		private String mPixelSnapping;
 		private bool mSmoothing;
+		private static AsMatrix sHelperMatrix = new AsMatrix();
+		private static AsPoint sHelperPoint = new AsPoint();
 		public AsBitmap(AsBitmapData bitmapData, String pixelSnapping, bool smoothing)
 		{
 			mBitmapData = bitmapData;
@@ -27,6 +30,29 @@ namespace bc.flash.display
 		public AsBitmap()
 		 : this(null, "auto", false)
 		{
+		}
+		public override AsRectangle getBounds(AsDisplayObject targetSpace, AsRectangle resultRect)
+		{
+			if((resultRect == null))
+			{
+				resultRect = new AsRectangle();
+			}
+			getTransformationMatrix(targetSpace, sHelperMatrix);
+			sHelperPoint.x = getX();
+			sHelperPoint.y = getY();
+			AsGlobal.transformCoords(sHelperMatrix, 0.0f, 0.0f, sHelperPoint);
+			resultRect.x = sHelperPoint.x;
+			resultRect.y = sHelperPoint.y;
+			sHelperPoint.x = (getX() + mBitmapData.getWidth());
+			sHelperPoint.y = (getY() + mBitmapData.getHeight());
+			AsGlobal.transformCoords(sHelperMatrix, 0.0f, 0.0f, sHelperPoint);
+			resultRect.width = sHelperPoint.x;
+			resultRect.height = sHelperPoint.y;
+			return resultRect;
+		}
+		public virtual AsRectangle getBounds(AsDisplayObject targetSpace)
+		{
+			return getBounds(targetSpace, null);
 		}
 		public virtual AsBitmapData getBitmapData()
 		{
