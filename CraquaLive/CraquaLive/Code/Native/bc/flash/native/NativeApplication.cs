@@ -17,7 +17,7 @@ namespace bc.flash.native
     public class NativeApplication : GamePadListener, KeyboardListener, TouchListener
     {
         // private Application application;        
-        // private Graphics appGraphics;
+        private AsGraphics graphics;
 
         private NativeInput input;
         private BcResFactory resFactory;
@@ -27,9 +27,9 @@ namespace bc.flash.native
 
         public NativeApplication(int width, int height, ContentManager content)
         {
-            resFactory = new BcResFactory(content);            
+            resFactory = new BcResFactory(content);
 
-            // appGraphics = new Graphics(width, height);            
+            graphics = new AsGraphics();
             input = new NativeInput();
             input.AddGamePadListener(this);
             input.AddKeyboardListener(this);
@@ -64,9 +64,9 @@ namespace bc.flash.native
 
         public void Draw(GraphicsDevice device)
         {
-            // appGraphics.Begin(device);
-            // application.Draw(appGraphics);
-            // appGraphics.End();
+            AppGraphics.Begin(device, stage.getStageWidth(), stage.getStageHeight());
+            stage.draw(graphics);
+            AppGraphics.End();
         }
 
         public void PointerMoved(int x, int y)
