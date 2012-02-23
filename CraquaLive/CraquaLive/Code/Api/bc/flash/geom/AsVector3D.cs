@@ -8,9 +8,9 @@ namespace bc.flash.geom
 {
 	public class AsVector3D : AsObject
 	{
-		public static AsVector3D X_AXIS;
-		public static AsVector3D Y_AXIS;
-		public static AsVector3D Z_AXIS;
+		public static AsVector3D X_AXIS = new AsVector3D(1, 0, 0);
+		public static AsVector3D Y_AXIS = new AsVector3D(0, 1, 0);
+		public static AsVector3D Z_AXIS = new AsVector3D(0, 0, 1);
 		public float x;
 		public float y;
 		public float z;

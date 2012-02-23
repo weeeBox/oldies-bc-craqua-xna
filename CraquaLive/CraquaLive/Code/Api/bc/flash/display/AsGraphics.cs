@@ -39,6 +39,10 @@ namespace bc.flash.display
 		{
 			AsBcRenderSupport.drawRoundRect(x, y, width, height, ellipseWidth, ellipseHeight);
 		}
+		public virtual void drawBitmap(AsBitmapData bitmap, float x, float y)
+		{
+			AsBcRenderSupport.drawBitmap(bitmap, x, y);
+		}
 		public virtual void endFill()
 		{
 			AsBcRenderSupport.endFill();

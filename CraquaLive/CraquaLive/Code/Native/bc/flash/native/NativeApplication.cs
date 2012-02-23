@@ -64,9 +64,9 @@ namespace bc.flash.native
 
         public void Draw(GraphicsDevice device)
         {
-            AppGraphics.Begin(device, stage.getStageWidth(), stage.getStageHeight());
-            stage.draw(graphics);
-            AppGraphics.End();
+            BcRenderSupport.Begin(device, stage.getStageWidth(), stage.getStageHeight());
+            
+            BcRenderSupport.End();
         }
 
         public void PointerMoved(int x, int y)

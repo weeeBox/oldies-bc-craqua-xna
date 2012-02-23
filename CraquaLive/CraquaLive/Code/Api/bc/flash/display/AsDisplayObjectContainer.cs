@@ -1,6 +1,7 @@
 using System;
  
 using bc.flash;
+using bc.flash.core;
 using bc.flash.display;
 using bc.flash.error;
 using bc.flash.events;
@@ -15,6 +16,10 @@ namespace bc.flash.display
 		private static AsPoint sHelperPoint = new AsPoint();
 		public AsDisplayObjectContainer()
 		{
+			if((AsGlobal.getQualifiedClassName(this) == "DisplayObjectContainer"))
+			{
+				throw new AsAbstractClassError();
+			}
 			mChildren = new AsVector<AsDisplayObject>();
 		}
 		public override void dispose()
@@ -268,16 +273,22 @@ namespace bc.flash.display
 		{
 			return hitTest(localPoint, false);
 		}
-		protected override void postDraw(AsGraphics g)
+		public override void render(AsRenderSupport support, float alpha)
 		{
-			foreach (AsDisplayObject child in mChildren)
+			setAlpha((alpha * this.getAlpha()));
+			int numChildren = (int)(mChildren.getLength());
+			int i = 0;
+			for (; (i < numChildren); ++i)
 			{
+				AsDisplayObject child = mChildren[i];
 				if(((((child.getAlpha() != 0.0f) && child.getVisible()) && (child.getScaleX() != 0.0f)) && (child.getScaleY() != 0.0f)))
 				{
-					child.draw(g);
+					support.pushMatrix();
+					support.transformMatrix(child);
+					child.render(support, alpha);
+					support.popMatrix();
 				}
 			}
-			restoreDrawState(g);
 		}
 		public virtual void broadcastEvent(AsEvent _event)
 		{

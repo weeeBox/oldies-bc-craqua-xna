@@ -1,6 +1,7 @@
 using System;
  
 using bc.flash;
+using bc.flash.core;
 using bc.flash.display;
 using bc.flash.geom;
  
@@ -30,6 +31,10 @@ namespace bc.flash.display
 		public AsBitmap()
 		 : this(null, "auto", false)
 		{
+		}
+		public override void render(AsRenderSupport support, float alpha)
+		{
+			base.render(support, alpha);
 		}
 		public override AsRectangle getBounds(AsDisplayObject targetSpace, AsRectangle resultRect)
 		{

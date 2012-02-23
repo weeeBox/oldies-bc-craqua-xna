@@ -107,6 +107,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Api\bc\flash\core\AsRenderSupport.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsBitmap.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsBitmapData.cs" />
     <Compile Include="Code\Api\bc\flash\display\AsBlendMode.cs" />
@@ -338,7 +339,7 @@
     <Compile Include="Code\Converted\bc\world\player\AsBcPlayerLevel.cs" />
     <Compile Include="Code\Converted\bc\world\player\AsBcPlayerSprite.cs" />
     <Compile Include="Code\Converted\bc\world\player\AsBcPlayerWeapon.cs" />
-    <Compile Include="Code\Native\bc\flash\native\AppGraphics.cs" />
+    <Compile Include="Code\Native\bc\flash\native\BcRenderSupport.cs" />
     <Compile Include="Code\Native\bc\flash\native\BcEffect.cs" />
     <Compile Include="Code\Native\bc\flash\native\input\GamePadListener.cs" />
     <Compile Include="Code\Native\bc\flash\native\input\InputHelper.cs" />

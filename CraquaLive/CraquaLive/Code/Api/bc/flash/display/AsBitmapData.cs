@@ -15,11 +15,11 @@ namespace bc.flash.display
         private bool mTransparent;
         private uint mFillColor;
 
-        private BcTexture2D texture;
+        private BcTexture2D mTexture;
 
         public AsBitmapData(BcTexture2D texture)            
         {
-            this.texture = texture;
+            mTexture = texture;
             init(texture.Width, texture.Height, true, 0xffffffff);
         }
 
@@ -78,7 +78,12 @@ namespace bc.flash.display
 
         public virtual void dispose()
         {
-            texture.Dispose();
+            mTexture.Dispose();
+        }
+
+        public BcTexture2D Texture
+        {
+            get { return mTexture; }
         }
 
         public virtual int getWidth()

@@ -4,6 +4,7 @@ using System.Diagnostics;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using bc.flash.resources;
 
 namespace bc.flash.native
 {
@@ -15,7 +16,7 @@ namespace bc.flash.native
         Opaque,
     }
 
-    public class AppGraphics
+    public class BcRenderSupport
     {
         enum BatchMode
         {
@@ -269,9 +270,9 @@ namespace bc.flash.native
             GetSpriteBatch(BatchMode.Sprite).DrawString(font, text, new Vector2((float)x, (float)y), drawColor);
         }
 
-        public static void DrawImage(Texture2D tex, float x, float y)
+        public static void DrawImage(BcTexture2D tex, float x, float y)
         {
-            GetSpriteBatch(BatchMode.Sprite).Draw(tex, new Vector2(x, y), drawColor);
+            GetSpriteBatch(BatchMode.Sprite).Draw(tex.Texture, new Vector2(x, y), drawColor);
         }
 
         public static void DrawImage(Texture2D tex, float x, float y, Color color)

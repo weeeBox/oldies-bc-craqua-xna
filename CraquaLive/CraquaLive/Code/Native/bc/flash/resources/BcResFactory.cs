@@ -65,13 +65,10 @@ namespace bc.flash.resources
         }
 
         public BcTexture2D LoadImage(String path)
-        {
-            using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
-            {
-                String contentPath = CreateContentPath(path);
-                Texture2D texture = manager.Load<Texture2D>(contentPath);
-                return new BcTexture2D(texture);
-            }
+        {            
+            String contentPath = CreateContentPath(path);
+            Texture2D texture = content.Load<Texture2D>(contentPath);
+            return new BcTexture2D(texture);            
         }
 
         public BcSound LoadSound(String path)

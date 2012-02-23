@@ -1,6 +1,7 @@
 using System;
  
 using bc.flash;
+using bc.flash.core;
 using bc.flash.display;
 using bc.flash.error;
 using bc.flash.events;
@@ -219,67 +220,9 @@ namespace bc.flash.display
 			sTargetMatrix.invert();
 			return sTargetMatrix.transformPoint(globalPoint);
 		}
-		public virtual void draw(AsGraphics g)
+		public virtual void render(AsRenderSupport support, float alpha)
 		{
-			preDraw(g);
-			postDraw(g);
-		}
-		protected virtual void preDraw(AsGraphics g)
-		{
-			applyDrawState(g);
-		}
-		protected virtual void postDraw(AsGraphics g)
-		{
-			restoreDrawState(g);
-		}
-		protected virtual void applyDrawState(AsGraphics g)
-		{
-			applyTransformations(g);
-			applyEffect();
-			g.translate(getX(), getY());
-		}
-		protected virtual void applyTransformations(AsGraphics g)
-		{
-			bool changeScale = ((getScaleX() != 1.0f) || (getScaleY() != 1.0f));
-			bool changeRotation = (getRotation() != 0.0f);
-			if((changeScale || changeRotation))
-			{
-				g.pushMatrix();
-				if((changeScale || changeRotation))
-				{
-					float rotationOffsetX = (getX() + (0.5f * getWidth()));
-					float rotationOffsetY = (getY() + (0.5f * getHeight()));
-					g.translate(rotationOffsetX, rotationOffsetY);
-					if(changeRotation)
-					{
-						g.rotate(getRotation());
-					}
-					if(changeScale)
-					{
-						g.scale(getScaleX(), getScaleY());
-					}
-					g.translate(-rotationOffsetX, -rotationOffsetY);
-				}
-			}
-		}
-		private void applyEffect()
-		{
-		}
-		protected virtual void restoreDrawState(AsGraphics g)
-		{
-			g.translate(-getX(), -getY());
-			restoreEffect();
-			restoreTransformations(g);
-		}
-		protected virtual void restoreTransformations(AsGraphics g)
-		{
-			if((((getRotation() != 0.0f) || (getScaleX() != 1.0f)) || (getScaleY() != 1.0f)))
-			{
-				g.popMatrix();
-			}
-		}
-		private void restoreEffect()
-		{
+			throw new AsAbstractMethodError("Method needs to be implemented in subclass");
 		}
 		public override void dispatchEvent(AsEvent _event)
 		{

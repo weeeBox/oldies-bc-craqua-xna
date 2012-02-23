@@ -4,29 +4,34 @@ namespace bc.flash.resources
 {
     public class BcTexture2D : BcManagedResource
     {
-        private Texture2D texture;
+        private Texture2D mTexture;
 
         public BcTexture2D(Texture2D texture)
         {
-            this.texture = texture;
+            mTexture = texture;
+        }
+
+        public Texture2D Texture
+        {
+            get { return mTexture; }
         }
 
         public int Width
         {
-            get { return texture.Width; }
+            get { return mTexture.Width; }
         }
 
         public int Height
         {
-            get { return texture.Height; }
+            get { return mTexture.Height; }
         }
 
         public override void Dispose()
         {
-            if (texture != null)
+            if (mTexture != null)
             {
-                texture.Dispose();
-                texture = null;
+                mTexture.Dispose();
+                mTexture = null;
             }
         }
     }
