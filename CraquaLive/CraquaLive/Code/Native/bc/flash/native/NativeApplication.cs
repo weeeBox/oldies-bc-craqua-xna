@@ -11,13 +11,14 @@ using bc.core.data;
 using System;
 using bc.ui;
 using bc.game;
+using bc.flash.core;
 
 namespace bc.flash.native
 {
     public class NativeApplication : GamePadListener, KeyboardListener, TouchListener
     {
         // private Application application;        
-        private AsGraphics graphics;
+        private AsRenderSupport renderSupport;
 
         private NativeInput input;
         private BcResFactory resFactory;
@@ -29,7 +30,8 @@ namespace bc.flash.native
         {
             resFactory = new BcResFactory(content);
 
-            graphics = new AsGraphics();
+            renderSupport = new AsRenderSupport();
+
             input = new NativeInput();
             input.AddGamePadListener(this);
             input.AddKeyboardListener(this);
@@ -65,7 +67,7 @@ namespace bc.flash.native
         public void Draw(GraphicsDevice device)
         {
             BcRenderSupport.Begin(device, stage.getStageWidth(), stage.getStageHeight());
-            
+            stage.render(renderSupport, 1.0f);
             BcRenderSupport.End();
         }
 
