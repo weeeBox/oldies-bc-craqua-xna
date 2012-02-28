@@ -1,15 +1,13 @@
 using System;
  
 using bc.flash;
+using bc.flash.error;
 using bc.flash.geom;
  
 namespace bc.flash.geom
 {
 	public class AsMatrix : AsObject
 	{
-		private const int U = 0;
-		private const int V = 0;
-		private const int W = 1;
 		public float a;
 		public float b;
 		public float c;
@@ -18,7 +16,7 @@ namespace bc.flash.geom
 		public float ty;
 		public AsMatrix(float a, float b, float c, float d, float tx, float ty)
 		{
-			setValues(a, b, c, d, tx, ty);
+			setTo(a, b, c, d, tx, ty);
 		}
 		public AsMatrix(float a, float b, float c, float d, float tx)
 		 : this(a, b, c, d, tx, 0)
@@ -44,15 +42,6 @@ namespace bc.flash.geom
 		 : this(1, 0, 0, 1, 0, 0)
 		{
 		}
-		private void setValues(float a, float b, float c, float d, float tx, float ty)
-		{
-			this.a = a;
-			this.b = b;
-			this.c = c;
-			this.d = d;
-			this.tx = tx;
-			this.ty = ty;
-		}
 		public virtual AsMatrix clone()
 		{
 			return new AsMatrix(a, b, c, d, tx, ty);
@@ -63,10 +52,34 @@ namespace bc.flash.geom
 		}
 		public virtual void concatValues(float a, float b, float c, float d, float tx, float ty)
 		{
-			setValues(((a * this.a) + (c * this.b)), ((b * this.a) + (d * this.b)), ((a * this.c) + (c * this.d)), ((b * this.c) + (d * this.d)), (((a * this.tx) + (c * this.ty)) + (tx * W)), (((b * this.tx) + (d * this.ty)) + (ty * W)));
+			setTo(((this.a * a) + (this.b * c)), ((this.a * b) + (this.b * d)), ((this.c * a) + (this.d * c)), ((this.c * b) + (this.d * d)), (((this.tx * a) + (this.ty * c)) + tx), (((this.tx * b) + (this.ty * d)) + ty));
+		}
+		public virtual void copyColumnFrom(uint column, AsVector3D vector3D)
+		{
+			throw new AsNotImplementedError();
+		}
+		public virtual void copyColumnTo(uint column, AsVector3D vector3D)
+		{
+			throw new AsNotImplementedError();
+		}
+		public virtual void copyFrom(AsMatrix sourceMatrix)
+		{
+			setTo(sourceMatrix.a, sourceMatrix.b, sourceMatrix.c, sourceMatrix.d, sourceMatrix.tx, sourceMatrix.ty);
+		}
+		public virtual void copyRowFrom(uint row, AsVector3D vector3D)
+		{
+			throw new AsNotImplementedError();
+		}
+		public virtual void copyRowTo(uint row, AsVector3D vector3D)
+		{
+			throw new AsNotImplementedError();
 		}
 		public virtual void createBox(float scaleX, float scaleY, float rotation, float tx, float ty)
 		{
+			identity();
+			rotate(rotation);
+			scale(scaleX, scaleY);
+			translate(tx, ty);
 		}
 		public virtual void createBox(float scaleX, float scaleY, float rotation, float tx)
 		{
@@ -82,6 +95,7 @@ namespace bc.flash.geom
 		}
 		public virtual void createGradientBox(float width, float height, float rotation, float tx, float ty)
 		{
+			throw new AsNotImplementedError();
 		}
 		public virtual void createGradientBox(float width, float height, float rotation, float tx)
 		{
@@ -97,16 +111,15 @@ namespace bc.flash.geom
 		}
 		public virtual AsPoint deltaTransformPoint(AsPoint point)
 		{
-			return null;
+			return new AsPoint(((a * point.x) + (c * point.y)), ((b * point.x) + (d * point.y)));
 		}
 		public virtual void identity()
 		{
-			setValues(1, 0, 0, 1, 0, 0);
+			setTo(1, 0, 0, 1, 0, 0);
 		}
 		public virtual void invert()
 		{
-			float det = determinant();
-			setValues((d / det), (-b / det), (-c / det), (a / det), (((c * ty) - (d * tx)) / det), (((b * tx) - (a * ty)) / det));
+			throw new AsNotImplementedError();
 		}
 		public virtual void rotate(float angle)
 		{
@@ -116,25 +129,24 @@ namespace bc.flash.geom
 		}
 		public virtual void scale(float sx, float sy)
 		{
-			a = (a * sx);
-			b = (b * sy);
-			c = (c * sx);
-			d = (d * sy);
-			tx = (tx * sx);
-			ty = (ty * sy);
+			concatValues(sx, 0, 0, sy, 0, 0);
 		}
-		public virtual void translate(float dx, float dy)
+		public virtual void setTo(float a, float b, float c, float d, float tx, float ty)
 		{
-			tx = (tx + dx);
-			ty = (ty + dy);
+			this.a = a;
+			this.b = b;
+			this.c = c;
+			this.d = d;
+			this.tx = tx;
+			this.ty = ty;
 		}
 		public virtual AsPoint transformPoint(AsPoint point)
 		{
 			return new AsPoint((((a * point.x) + (c * point.y)) + tx), (((b * point.x) + (d * point.y)) + ty));
 		}
-		private float determinant()
+		public virtual void translate(float dx, float dy)
 		{
-			return ((a * d) - (c * b));
+			concatValues(1, 0, 0, 1, dx, dy);
 		}
 	}
 }
