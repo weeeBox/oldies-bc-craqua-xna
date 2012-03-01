@@ -3,17 +3,14 @@ using System;
 using bc.flash;
 using bc.flash.error;
 using bc.flash.geom;
+using Microsoft.Xna.Framework;
  
 namespace bc.flash.geom
 {
 	public class AsMatrix : AsObject
 	{
-		public float a;
-		public float b;
-		public float c;
-		public float d;
-		public float tx;
-		public float ty;
+        public Matrix innerMatrix;
+
 		public AsMatrix(float a, float b, float c, float d, float tx, float ty)
 		{
 			setTo(a, b, c, d, tx, ty);
@@ -52,7 +49,13 @@ namespace bc.flash.geom
 		}
 		public virtual void concatValues(float a, float b, float c, float d, float tx, float ty)
 		{
-			setTo(((this.a * a) + (this.b * c)), ((this.a * b) + (this.b * d)), ((this.c * a) + (this.d * c)), ((this.c * b) + (this.d * d)), (((this.tx * a) + (this.ty * c)) + tx), (((this.tx * b) + (this.ty * d)) + ty));
+            float na = this.a * a + this.c * b;
+            float nb = this.b * a + this.d * b;
+            float nc = this.a * c + this.c * d;            
+            float nd = this.b * c + this.d * d;
+            float ntx = this.tx * a + this.ty * b + tx;
+            float nty = this.tx * c + this.ty * d + ty;
+            setTo(na, nb, nc, nd, ntx, nty);
 		}
 		public virtual void copyColumnFrom(uint column, AsVector3D vector3D)
 		{
@@ -111,7 +114,9 @@ namespace bc.flash.geom
 		}
 		public virtual AsPoint deltaTransformPoint(AsPoint point)
 		{
-			return new AsPoint(((a * point.x) + (c * point.y)), ((b * point.x) + (d * point.y)));
+            float nx = point.x * a + point.y * b;
+            float ny = point.x * c + point.y * d;
+            return new AsPoint(nx, ny);
 		}
 		public virtual void identity()
 		{
@@ -133,20 +138,71 @@ namespace bc.flash.geom
 		}
 		public virtual void setTo(float a, float b, float c, float d, float tx, float ty)
 		{
-			this.a = a;
-			this.b = b;
-			this.c = c;
-			this.d = d;
-			this.tx = tx;
-			this.ty = ty;
+            innerMatrix.M11 = a;
+            innerMatrix.M12 = c;
+            innerMatrix.M13 = 0;
+            innerMatrix.M14 = 0;
+
+            innerMatrix.M21 = b;
+            innerMatrix.M22 = d;
+            innerMatrix.M23 = 0;
+            innerMatrix.M24 = 0;
+
+            innerMatrix.M31 = 0;
+            innerMatrix.M32 = 0;
+            innerMatrix.M33 = 1;
+            innerMatrix.M34 = 0;
+
+            innerMatrix.M41 = tx;
+            innerMatrix.M42 = ty;
+            innerMatrix.M43 = 0;
+            innerMatrix.M44 = 1;
 		}
 		public virtual AsPoint transformPoint(AsPoint point)
 		{
-			return new AsPoint((((a * point.x) + (c * point.y)) + tx), (((b * point.x) + (d * point.y)) + ty));
+            float nx = point.x * a + point.y * b + tx;
+            float ny = point.x * c + point.y * d + ty;
+            return new AsPoint(nx, ny);
 		}
 		public virtual void translate(float dx, float dy)
 		{
 			concatValues(1, 0, 0, 1, dx, dy);
 		}
+
+        public float a
+        {
+            get { return innerMatrix.M11; }
+            set { innerMatrix.M11 = value; }
+        }
+
+        public float b
+        {
+            get { return innerMatrix.M21; }
+            set { innerMatrix.M21 = value; }
+        }
+
+        public float c
+        {
+            get { return innerMatrix.M12; }
+            set { innerMatrix.M12 = value; }
+        }        
+
+        public float d
+        {
+            get { return innerMatrix.M22; }
+            set { innerMatrix.M22 = value; }
+        }
+
+        public float tx
+        {
+            get { return innerMatrix.M41; }
+            set { innerMatrix.M41 = value; }
+        }
+
+        public float ty
+        {
+            get { return innerMatrix.M42; }
+            set { innerMatrix.M42 = value; }
+        }
 	}
 }
