@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraquaLiveContent", "Craqua
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BcContentPipeline", "BcContentPipeline\BcContentPipeline.csproj", "{667F8A45-AC54-4558-875A-F3140FF29D93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraquaLiveTests", "CraquaLiveTests\CraquaLiveTests.csproj", "{AC8D4758-5CC4-47F9-87A2-EBB98639394D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -23,6 +25,10 @@ Global
 		{667F8A45-AC54-4558-875A-F3140FF29D93}.Debug|x86.Build.0 = Debug|x86
 		{667F8A45-AC54-4558-875A-F3140FF29D93}.Release|x86.ActiveCfg = Debug|x86
 		{667F8A45-AC54-4558-875A-F3140FF29D93}.Release|x86.Build.0 = Debug|x86
+		{AC8D4758-5CC4-47F9-87A2-EBB98639394D}.Debug|x86.ActiveCfg = Debug|x86
+		{AC8D4758-5CC4-47F9-87A2-EBB98639394D}.Debug|x86.Build.0 = Debug|x86
+		{AC8D4758-5CC4-47F9-87A2-EBB98639394D}.Release|x86.ActiveCfg = Release|x86
+		{AC8D4758-5CC4-47F9-87A2-EBB98639394D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

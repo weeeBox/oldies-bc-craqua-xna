@@ -1,5 +1,6 @@
 
 *.suo
+*.cache
 
 /CraquaLive/CraquaLive/Code/Converted
 /CraquaLive/CraquaLiveContent/obj
@@ -8,3 +9,5 @@
 /CraquaLive/CraquaLive/CraquaLive.csproj.user
 /BcContentPipeline/bin
 /BcContentPipeline/obj
+/CraquaLiveTests/bin
+/CraquaLiveTests/obj

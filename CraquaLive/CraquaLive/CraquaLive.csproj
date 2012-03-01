@@ -375,6 +375,7 @@
     <Compile Include="Code\Platform\bc\flash\error\AsRangeError.cs" />
     <Compile Include="Code\Platform\bc\flash\system\AsLoaderContext.cs" />
     <Compile Include="Code\Platform\bc\flash\utils\AsByteArray.cs" />
+    <Compile Include="Code\Platform\bc\flash\utils\AsMathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="CraquaGame.cs" />

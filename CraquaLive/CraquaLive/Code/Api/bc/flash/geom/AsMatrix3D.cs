@@ -1,258 +1,385 @@
 using System;
- 
+
 using bc.flash;
 using bc.flash.error;
 using bc.flash.geom;
- 
+using Microsoft.Xna.Framework;
+
 namespace bc.flash.geom
 {
-	public class AsMatrix3D : AsObject
-	{
-		public float n11;
-		public float n12;
-		public float n13;
-		public float n14;
-		public float n21;
-		public float n22;
-		public float n23;
-		public float n24;
-		public float n31;
-		public float n32;
-		public float n33;
-		public float n34;
-		public float n41;
-		public float n42;
-		public float n43;
-		public float n44;
-		public AsMatrix3D(AsVector<float> v)
-		{
-		}
-		public AsMatrix3D()
-		 : this(null)
-		{
-		}
-		private void setData(float n11, float n12, float n13, float n14, float n21, float n22, float n23, float n24, float n31, float n32, float n33, float n34, float n41, float n42, float n43, float n44)
-		{
-			this.n11 = n11;
-			this.n12 = n12;
-			this.n13 = n13;
-			this.n14 = n14;
-			this.n21 = n21;
-			this.n22 = n22;
-			this.n23 = n23;
-			this.n24 = n24;
-			this.n31 = n31;
-			this.n32 = n32;
-			this.n33 = n33;
-			this.n34 = n34;
-			this.n41 = n41;
-			this.n42 = n42;
-			this.n43 = n43;
-			this.n44 = n44;
-		}
-		public virtual AsMatrix3D append(AsMatrix3D m)
-		{
-			float o11 = n11;
-			float o12 = n12;
-			float o13 = n13;
-			float o14 = n14;
-			float o21 = n21;
-			float o22 = n22;
-			float o23 = n23;
-			float o24 = n24;
-			float o31 = n31;
-			float o32 = n32;
-			float o33 = n33;
-			float o34 = n34;
-			float o41 = n41;
-			float o42 = n42;
-			float o43 = n43;
-			float o44 = n44;
-			n11 = ((((m.n11 * o11) + (m.n12 * o21)) + (m.n13 * o31)) + (m.n14 * o41));
-			n12 = ((((m.n11 * o12) + (m.n12 * o22)) + (m.n13 * o32)) + (m.n14 * o42));
-			n13 = ((((m.n11 * o13) + (m.n12 * o23)) + (m.n13 * o33)) + (m.n14 * o43));
-			n14 = ((((m.n11 * o14) + (m.n12 * o24)) + (m.n13 * o34)) + (m.n14 * o44));
-			n21 = ((((m.n21 * o11) + (m.n22 * o21)) + (m.n23 * o31)) + (m.n24 * o41));
-			n22 = ((((m.n21 * o12) + (m.n22 * o22)) + (m.n23 * o32)) + (m.n24 * o42));
-			n23 = ((((m.n21 * o13) + (m.n22 * o23)) + (m.n23 * o33)) + (m.n24 * o43));
-			n24 = ((((m.n21 * o14) + (m.n22 * o24)) + (m.n23 * o34)) + (m.n24 * o44));
-			n31 = ((((m.n31 * o11) + (m.n32 * o21)) + (m.n33 * o31)) + (m.n34 * o41));
-			n32 = ((((m.n31 * o12) + (m.n32 * o22)) + (m.n33 * o32)) + (m.n34 * o42));
-			n33 = ((((m.n31 * o13) + (m.n32 * o23)) + (m.n33 * o33)) + (m.n34 * o43));
-			n34 = ((((m.n31 * o14) + (m.n32 * o24)) + (m.n33 * o34)) + (m.n34 * o44));
-			n41 = ((((m.n41 * o11) + (m.n42 * o21)) + (m.n43 * o31)) + (m.n44 * o41));
-			n42 = ((((m.n41 * o12) + (m.n42 * o22)) + (m.n43 * o32)) + (m.n44 * o42));
-			n43 = ((((m.n41 * o13) + (m.n42 * o23)) + (m.n43 * o33)) + (m.n44 * o43));
-			n44 = ((((m.n41 * o14) + (m.n42 * o24)) + (m.n43 * o34)) + (m.n44 * o44));
-			return this;
-		}
-		public virtual void appendRotation(float degrees, AsVector3D axis, AsVector3D pivotPoint)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void appendRotation(float degrees, AsVector3D axis)
-		{
-			appendRotation(degrees, axis, null);
-		}
-		public virtual void appendScale(float xScale, float yScale, float zScale)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void appendTranslation(float x, float y, float z)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual AsMatrix3D clone()
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void copyColumnFrom(uint column, AsVector3D vector3D)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void copyColumnTo(uint column, AsVector3D vector3D)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void copyFrom(AsMatrix3D sourceMatrix3D)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void copyRawDataFrom(AsVector<float> vector, uint index, bool transpose)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void copyRawDataFrom(AsVector<float> vector, uint index)
-		{
-			copyRawDataFrom(vector, index, false);
-		}
-		public virtual void copyRawDataFrom(AsVector<float> vector)
-		{
-			copyRawDataFrom(vector, (uint)(0), false);
-		}
-		public virtual void copyRawDataTo(AsVector<float> vector, uint index, bool transpose)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void copyRawDataTo(AsVector<float> vector, uint index)
-		{
-			copyRawDataTo(vector, index, false);
-		}
-		public virtual void copyRawDataTo(AsVector<float> vector)
-		{
-			copyRawDataTo(vector, (uint)(0), false);
-		}
-		public virtual void copyRowFrom(uint row, AsVector3D vector3D)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void copyRowTo(uint row, AsVector3D vector3D)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void copyToMatrix3D(AsMatrix3D dest)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual AsVector<AsVector3D> decompose(String orientationStyle)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual AsVector<AsVector3D> decompose()
-		{
-			return decompose("eulerAngles");
-		}
-		public virtual AsVector3D deltaTransformVector(AsVector3D v)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual float getDeterminant()
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void identity()
-		{
-			throw new AsNotImplementedError();
-		}
-		public static AsMatrix3D interpolate(AsMatrix3D thisMat, AsMatrix3D toMat, float percent)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void interpolateTo(AsMatrix3D toMat, float percent)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual bool invert()
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void pointAt(AsVector3D pos, AsVector3D at, AsVector3D up)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void pointAt(AsVector3D pos, AsVector3D at)
-		{
-			pointAt(pos, at, null);
-		}
-		public virtual void pointAt(AsVector3D pos)
-		{
-			pointAt(pos, null, null);
-		}
-		public virtual AsVector3D getPosition()
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void setPosition(AsVector3D pos)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void prepend(AsMatrix3D rhs)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void prependRotation(float degrees, AsVector3D axis, AsVector3D pivotPoint)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void prependRotation(float degrees, AsVector3D axis)
-		{
-			prependRotation(degrees, axis, null);
-		}
-		public virtual void prependScale(float xScale, float yScale, float zScale)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void prependTranslation(float x, float y, float z)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual AsVector<float> getRawData()
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void setRawData(AsVector<float> v)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual bool recompose(AsVector<AsVector3D> components, String orientationStyle)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual bool recompose(AsVector<AsVector3D> components)
-		{
-			return recompose(components, "eulerAngles");
-		}
-		public virtual AsVector3D transformVector(AsVector3D v)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void transformVectors(AsVector<float> vin, AsVector<float> vout)
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual void transpose()
-		{
-			throw new AsNotImplementedError();
-		}
-	}
+    public sealed class AsMatrix3D : AsObject
+    {
+        public Matrix innerMatrix;
+
+        public AsMatrix3D(AsVector<float> v)
+        {
+            innerMatrix.M11 = v[0];
+            innerMatrix.M12 = v[1];
+            innerMatrix.M13 = v[2];
+            innerMatrix.M14 = 0;
+
+            innerMatrix.M21 = v[4];
+            innerMatrix.M22 = v[5];
+            innerMatrix.M23 = v[6];
+            innerMatrix.M24 = 0;
+
+            innerMatrix.M31 = v[8];
+            innerMatrix.M32 = v[9];
+            innerMatrix.M33 = v[10];
+            innerMatrix.M34 = 0;
+
+            innerMatrix.M41 = v[12];
+            innerMatrix.M42 = v[13];
+            innerMatrix.M43 = v[14];
+            innerMatrix.M44 = 1;
+        }
+
+        public AsMatrix3D()
+        {
+            innerMatrix = Matrix.Identity;
+        }
+
+        private AsMatrix3D(ref Matrix matrix)
+        {
+            innerMatrix = matrix;
+        }
+
+        public void append(AsMatrix3D lhs)
+        {
+            append(ref lhs.innerMatrix);
+        }
+
+        private void append(ref Matrix matrix)
+        {
+            Matrix.Multiply(ref innerMatrix, ref matrix, out innerMatrix);
+        }
+
+        public void appendRotation(float degrees, AsVector3D axis, AsVector3D pivotPoint)
+        {
+            bool hasPivot = pivotPoint != null && (pivotPoint.x != 0.0f || pivotPoint.y != 0.0f || pivotPoint.z != 0.0f);
+            if (hasPivot)
+            {
+                appendTranslation(-pivotPoint.x, -pivotPoint.y, -pivotPoint.z);
+            }
+
+            float ax = axis.x;
+            float ay = axis.y;
+            float az = axis.z;
+
+            float radians = MathHelper.ToRadians(degrees);
+
+            if (ax == 0.0f && ay == 0.0f && az == 1.0f)
+            {
+                appendRotationZ(radians);
+            }
+            else if (ax == 0.0f && ay == 1.0f && az == 0.0f)
+            {
+                appendRotationY(radians);
+            }
+            else if (ax == 1.0f && ay == 0.0f && az == 0.0f)
+            {
+                appendRotationX(radians);
+            }
+            else
+            {
+                throw new AsNotImplementedError();
+            }
+
+            if (hasPivot)
+            {
+                appendTranslation(pivotPoint.x, pivotPoint.y, pivotPoint.z);
+            }
+        }
+
+        public void appendRotation(float degrees, AsVector3D axis)
+        {
+            appendRotation(degrees, axis, null);
+        }
+
+        private void appendRotationX(float radians)
+        {
+            Matrix rotationMatrix = Matrix.CreateRotationX(radians);
+            append(ref rotationMatrix);
+        }
+
+        private void appendRotationY(float radians)
+        {
+            Matrix rotationMatrix = Matrix.CreateRotationY(radians);
+            append(ref rotationMatrix);
+        }
+
+        private void appendRotationZ(float radians)
+        {
+            Matrix rotationMatrix = Matrix.CreateRotationZ(radians);
+            append(ref rotationMatrix);
+        }
+
+        public void appendScale(float xScale, float yScale, float zScale)
+        {
+            Matrix scaleMatrix = Matrix.CreateScale(xScale, yScale, zScale);
+            append(ref scaleMatrix);
+        }
+
+        public void appendTranslation(float x, float y, float z)
+        {
+            Matrix translationMatrix = Matrix.CreateTranslation(x, y, z);
+            append(ref translationMatrix);
+        }
+
+        public AsMatrix3D clone()
+        {
+            return new AsMatrix3D(ref innerMatrix);
+        }
+
+        public void copyColumnFrom(uint column, AsVector3D vector3D)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void copyColumnTo(uint column, AsVector3D vector3D)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void copyFrom(AsMatrix3D sourceMatrix3D)
+        {
+            innerMatrix = sourceMatrix3D.innerMatrix;
+        }
+
+        public void copyRawDataFrom(AsVector<float> vector, uint index, bool transpose)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void copyRawDataFrom(AsVector<float> vector, uint index)
+        {
+            copyRawDataFrom(vector, index, false);
+        }
+
+        public void copyRawDataFrom(AsVector<float> vector)
+        {
+            copyRawDataFrom(vector, (uint)(0), false);
+        }
+
+        public void copyRawDataTo(AsVector<float> vector, uint index, bool transpose)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void copyRawDataTo(AsVector<float> vector, uint index)
+        {
+            copyRawDataTo(vector, index, false);
+        }
+
+        public void copyRawDataTo(AsVector<float> vector)
+        {
+            copyRawDataTo(vector, (uint)(0), false);
+        }
+
+        public void copyRowFrom(uint row, AsVector3D vector3D)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void copyRowTo(uint row, AsVector3D vector3D)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void copyToMatrix3D(AsMatrix3D dest)
+        {
+            dest.innerMatrix = innerMatrix;
+        }
+
+        public AsVector<AsVector3D> decompose(String orientationStyle)
+        {
+            throw new AsNotImplementedError();
+        }
+
+        public AsVector<AsVector3D> decompose()
+        {
+            return decompose("eulerAngles");
+        }
+
+        public AsVector3D deltaTransformVector(AsVector3D v)
+        {
+            float x = v.x;
+            float y = v.y;
+            float z = v.z;
+            return new AsVector3D((((m11 * x) + (m12 * y)) + (m13 * z)), (((m21 * x) + (m22 * y)) + (m23 * z)), (((m31 * x) + (m32 * y)) + (m33 * z)));
+        }
+
+        public void identity()
+        {
+            innerMatrix = Matrix.Identity;
+        }
+
+        public static AsMatrix3D interpolate(AsMatrix3D thisMat, AsMatrix3D toMat, float percent)
+        {
+            throw new AsNotImplementedError();
+        }
+
+        public void interpolateTo(AsMatrix3D toMat, float percent)
+        {
+            throw new AsNotImplementedError();
+        }
+
+        public bool invert()
+        {
+            throw new AsNotImplementedError();
+        }
+
+        public void pointAt(AsVector3D pos, AsVector3D at, AsVector3D up)
+        {
+            throw new AsNotImplementedError();
+        }
+
+        public void pointAt(AsVector3D pos, AsVector3D at)
+        {
+            pointAt(pos, at, null);
+        }
+
+        public void pointAt(AsVector3D pos)
+        {
+            pointAt(pos, null, null);
+        }
+
+        public void prepend(AsMatrix3D rhs)
+        {
+            prepend(ref rhs.innerMatrix);
+        }
+
+        private void prepend(ref Matrix matrix)
+        {
+            Matrix.Multiply(ref matrix, ref innerMatrix, out innerMatrix);
+        }
+
+        public void prependRotation(float degrees, AsVector3D axis, AsVector3D pivotPoint)
+        {
+            bool hasPivot = pivotPoint != null && (pivotPoint.x != 0.0f || pivotPoint.y != 0.0f || pivotPoint.z != 0.0f);
+            if (hasPivot)
+            {
+                prependTranslation(-pivotPoint.x, -pivotPoint.y, -pivotPoint.z);
+            }
+
+            float ax = axis.x;
+            float ay = axis.y;
+            float az = axis.z;
+
+            float radians = MathHelper.ToRadians(degrees);
+
+            if (ax == 0.0f && ay == 0.0f && az == 1.0f)
+            {
+                prependRotationZ(radians);
+            }
+            else if (ax == 0.0f && ay == 1.0f && az == 0.0f)
+            {
+                prependRotationY(radians);
+            }
+            else if (ax == 1.0f && ay == 0.0f && az == 0.0f)
+            {
+                prependRotationX(radians);
+            }
+            else
+            {
+                throw new AsNotImplementedError();
+            }
+
+            if (hasPivot)
+            {
+                prependTranslation(pivotPoint.x, pivotPoint.y, pivotPoint.z);
+            }
+        }
+
+        public void prependRotation(float degrees, AsVector3D axis)
+        {
+            prependRotation(degrees, axis, null);
+        }
+
+        private void prependRotationX(float radians)
+        {
+            Matrix rotationMatrix = Matrix.CreateRotationX(radians);
+            prepend(ref rotationMatrix);
+        }
+
+        private void prependRotationY(float radians)
+        {
+            Matrix rotationMatrix = Matrix.CreateRotationY(radians);
+            prepend(ref rotationMatrix);
+        }
+
+        private void prependRotationZ(float radians)
+        {
+            Matrix rotationMatrix = Matrix.CreateRotationZ(radians);
+            prepend(ref rotationMatrix);
+        }
+
+        public void prependScale(float xScale, float yScale, float zScale)
+        {
+            Matrix scaleMatrix = Matrix.CreateScale(xScale, yScale, zScale);
+            prepend(ref scaleMatrix);
+        }
+
+        public void prependTranslation(float x, float y, float z)
+        {
+            Matrix translationMatrix = Matrix.CreateTranslation(x, y, z);
+            prepend(ref translationMatrix);
+        }
+
+        public bool recompose(AsVector<AsVector3D> components, String orientationStyle)
+        {
+            throw new AsNotImplementedError();
+        }
+
+        public bool recompose(AsVector<AsVector3D> components)
+        {
+            return recompose(components, "eulerAngles");
+        }
+
+        public AsVector3D transformVector(AsVector3D v)
+        {
+            float x = v.x;
+            float y = v.y;
+            float z = v.z;
+            return new AsVector3D(((((m11 * x) + (m12 * y)) + (m13 * z)) + t.x), ((((m21 * x) + (m22 * y)) + (m23 * z)) + t.y), ((((m31 * x) + (m32 * y)) + (m33 * z)) + t.z));
+        }
+        public void transformVectors(AsVector<float> vin, AsVector<float> vout)
+        {
+            int len = (int)(vin.getLength());
+            if (((len % 3) != 0))
+            {
+                throw new AsArgumentError();
+            }
+            if ((len > vout.getLength()))
+            {
+                throw new AsArgumentError();
+            }
+            int i = 0;
+            for (; (i < len); i = (i + 3))
+            {
+                float x = vin[i];
+                float y = vin[(i + 1)];
+                float z = vin[(i + 2)];
+                vout[i] = ((((m11 * x) + (m12 * y)) + (m13 * z)) + t.x);
+                vout[(i + 1)] = ((((m21 * x) + (m22 * y)) + (m23 * z)) + t.y);
+                vout[(i + 2)] = ((((m31 * x) + (m32 * y)) + (m33 * z)) + t.z);
+            }
+        }
+        public void transpose()
+        {
+            throw new AsNotImplementedError();
+        }
+        public float getDeterminant()
+        {
+            throw new AsNotImplementedError();
+        }
+        public AsVector3D getPosition()
+        {
+            return t;
+        }
+        public AsVector<float> getRawData()
+        {
+            return new AsVector<float>(m11, m21, m31, 0, m12, m22, m32, 0, m13, m23, m33, 0, t.x, t.y, t.z, 1);
+        }
+    }
 }

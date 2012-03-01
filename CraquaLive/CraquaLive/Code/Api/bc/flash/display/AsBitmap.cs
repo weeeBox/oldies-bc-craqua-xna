@@ -19,6 +19,11 @@ namespace bc.flash.display
 			mBitmapData = bitmapData;
 			mPixelSnapping = pixelSnapping;
 			mSmoothing = smoothing;
+			if((bitmapData != null))
+			{
+				setWidth(bitmapData.getWidth());
+				setHeight(bitmapData.getHeight());
+			}
 		}
 		public AsBitmap(AsBitmapData bitmapData, String pixelSnapping)
 		 : this(bitmapData, pixelSnapping, false)
