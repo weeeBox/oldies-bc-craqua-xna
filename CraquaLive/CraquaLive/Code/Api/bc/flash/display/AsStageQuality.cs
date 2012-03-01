@@ -4,7 +4,7 @@ using bc.flash;
  
 namespace bc.flash.display
 {
-	public class AsStageQuality : AsObject
+	public sealed class AsStageQuality : AsObject
 	{
 		public static String LOW = "low";
 		public static String MEDIUM = "medium";

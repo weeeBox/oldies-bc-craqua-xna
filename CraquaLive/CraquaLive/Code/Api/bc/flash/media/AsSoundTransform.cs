@@ -4,7 +4,7 @@ using bc.flash;
  
 namespace bc.flash.media
 {
-	public class AsSoundTransform : AsObject
+	public sealed class AsSoundTransform : AsObject
 	{
 		private float mVolume;
 		private float mPanning;
@@ -25,51 +25,51 @@ namespace bc.flash.media
 		 : this(1, 0)
 		{
 		}
-		public virtual float getLeftToLeft()
+		public float getLeftToLeft()
 		{
 			return mLeftToLeft;
 		}
-		public virtual void setLeftToLeft(float leftToLeft)
+		public void setLeftToLeft(float leftToLeft)
 		{
 			mLeftToLeft = leftToLeft;
 		}
-		public virtual float getLeftToRight()
+		public float getLeftToRight()
 		{
 			return mLeftToRight;
 		}
-		public virtual void setLeftToRight(float leftToRight)
+		public void setLeftToRight(float leftToRight)
 		{
 			mLeftToRight = leftToRight;
 		}
-		public virtual float getPan()
+		public float getPan()
 		{
 			return mPanning;
 		}
-		public virtual void setPan(float panning)
+		public void setPan(float panning)
 		{
 			mPanning = panning;
 		}
-		public virtual float getRightToLeft()
+		public float getRightToLeft()
 		{
 			return mRightToLeft;
 		}
-		public virtual void setRightToLeft(float rightToLeft)
+		public void setRightToLeft(float rightToLeft)
 		{
 			mRightToLeft = rightToLeft;
 		}
-		public virtual float getRightToRight()
+		public float getRightToRight()
 		{
 			return mRightToRight;
 		}
-		public virtual void setRightToRight(float rightToRight)
+		public void setRightToRight(float rightToRight)
 		{
 			mRightToRight = rightToRight;
 		}
-		public virtual float getVolume()
+		public float getVolume()
 		{
 			return mVolume;
 		}
-		public virtual void setVolume(float volume)
+		public void setVolume(float volume)
 		{
 			mVolume = volume;
 		}

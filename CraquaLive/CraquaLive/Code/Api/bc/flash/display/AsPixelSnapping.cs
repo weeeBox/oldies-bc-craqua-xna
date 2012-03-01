@@ -4,7 +4,7 @@ using bc.flash;
  
 namespace bc.flash.display
 {
-	public class AsPixelSnapping : AsObject
+	public sealed class AsPixelSnapping : AsObject
 	{
 		public static String NEVER = "never";
 		public static String ALWAYS = "always";

@@ -5,7 +5,7 @@ using bc.flash.error;
  
 namespace bc.flash.events
 {
-	public class AsTouchPhase : AsObject
+	public sealed class AsTouchPhase : AsObject
 	{
 		public static String HOVER = "hover";
 		public static String BEGAN = "began";

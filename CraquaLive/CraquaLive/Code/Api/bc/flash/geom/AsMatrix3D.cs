@@ -9,82 +9,86 @@ namespace bc.flash.geom
 {
     public sealed class AsMatrix3D : AsObject
     {
-        public Matrix innerMatrix;
+        public Matrix internalMatrix;
 
         public AsMatrix3D(AsVector<float> v)
         {
-            innerMatrix.M11 = v[0];
-            innerMatrix.M12 = v[1];
-            innerMatrix.M13 = v[2];
-            innerMatrix.M14 = 0;
+            internalMatrix.M11 = v[0];
+            internalMatrix.M12 = v[1];
+            internalMatrix.M13 = v[2];
+            internalMatrix.M14 = 0;
 
-            innerMatrix.M21 = v[4];
-            innerMatrix.M22 = v[5];
-            innerMatrix.M23 = v[6];
-            innerMatrix.M24 = 0;
+            internalMatrix.M21 = v[4];
+            internalMatrix.M22 = v[5];
+            internalMatrix.M23 = v[6];
+            internalMatrix.M24 = 0;
 
-            innerMatrix.M31 = v[8];
-            innerMatrix.M32 = v[9];
-            innerMatrix.M33 = v[10];
-            innerMatrix.M34 = 0;
+            internalMatrix.M31 = v[8];
+            internalMatrix.M32 = v[9];
+            internalMatrix.M33 = v[10];
+            internalMatrix.M34 = 0;
 
-            innerMatrix.M41 = v[12];
-            innerMatrix.M42 = v[13];
-            innerMatrix.M43 = v[14];
-            innerMatrix.M44 = 1;
+            internalMatrix.M41 = v[12];
+            internalMatrix.M42 = v[13];
+            internalMatrix.M43 = v[14];
+            internalMatrix.M44 = 1;
         }
 
         public AsMatrix3D()
         {
-            innerMatrix = Matrix.Identity;
+            internalMatrix = Matrix.Identity;
         }
 
         private AsMatrix3D(ref Matrix matrix)
         {
-            innerMatrix = matrix;
+            internalMatrix = matrix;
         }
 
         public void append(AsMatrix3D lhs)
         {
-            append(ref lhs.innerMatrix);
+            append(ref lhs.internalMatrix);
         }
 
         private void append(ref Matrix matrix)
         {
-            Matrix.Multiply(ref innerMatrix, ref matrix, out innerMatrix);
+            Matrix oldMatrix = internalMatrix;
+            Matrix.Multiply(ref oldMatrix, ref matrix, out internalMatrix);
         }
 
         public void appendRotation(float degrees, AsVector3D axis, AsVector3D pivotPoint)
         {
-            bool hasPivot = pivotPoint != null && (pivotPoint.x != 0.0f || pivotPoint.y != 0.0f || pivotPoint.z != 0.0f);
+            bool hasPivot = ((pivotPoint != null) && (((pivotPoint.x != 0.0f) || (pivotPoint.y != 0.0f)) || (pivotPoint.z != 0.0f)));
             if (hasPivot)
             {
                 appendTranslation(-pivotPoint.x, -pivotPoint.y, -pivotPoint.z);
             }
 
+            float radians = ((0.0055555555555556f * degrees) * AsMath.PI);
             float ax = axis.x;
             float ay = axis.y;
             float az = axis.z;
-
-            float radians = MathHelper.ToRadians(degrees);
-
-            if (ax == 0.0f && ay == 0.0f && az == 1.0f)
+            if ((((ax == 0.0f) && (ay == 0.0f)) && (az == 1.0f)))
             {
                 appendRotationZ(radians);
             }
-            else if (ax == 0.0f && ay == 1.0f && az == 0.0f)
-            {
-                appendRotationY(radians);
-            }
-            else if (ax == 1.0f && ay == 0.0f && az == 0.0f)
-            {
-                appendRotationX(radians);
-            }
             else
             {
-                throw new AsNotImplementedError();
+                if ((((ax == 0.0f) && (ay == 1.0f)) && (az == 0.0f)))
+                {
+                    appendRotationY(radians);
+                }
+                else
+                {
+                    if ((((ax == 1.0f) && (ay == 0.0f)) && (az == 0.0f)))
+                    {
+                        appendRotationX(radians);
+                    }
+                    else
+                    {
+                        throw new AsNotImplementedError();
+                    }
+                }
             }
-
             if (hasPivot)
             {
                 appendTranslation(pivotPoint.x, pivotPoint.y, pivotPoint.z);
@@ -128,7 +132,7 @@ namespace bc.flash.geom
 
         public AsMatrix3D clone()
         {
-            return new AsMatrix3D(ref innerMatrix);
+            return new AsMatrix3D(ref internalMatrix);
         }
 
         public void copyColumnFrom(uint column, AsVector3D vector3D)
@@ -143,7 +147,7 @@ namespace bc.flash.geom
 
         public void copyFrom(AsMatrix3D sourceMatrix3D)
         {
-            innerMatrix = sourceMatrix3D.innerMatrix;
+            internalMatrix = sourceMatrix3D.internalMatrix;
         }
 
         public void copyRawDataFrom(AsVector<float> vector, uint index, bool transpose)
@@ -188,7 +192,7 @@ namespace bc.flash.geom
 
         public void copyToMatrix3D(AsMatrix3D dest)
         {
-            dest.innerMatrix = innerMatrix;
+            dest.internalMatrix = internalMatrix;
         }
 
         public AsVector<AsVector3D> decompose(String orientationStyle)
@@ -203,15 +207,15 @@ namespace bc.flash.geom
 
         public AsVector3D deltaTransformVector(AsVector3D v)
         {
-            float x = v.x;
-            float y = v.y;
-            float z = v.z;
-            return new AsVector3D((((m11 * x) + (m12 * y)) + (m13 * z)), (((m21 * x) + (m22 * y)) + (m23 * z)), (((m31 * x) + (m32 * y)) + (m33 * z)));
+            float nx = v.x * internalMatrix.M11 + v.y * internalMatrix.M21 + v.z * internalMatrix.M31;
+            float ny = v.x * internalMatrix.M12 + v.y * internalMatrix.M22 + v.z * internalMatrix.M32;
+            float nz = v.x * internalMatrix.M13 + v.y * internalMatrix.M23 + v.z * internalMatrix.M33;
+            return new AsVector3D(nx, ny, nz);
         }
 
         public void identity()
         {
-            innerMatrix = Matrix.Identity;
+            internalMatrix = Matrix.Identity;
         }
 
         public static AsMatrix3D interpolate(AsMatrix3D thisMat, AsMatrix3D toMat, float percent)
@@ -246,45 +250,49 @@ namespace bc.flash.geom
 
         public void prepend(AsMatrix3D rhs)
         {
-            prepend(ref rhs.innerMatrix);
+            prepend(ref rhs.internalMatrix);
         }
 
         private void prepend(ref Matrix matrix)
         {
-            Matrix.Multiply(ref matrix, ref innerMatrix, out innerMatrix);
+            Matrix oldMatrix = internalMatrix;
+            Matrix.Multiply(ref matrix, ref oldMatrix, out internalMatrix);
         }
 
         public void prependRotation(float degrees, AsVector3D axis, AsVector3D pivotPoint)
         {
-            bool hasPivot = pivotPoint != null && (pivotPoint.x != 0.0f || pivotPoint.y != 0.0f || pivotPoint.z != 0.0f);
+            bool hasPivot = ((pivotPoint != null) && (((pivotPoint.x != 0.0f) || (pivotPoint.y != 0.0f)) || (pivotPoint.z != 0.0f)));
             if (hasPivot)
             {
                 prependTranslation(-pivotPoint.x, -pivotPoint.y, -pivotPoint.z);
             }
 
+            float radians = ((0.0055555555555556f * degrees) * AsMath.PI);
             float ax = axis.x;
             float ay = axis.y;
             float az = axis.z;
-
-            float radians = MathHelper.ToRadians(degrees);
-
-            if (ax == 0.0f && ay == 0.0f && az == 1.0f)
+            if ((((ax == 0.0f) && (ay == 0.0f)) && (az == 1.0f)))
             {
                 prependRotationZ(radians);
             }
-            else if (ax == 0.0f && ay == 1.0f && az == 0.0f)
-            {
-                prependRotationY(radians);
-            }
-            else if (ax == 1.0f && ay == 0.0f && az == 0.0f)
-            {
-                prependRotationX(radians);
-            }
             else
             {
-                throw new AsNotImplementedError();
+                if ((((ax == 0.0f) && (ay == 1.0f)) && (az == 0.0f)))
+                {
+                    prependRotationY(radians);
+                }
+                else
+                {
+                    if ((((ax == 1.0f) && (ay == 0.0f)) && (az == 0.0f)))
+                    {
+                        prependRotationX(radians);
+                    }
+                    else
+                    {
+                        throw new AsNotImplementedError();
+                    }
+                }
             }
-
             if (hasPivot)
             {
                 prependTranslation(pivotPoint.x, pivotPoint.y, pivotPoint.z);
@@ -338,11 +346,12 @@ namespace bc.flash.geom
 
         public AsVector3D transformVector(AsVector3D v)
         {
-            float x = v.x;
-            float y = v.y;
-            float z = v.z;
-            return new AsVector3D(((((m11 * x) + (m12 * y)) + (m13 * z)) + t.x), ((((m21 * x) + (m22 * y)) + (m23 * z)) + t.y), ((((m31 * x) + (m32 * y)) + (m33 * z)) + t.z));
+            float nx = v.x * internalMatrix.M11 + v.y * internalMatrix.M21 + v.z * internalMatrix.M31 + internalMatrix.M41;
+            float ny = v.x * internalMatrix.M12 + v.y * internalMatrix.M22 + v.z * internalMatrix.M32 + internalMatrix.M42;
+            float nz = v.x * internalMatrix.M13 + v.y * internalMatrix.M23 + v.z * internalMatrix.M33 + internalMatrix.M43;
+            return new AsVector3D(nx, ny, nz);
         }
+
         public void transformVectors(AsVector<float> vin, AsVector<float> vout)
         {
             int len = (int)(vin.getLength());
@@ -358,28 +367,34 @@ namespace bc.flash.geom
             for (; (i < len); i = (i + 3))
             {
                 float x = vin[i];
-                float y = vin[(i + 1)];
-                float z = vin[(i + 2)];
-                vout[i] = ((((m11 * x) + (m12 * y)) + (m13 * z)) + t.x);
-                vout[(i + 1)] = ((((m21 * x) + (m22 * y)) + (m23 * z)) + t.y);
-                vout[(i + 2)] = ((((m31 * x) + (m32 * y)) + (m33 * z)) + t.z);
+                float y = vin[i + 1];
+                float z = vin[i + 2];
+
+                vout[i] = x * internalMatrix.M11 + y * internalMatrix.M21 + z * internalMatrix.M31 + internalMatrix.M41;
+                vout[i + 1] = x * internalMatrix.M12 + y * internalMatrix.M22 + z * internalMatrix.M32 + internalMatrix.M42;
+                vout[i + 2] = x * internalMatrix.M13 + y * internalMatrix.M23 + z * internalMatrix.M33 + internalMatrix.M43;
             }
         }
+
         public void transpose()
         {
-            throw new AsNotImplementedError();
+            Matrix oldMatrix = internalMatrix;
+            Matrix.Transpose(ref oldMatrix, out internalMatrix);
         }
+
         public float getDeterminant()
         {
-            throw new AsNotImplementedError();
+            return internalMatrix.Determinant();
         }
+
         public AsVector3D getPosition()
         {
-            return t;
+            return new AsVector3D(internalMatrix.M41, internalMatrix.M42, internalMatrix.M43);
         }
+
         public AsVector<float> getRawData()
         {
-            return new AsVector<float>(m11, m21, m31, 0, m12, m22, m32, 0, m13, m23, m33, 0, t.x, t.y, t.z, 1);
+            throw new NotImplementedException();
         }
     }
 }

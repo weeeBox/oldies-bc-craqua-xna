@@ -4,7 +4,7 @@ using bc.flash;
  
 namespace bc.flash.ui
 {
-	public class AsKeyboard : AsObject
+	public sealed class AsKeyboard : AsObject
 	{
 		public static String KEYNAME_UPARROW = "Up";
 		public static String KEYNAME_DOWNARROW = "Down";

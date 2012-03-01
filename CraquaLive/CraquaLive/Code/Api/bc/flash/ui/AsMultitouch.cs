@@ -5,7 +5,7 @@ using bc.flash.ui;
  
 namespace bc.flash.ui
 {
-	public class AsMultitouch : AsObject
+	public sealed class AsMultitouch : AsObject
 	{
 		private static String mInputMode = AsMultitouchInputMode.NONE;
 		public static String getInputMode()

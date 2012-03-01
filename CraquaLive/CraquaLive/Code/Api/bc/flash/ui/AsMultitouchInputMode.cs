@@ -4,7 +4,7 @@ using bc.flash;
  
 namespace bc.flash.ui
 {
-	public class AsMultitouchInputMode : AsObject
+	public sealed class AsMultitouchInputMode : AsObject
 	{
 		public static String NONE = "none";
 		public static String GESTURE = "gesture";

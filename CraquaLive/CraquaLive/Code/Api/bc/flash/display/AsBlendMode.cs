@@ -4,7 +4,7 @@ using bc.flash;
  
 namespace bc.flash.display
 {
-	public class AsBlendMode : AsObject
+	public sealed class AsBlendMode : AsObject
 	{
 		public static String NORMAL = "normal";
 		public static String LAYER = "layer";

@@ -4,7 +4,7 @@ using bc.flash;
  
 namespace bc.flash.ui
 {
-	public class AsMouse : AsObject
+	public sealed class AsMouse : AsObject
 	{
 		private static String mCursor;
 		private static bool mHidden;
