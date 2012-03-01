@@ -134,7 +134,7 @@ namespace bc.flash.geom
             float len = getLength();
             if (epsilonEquals(len, 0.0f))
             {
-                throw new AsIllegalOperationError("Unable to normalize vector with zero length");
+                throw new AsIllegalOperationError("Unable to normalize vector with zero lenght");
             }
             float lenInv = (1.0f / getLength());
             x = (x * lenInv);
