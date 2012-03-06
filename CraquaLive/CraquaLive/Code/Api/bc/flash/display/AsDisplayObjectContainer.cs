@@ -6,6 +6,7 @@ using bc.flash.display;
 using bc.flash.error;
 using bc.flash.events;
 using bc.flash.geom;
+using bc.flash.utils;
  
 namespace bc.flash.display
 {
@@ -221,10 +222,10 @@ namespace bc.flash.display
 				}
 				else
 				{
-					float minX = 1000000;
-					float maxX = -1000000;
-					float minY = 1000000;
-					float maxY = -1000000;
+					float minX = AsMathHelper.MAX_NUMBER;
+					float maxX = -AsMathHelper.MAX_NUMBER;
+					float minY = AsMathHelper.MAX_NUMBER;
+					float maxY = -AsMathHelper.MAX_NUMBER;
 					int i = 0;
 					for (; (i < numChildren); ++i)
 					{
@@ -284,7 +285,7 @@ namespace bc.flash.display
 				if(((((child.getAlpha() != 0.0f) && child.getVisible()) && (child.getScaleX() != 0.0f)) && (child.getScaleY() != 0.0f)))
 				{
 					support.pushMatrix();
-					support.transformMatrix(child);
+					support.transform(child.getTransform().getMatrix());
 					child.render(support, alpha);
 					support.popMatrix();
 				}

@@ -4,6 +4,7 @@ using bc.flash;
 using bc.flash.core;
 using bc.flash.display;
 using bc.flash.geom;
+using bc.flash.utils;
  
 namespace bc.flash.display
 {
@@ -12,18 +13,14 @@ namespace bc.flash.display
 		private AsBitmapData mBitmapData;
 		private String mPixelSnapping;
 		private bool mSmoothing;
-		private static AsMatrix sHelperMatrix = new AsMatrix();
 		private static AsPoint sHelperPoint = new AsPoint();
+		private static AsMatrix sHelperMatrix = new AsMatrix();
+		private static AsPoint sPosition = new AsPoint();
 		public AsBitmap(AsBitmapData bitmapData, String pixelSnapping, bool smoothing)
 		{
 			mBitmapData = bitmapData;
 			mPixelSnapping = pixelSnapping;
 			mSmoothing = smoothing;
-			if((bitmapData != null))
-			{
-				setWidth(bitmapData.getWidth());
-				setHeight(bitmapData.getHeight());
-			}
 		}
 		public AsBitmap(AsBitmapData bitmapData, String pixelSnapping)
 		 : this(bitmapData, pixelSnapping, false)
@@ -39,7 +36,6 @@ namespace bc.flash.display
 		}
 		public override void render(AsRenderSupport support, float alpha)
 		{
-			base.render(support, alpha);
 		}
 		public override AsRectangle getBounds(AsDisplayObject targetSpace, AsRectangle resultRect)
 		{
@@ -47,17 +43,48 @@ namespace bc.flash.display
 			{
 				resultRect = new AsRectangle();
 			}
+			if((targetSpace == this))
+			{
+				resultRect.x = getX();
+				resultRect.y = getY();
+				resultRect.width = mBitmapData.getWidth();
+				resultRect.height = mBitmapData.getHeight();
+				return resultRect;
+			}
+			float minX = AsMathHelper.MAX_NUMBER;
+			float maxX = -AsMathHelper.MAX_NUMBER;
+			float minY = AsMathHelper.MAX_NUMBER;
+			float maxY = -AsMathHelper.MAX_NUMBER;
 			getTransformationMatrix(targetSpace, sHelperMatrix);
-			sHelperPoint.x = getX();
-			sHelperPoint.y = getY();
-			AsGlobal.transformCoords(sHelperMatrix, 0.0f, 0.0f, sHelperPoint);
-			resultRect.x = sHelperPoint.x;
-			resultRect.y = sHelperPoint.y;
-			sHelperPoint.x = (getX() + mBitmapData.getWidth());
-			sHelperPoint.y = (getY() + mBitmapData.getHeight());
-			AsGlobal.transformCoords(sHelperMatrix, 0.0f, 0.0f, sHelperPoint);
-			resultRect.width = sHelperPoint.x;
-			resultRect.height = sHelperPoint.y;
+			sPosition.x = getX();
+			sPosition.y = getY();
+			AsGlobal.transformCoords(sHelperMatrix, sPosition.x, sPosition.y, sHelperPoint);
+			minX = (((minX < sHelperPoint.x)) ? (minX) : (sHelperPoint.x));
+			maxX = (((maxX > sHelperPoint.x)) ? (maxX) : (sHelperPoint.x));
+			minY = (((minY < sHelperPoint.y)) ? (minY) : (sHelperPoint.y));
+			maxY = (((maxY > sHelperPoint.y)) ? (maxY) : (sHelperPoint.y));
+			sPosition.x = (sPosition.x + getBitmapData().getWidth());
+			AsGlobal.transformCoords(sHelperMatrix, sPosition.x, sPosition.y, sHelperPoint);
+			minX = (((minX < sHelperPoint.x)) ? (minX) : (sHelperPoint.x));
+			maxX = (((maxX > sHelperPoint.x)) ? (maxX) : (sHelperPoint.x));
+			minY = (((minY < sHelperPoint.y)) ? (minY) : (sHelperPoint.y));
+			maxY = (((maxY > sHelperPoint.y)) ? (maxY) : (sHelperPoint.y));
+			sPosition.y = (sPosition.y + getBitmapData().getHeight());
+			AsGlobal.transformCoords(sHelperMatrix, sPosition.x, sPosition.y, sHelperPoint);
+			minX = (((minX < sHelperPoint.x)) ? (minX) : (sHelperPoint.x));
+			maxX = (((maxX > sHelperPoint.x)) ? (maxX) : (sHelperPoint.x));
+			minY = (((minY < sHelperPoint.y)) ? (minY) : (sHelperPoint.y));
+			maxY = (((maxY > sHelperPoint.y)) ? (maxY) : (sHelperPoint.y));
+			sPosition.x = getX();
+			AsGlobal.transformCoords(sHelperMatrix, sPosition.x, sPosition.y, sHelperPoint);
+			minX = (((minX < sHelperPoint.x)) ? (minX) : (sHelperPoint.x));
+			maxX = (((maxX > sHelperPoint.x)) ? (maxX) : (sHelperPoint.x));
+			minY = (((minY < sHelperPoint.y)) ? (minY) : (sHelperPoint.y));
+			maxY = (((maxY > sHelperPoint.y)) ? (maxY) : (sHelperPoint.y));
+			resultRect.x = minX;
+			resultRect.y = minY;
+			resultRect.width = (maxX - minX);
+			resultRect.height = (maxY - minY);
 			return resultRect;
 		}
 		public virtual AsRectangle getBounds(AsDisplayObject targetSpace)

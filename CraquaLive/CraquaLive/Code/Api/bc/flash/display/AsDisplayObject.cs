@@ -6,15 +6,16 @@ using bc.flash.display;
 using bc.flash.error;
 using bc.flash.events;
 using bc.flash.geom;
+using bc.flash.utils;
  
 namespace bc.flash.display
 {
 	public class AsDisplayObject : AsEventDispatcher, AsIBitmapDrawable
 	{
-		private float mX;
-		private float mY;
 		private float mPivotX;
 		private float mPivotY;
+		private float mX;
+		private float mY;
 		private float mScaleX;
 		private float mScaleY;
 		private float mRotation;
@@ -24,13 +25,12 @@ namespace bc.flash.display
 		private String mName;
 		private float mLastTouchTimestamp;
 		private AsDisplayObjectContainer mParent;
+		private AsRectangle mScrollRect;
+		private AsTransform mTransform;
 		private static AsVector<AsDisplayObject> sAncestors = new AsVector<AsDisplayObject>();
 		private static AsRectangle sHelperRect = new AsRectangle();
 		private static AsMatrix sHelperMatrix = new AsMatrix();
 		private static AsMatrix sTargetMatrix = new AsMatrix();
-		protected static int sRectCount = 0;
-		private AsRectangle mScrollRect;
-		private AsTransform mTransform;
 		public AsDisplayObject()
 		{
 			if((AsGlobal.getQualifiedClassName(this) == "starling.display::DisplayObject"))
@@ -62,6 +62,33 @@ namespace bc.flash.display
 		{
 			removeFromParent(false);
 		}
+		public virtual AsRectangle getBounds(AsDisplayObject targetSpace, AsRectangle resultRect)
+		{
+			throw new AsAbstractMethodError("Method needs to be implemented in subclass");
+		}
+		public virtual AsRectangle getBounds(AsDisplayObject targetSpace)
+		{
+			return getBounds(targetSpace, null);
+		}
+		public virtual AsDisplayObject hitTest(AsPoint localPoint, bool forTouch)
+		{
+			if((forTouch && (!(mVisible) || !(mTouchable))))
+			{
+				return null;
+			}
+			if(getBounds(this, sHelperRect).containsPoint(localPoint))
+			{
+				return this;
+			}
+			else
+			{
+				return null;
+			}
+		}
+		public virtual AsDisplayObject hitTest(AsPoint localPoint)
+		{
+			return hitTest(localPoint, false);
+		}
 		public virtual AsMatrix getTransformationMatrix(AsDisplayObject targetSpace, AsMatrix resultMatrix)
 		{
 			if((resultMatrix) != null)
@@ -72,8 +99,7 @@ namespace bc.flash.display
 			{
 				resultMatrix = new AsMatrix();
 			}
-			AsDisplayObject commonParent = null;
-			AsDisplayObject currentObject = null;
+			AsDisplayObject currentObject = this;
 			if((targetSpace == this))
 			{
 				return resultMatrix;
@@ -92,7 +118,7 @@ namespace bc.flash.display
 					}
 					if((mRotation != 0.0f))
 					{
-						resultMatrix.rotate(mRotation);
+						resultMatrix.rotate(AsMathHelper.toRadians(mRotation));
 					}
 					if(((mX != 0.0f) || (mY != 0.0f)))
 					{
@@ -125,8 +151,7 @@ namespace bc.flash.display
 				}
 			}
 			sAncestors.setLength(0);
-			commonParent = null;
-			currentObject = this;
+			AsDisplayObject commonParent = null;
 			while((currentObject) != null)
 			{
 				sAncestors.push(currentObject);
@@ -167,33 +192,6 @@ namespace bc.flash.display
 		public virtual AsMatrix getTransformationMatrix(AsDisplayObject targetSpace)
 		{
 			return getTransformationMatrix(targetSpace, null);
-		}
-		public virtual AsRectangle getBounds(AsDisplayObject targetSpace, AsRectangle resultRect)
-		{
-			throw new AsAbstractMethodError("Method needs to be implemented in subclass");
-		}
-		public virtual AsRectangle getBounds(AsDisplayObject targetSpace)
-		{
-			return getBounds(targetSpace, null);
-		}
-		public virtual AsDisplayObject hitTest(AsPoint localPoint, bool forTouch)
-		{
-			if((forTouch && (!(mVisible) || !(mTouchable))))
-			{
-				return null;
-			}
-			if(getBounds(this, sHelperRect).containsPoint(localPoint))
-			{
-				return this;
-			}
-			else
-			{
-				return null;
-			}
-		}
-		public virtual AsDisplayObject hitTest(AsPoint localPoint)
-		{
-			return hitTest(localPoint, false);
 		}
 		public virtual AsPoint localToGlobal(AsPoint localPoint)
 		{
@@ -247,14 +245,6 @@ namespace bc.flash.display
 		public virtual void dispatchEventOnChildren(AsEvent _event)
 		{
 			dispatchEvent(_event);
-		}
-		public virtual AsMatrix getTransformationMatrix()
-		{
-			return getTransformationMatrix(mParent);
-		}
-		public virtual AsRectangle getBounds()
-		{
-			return getBounds(mParent);
 		}
 		public virtual float getWidth()
 		{
@@ -353,13 +343,13 @@ namespace bc.flash.display
 		}
 		public virtual void setRotation(float _value)
 		{
-			while((_value < -AsMath.PI))
+			while((_value < -180))
 			{
-				_value = (_value + (AsMath.PI * 2.0f));
+				_value = (_value + 360);
 			}
-			while((_value > AsMath.PI))
+			while((_value > 180))
 			{
-				_value = (_value - (AsMath.PI * 2.0f));
+				_value = (_value - 360);
 			}
 			mRotation = _value;
 		}

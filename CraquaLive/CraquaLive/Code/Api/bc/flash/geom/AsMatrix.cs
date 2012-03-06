@@ -11,72 +11,87 @@ namespace bc.flash.geom
     {
         public Matrix internalMatrix;
 
+        public AsMatrix(ref Matrix matrix)
+        {
+            internalMatrix = matrix;
+        }
+
         public AsMatrix(float a, float b, float c, float d, float tx, float ty)
         {
             setTo(a, b, c, d, tx, ty);
         }
+
         public AsMatrix(float a, float b, float c, float d, float tx)
-            : this(a, b, c, d, tx, 0)
         {
+            setTo(a, b, c, d, tx, 0);
         }
+
         public AsMatrix(float a, float b, float c, float d)
-            : this(a, b, c, d, 0, 0)
         {
+            setTo(a, b, c, d, 0, 0);
         }
+
         public AsMatrix(float a, float b, float c)
-            : this(a, b, c, 1, 0, 0)
         {
+            setTo(a, b, c, 1, 0, 0);
         }
+
         public AsMatrix(float a, float b)
-            : this(a, b, 0, 1, 0, 0)
         {
+            setTo(a, b, 0, 1, 0, 0);
         }
+
         public AsMatrix(float a)
-            : this(a, 0, 0, 1, 0, 0)
         {
+            setTo(a, 0, 0, 1, 0, 0);
         }
+
         public AsMatrix()
-            : this(1, 0, 0, 1, 0, 0)
         {
+            internalMatrix = Matrix.Identity;
         }
+
         public AsMatrix clone()
         {
-            return new AsMatrix(a, b, c, d, tx, ty);
+            return new AsMatrix(ref internalMatrix);
         }
+
         public void concat(AsMatrix m)
         {
-            concatValues(m.a, m.b, m.c, m.d, m.tx, m.ty);
+            concat(ref m.internalMatrix);
         }
-        public void concatValues(float a, float b, float c, float d, float tx, float ty)
+
+        public void concat(ref Matrix m)
         {
-            float na = this.a * a + this.c * b;
-            float nb = this.b * a + this.d * b;
-            float nc = this.a * c + this.c * d;
-            float nd = this.b * c + this.d * d;
-            float ntx = this.tx * a + this.ty * b + tx;
-            float nty = this.tx * c + this.ty * d + ty;
-            setTo(na, nb, nc, nd, ntx, nty);
+            Matrix oldMatrix = internalMatrix;
+            Matrix.Multiply(ref oldMatrix, ref m, out internalMatrix);
         }
+
         public void copyColumnFrom(uint column, AsVector3D vector3D)
         {
             throw new AsNotImplementedError();
         }
+
         public void copyColumnTo(uint column, AsVector3D vector3D)
         {
             throw new AsNotImplementedError();
         }
+
         public void copyFrom(AsMatrix sourceMatrix)
         {
-            setTo(sourceMatrix.a, sourceMatrix.b, sourceMatrix.c, sourceMatrix.d, sourceMatrix.tx, sourceMatrix.ty);
+            internalMatrix = sourceMatrix.internalMatrix;
         }
+
         public void copyRowFrom(uint row, AsVector3D vector3D)
         {
             throw new AsNotImplementedError();
         }
+
         public void copyRowTo(uint row, AsVector3D vector3D)
         {
             throw new AsNotImplementedError();
         }
+
         public void createBox(float scaleX, float scaleY, float rotation, float tx, float ty)
         {
             identity();
@@ -84,66 +99,82 @@ namespace bc.flash.geom
             scale(scaleX, scaleY);
             translate(tx, ty);
         }
+
         public void createBox(float scaleX, float scaleY, float rotation, float tx)
         {
             createBox(scaleX, scaleY, rotation, tx, 0);
         }
+
         public void createBox(float scaleX, float scaleY, float rotation)
         {
             createBox(scaleX, scaleY, rotation, 0, 0);
         }
+
         public void createBox(float scaleX, float scaleY)
         {
             createBox(scaleX, scaleY, 0, 0, 0);
         }
+
         public void createGradientBox(float width, float height, float rotation, float tx, float ty)
         {
             throw new AsNotImplementedError();
         }
+
         public void createGradientBox(float width, float height, float rotation, float tx)
         {
             createGradientBox(width, height, rotation, tx, 0);
         }
+
         public void createGradientBox(float width, float height, float rotation)
         {
             createGradientBox(width, height, rotation, 0, 0);
         }
+
         public void createGradientBox(float width, float height)
         {
             createGradientBox(width, height, 0, 0, 0);
         }
+
         public AsPoint deltaTransformPoint(AsPoint point)
         {
-            float nx = point.x * a + point.y * b;
-            float ny = point.x * c + point.y * d;
+            float nx = point.x * a + point.y * c;
+            float ny = point.x * b + point.y * d;
             return new AsPoint(nx, ny);
         }
+
         public void identity()
         {
-            setTo(1, 0, 0, 1, 0, 0);
+            internalMatrix = Matrix.Identity;
         }
+
         public void invert()
         {
-            throw new AsNotImplementedError();
+            Matrix oldMatrix = internalMatrix;
+            Matrix.Invert(ref oldMatrix, out internalMatrix);
         }
+
         public void rotate(float angle)
         {
-            float cosA = AsMath.cos(angle);
-            float sinA = AsMath.sin(angle);
-            concatValues(cosA, sinA, -sinA, cosA, 0, 0);
+            Matrix transformMatrix;
+            Matrix.CreateRotationZ(angle, out transformMatrix);
+            concat(ref transformMatrix);
         }
+
         public void scale(float sx, float sy)
         {
-            concatValues(sx, 0, 0, sy, 0, 0);
+            Matrix transformMatrix;
+            Matrix.CreateScale(sx, sy, 1.0f, out transformMatrix);
+            concat(ref transformMatrix);
         }
+
         public void setTo(float a, float b, float c, float d, float tx, float ty)
         {
             internalMatrix.M11 = a;
-            internalMatrix.M12 = c;
+            internalMatrix.M12 = b;
             internalMatrix.M13 = 0;
             internalMatrix.M14 = 0;
 
-            internalMatrix.M21 = b;
+            internalMatrix.M21 = c;
             internalMatrix.M22 = d;
             internalMatrix.M23 = 0;
             internalMatrix.M24 = 0;
@@ -158,15 +189,19 @@ namespace bc.flash.geom
             internalMatrix.M43 = 0;
             internalMatrix.M44 = 1;
         }
+
         public AsPoint transformPoint(AsPoint point)
         {
-            float nx = point.x * a + point.y * b + tx;
-            float ny = point.x * c + point.y * d + ty;
+            float nx = point.x * a + point.y * c + tx;
+            float ny = point.x * b + point.y * d + ty;
             return new AsPoint(nx, ny);
         }
+
         public void translate(float dx, float dy)
         {
-            concatValues(1, 0, 0, 1, dx, dy);
+            Matrix transformMatrix;
+            Matrix.CreateTranslation(dx, dy, 0.0f, out transformMatrix);
+            concat(ref transformMatrix);
         }
 
         public float a
@@ -174,31 +209,26 @@ namespace bc.flash.geom
             get { return internalMatrix.M11; }
             set { internalMatrix.M11 = value; }
         }
-
         public float b
-        {
-            get { return internalMatrix.M21; }
-            set { internalMatrix.M21 = value; }
-        }
-
-        public float c
         {
             get { return internalMatrix.M12; }
             set { internalMatrix.M12 = value; }
         }
-
+        public float c
+        {
+            get { return internalMatrix.M21; }
+            set { internalMatrix.M21 = value; }
+        }
         public float d
         {
             get { return internalMatrix.M22; }
             set { internalMatrix.M22 = value; }
         }
-
         public float tx
         {
             get { return internalMatrix.M41; }
             set { internalMatrix.M41 = value; }
         }
-
         public float ty
         {
             get { return internalMatrix.M42; }

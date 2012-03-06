@@ -149,5 +149,9 @@ namespace bc.flash.geom
 		{
 			throw new AsNotImplementedError();
 		}
+		public virtual String toString()
+		{
+			return (((((((("(x=" + x) + ", y=") + y) + ", w=") + width) + ", h=") + height) + ")");
+		}
 	}
 }

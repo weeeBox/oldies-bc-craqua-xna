@@ -2,6 +2,7 @@ using System;
  
 using bc.flash;
 using bc.flash.display;
+using bc.flash.error;
 using bc.flash.events;
 using bc.flash.geom;
  
@@ -18,7 +19,6 @@ namespace bc.flash.events
 		private String mPhase;
 		private AsDisplayObject mTarget;
 		private float mTimestamp;
-		private static AsMatrix sHelperMatrix = new AsMatrix();
 		public AsTouch(int id, float globalX, float globalY, String phase, AsDisplayObject target)
 		{
 			mID = id;
@@ -30,15 +30,11 @@ namespace bc.flash.events
 		}
 		public virtual AsPoint getLocation(AsDisplayObject space)
 		{
-			AsPoint point = new AsPoint(mGlobalX, mGlobalY);
-			mTarget.getRoot().getTransformationMatrix(space, sHelperMatrix);
-			return sHelperMatrix.transformPoint(point);
+			throw new AsNotImplementedError();
 		}
 		public virtual AsPoint getPreviousLocation(AsDisplayObject space)
 		{
-			AsPoint point = new AsPoint(mPreviousGlobalX, mPreviousGlobalY);
-			mTarget.getRoot().getTransformationMatrix(space, sHelperMatrix);
-			return sHelperMatrix.transformPoint(point);
+			throw new AsNotImplementedError();
 		}
 		public virtual AsTouch clone()
 		{

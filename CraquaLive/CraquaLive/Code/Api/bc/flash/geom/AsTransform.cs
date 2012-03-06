@@ -11,10 +11,13 @@ namespace bc.flash.geom
 	{
 		private AsDisplayObject mDisplayObject;
 		private AsColorTransform mColorTransform;
+		private AsMatrix mMatrix;
+		private AsMatrix3D mMatrix3D;
 		public AsTransform(AsDisplayObject displayObject)
 		{
 			mDisplayObject = displayObject;
 			mColorTransform = new AsColorTransform();
+			mMatrix = new AsMatrix();
 		}
 		public virtual AsColorTransform getColorTransform()
 		{
@@ -34,11 +37,20 @@ namespace bc.flash.geom
 		}
 		public virtual AsMatrix getMatrix()
 		{
-			throw new AsNotImplementedError();
+			mMatrix = mDisplayObject.getTransformationMatrix(mDisplayObject.getParent());
+			return mMatrix;
 		}
 		public virtual void setMatrix(AsMatrix _value)
 		{
-			throw new AsNotImplementedError();
+			mMatrix = _value;
+		}
+		public virtual AsMatrix3D getMatrix3D()
+		{
+			return mMatrix3D;
+		}
+		public virtual void setMatrix3D(AsMatrix3D m)
+		{
+			mMatrix3D = m;
 		}
 	}
 }
