@@ -48,7 +48,7 @@ namespace bc.flash.display
 
         public virtual void draw(AsIBitmapDrawable source, AsMatrix matrix, AsColorTransform colorTransform, String blendMode, AsRectangle clipRect, bool smoothing)
         {
-            throw new AsAbstractClassError();
+            
         }
 
         public virtual void draw(AsIBitmapDrawable source, AsMatrix matrix, AsColorTransform colorTransform, String blendMode, AsRectangle clipRect)

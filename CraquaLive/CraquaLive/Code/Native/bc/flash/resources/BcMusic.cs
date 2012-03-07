@@ -19,12 +19,12 @@ namespace bc.flash.resources
 
         public override AsSoundChannel Play(float startTime, int loops, AsSoundTransform sndTransform)
         {
-            throw new NotImplementedException();
+            return new AsSoundChannel();
         }
 
         public override void Close()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void Dispose()

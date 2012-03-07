@@ -1,7 +1,6 @@
 using System;
  
 using bc.flash;
-using bc.flash.error;
 using bc.flash.events;
  
 namespace bc.flash.events
@@ -18,21 +17,25 @@ namespace bc.flash.events
 		public static String MOUSE_WHEEL = "mouseWheel";
 		public static String ROLL_OUT = "rollOut";
 		public static String ROLL_OVER = "rollOver";
-		public AsMouseEvent(String type, bool bubbles)
+		private float mX;
+		private float mY;
+		public AsMouseEvent(String type, float x, float y, bool bubbles)
 		 : base(type, bubbles)
 		{
+			mX = x;
+			mY = y;
 		}
-		public AsMouseEvent(String type)
-		 : this(type, false)
+		public AsMouseEvent(String type, float x, float y)
+		 : this(type, x, y, false)
 		{
 		}
 		public virtual float getStageX()
 		{
-			throw new AsNotImplementedError();
+			return mX;
 		}
 		public virtual float getStageY()
 		{
-			throw new AsNotImplementedError();
+			return mY;
 		}
 	}
 }

@@ -31,7 +31,7 @@ namespace bc.flash.media
 		}
 		public virtual void stop()
 		{
-			throw new AsNotImplementedError();
+			
 		}
 	}
 }

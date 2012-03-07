@@ -10,9 +10,16 @@ namespace bc.flash
 {
     public class AsGlobal
     {
+        private static int totalTime;
+
+        public static void setTimer(int time)
+        {
+            totalTime = time;
+        }
+
         public static int getTimer() 
         {
-            return System.DateTime.Now.Millisecond; 
+            return totalTime;
         }
 
         public static int parseInt(String s)

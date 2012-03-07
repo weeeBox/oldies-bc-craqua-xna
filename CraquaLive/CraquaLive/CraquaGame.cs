@@ -7,6 +7,7 @@ using bc.core.resources.loaders;
 using bc.game;
 using System.Diagnostics;
 using bc.ui;
+using bc.flash;
 
 namespace CraquaLive
 {
@@ -74,6 +75,8 @@ namespace CraquaLive
 
             if (app.isRunning())
             {
+                AsGlobal.setTimer((int)gameTime.TotalGameTime.TotalMilliseconds);
+
                 float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 app.Tick(deltaTime);
             }

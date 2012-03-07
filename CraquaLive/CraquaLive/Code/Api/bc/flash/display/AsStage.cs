@@ -175,15 +175,19 @@ namespace bc.flash.display
 		}
 		public virtual void touchDown(float x, float y, int touchId)
 		{
+			dispatchEvent(new AsMouseEvent(AsMouseEvent.MOUSE_DOWN, x, y));
 		}
 		public virtual void touchMove(float x, float y, int touchId)
 		{
+			dispatchEvent(new AsMouseEvent(AsMouseEvent.MOUSE_MOVE, x, y));
 		}
 		public virtual void touchDragged(float x, float y, int touchId)
 		{
+			dispatchEvent(new AsMouseEvent(AsMouseEvent.MOUSE_MOVE, x, y));
 		}
 		public virtual void touchUp(float x, float y, int touchId)
 		{
+			dispatchEvent(new AsMouseEvent(AsMouseEvent.MOUSE_UP, x, y));
 		}
 	}
 }
