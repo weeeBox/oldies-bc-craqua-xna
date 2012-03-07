@@ -236,7 +236,7 @@ namespace bc.flash.native
         {
             EndBatch();
             Matrix oldMatrix = matrix;
-            Matrix.Multiply(ref oldMatrix, ref t, out matrix);
+            Matrix.Multiply(ref t, ref oldMatrix, out matrix);
         }
 
         public static void Translate(float tx, float ty)
