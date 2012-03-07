@@ -232,31 +232,34 @@ namespace bc.flash.native
             matrix = Matrix.Identity;
         }
 
-        private static void AddTransform(Matrix t)
+        private static void AddTransform(ref Matrix t)
         {
             EndBatch();
-            matrix = Matrix.Multiply(t, matrix);
+            Matrix oldMatrix = matrix;
+            Matrix.Multiply(ref oldMatrix, ref t, out matrix);
         }
 
         public static void Translate(float tx, float ty)
         {
-            AddTransform(Matrix.CreateTranslation(tx, ty, 0.0f));
+            Matrix transformMatrix = Matrix.CreateTranslation(tx, ty, 0.0f);
+            AddTransform(ref transformMatrix);
         }
 
         public static void Rotate(float rad)
         {
-            AddTransform(Matrix.CreateRotationZ(rad));
+            Matrix transformMatrix = Matrix.CreateRotationZ(rad);
+            AddTransform(ref transformMatrix);            
         }
 
         public static void Scale(float sx, float sy)
         {
-            Matrix r = Matrix.CreateScale(sx, sy, 1.0f);
-            AddTransform(r);
+            Matrix transformMatrix = Matrix.CreateScale(sx, sy, 1.0f);
+            AddTransform(ref transformMatrix);            
         }
 
         public static void Transform(ref Matrix m)
         {
-            AddTransform(m);
+            AddTransform(ref m);
         }
 
         public static void ClearTransform()

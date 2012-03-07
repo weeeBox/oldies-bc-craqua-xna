@@ -197,6 +197,12 @@ namespace bc.flash.geom
             return new AsPoint(nx, ny);
         }
 
+        public void transformPointCords(float x, float y, AsPoint point)
+        {
+            point.x = x * a + y * c + tx;
+            point.y = x * b + y * d + ty;
+        }
+
         public void translate(float dx, float dy)
         {
             Matrix transformMatrix;

@@ -68,10 +68,7 @@ namespace bc.flash
         public static AsPoint transformCoords(AsMatrix matrix, float x, float y, AsPoint resultPoint)
         {
             if (resultPoint == null) resultPoint = new AsPoint();
-
-            resultPoint.x = matrix.a * x + matrix.c * y + matrix.tx;
-            resultPoint.y = matrix.d * y + matrix.b * x + matrix.ty;
-
+            matrix.transformPointCords(x, y, resultPoint);
             return resultPoint;
         }
 

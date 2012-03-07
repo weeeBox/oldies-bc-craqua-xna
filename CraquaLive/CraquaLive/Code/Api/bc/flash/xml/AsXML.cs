@@ -86,7 +86,7 @@ namespace bc.flash.xml
         {
             return null;
         }
-        public virtual bool hasOwnProperty(String name)
+        public override bool hasOwnProperty(String name)
         {
             return false;
         }
