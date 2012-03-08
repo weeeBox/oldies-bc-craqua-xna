@@ -62,9 +62,39 @@ namespace bc.flash
             return val;
         }
 
-        public static void trace(String s)
+        public static void trace(uint val)
         {
-            Console.WriteLine(s);
+            Debug.WriteLine(val);
+        }
+
+        public static void trace(int val)
+        {
+            Debug.WriteLine(val);
+        }
+
+        public static void trace(bool val)
+        {
+            Debug.WriteLine(val);
+        }
+
+        public static void trace(float val)
+        {
+            Debug.WriteLine(val);
+        }
+
+        public static void trace(double val)
+        {
+            Debug.WriteLine(val);
+        }
+
+        public static void trace(String val)
+        {
+            Debug.WriteLine(val);
+        }
+
+        public static void trace(Object val)
+        {
+            Debug.WriteLine(val);
         }
 
         public static String getQualifiedClassName(AsObject obj)

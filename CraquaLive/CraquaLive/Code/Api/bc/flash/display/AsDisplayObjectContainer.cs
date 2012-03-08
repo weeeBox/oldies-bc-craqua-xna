@@ -276,7 +276,7 @@ namespace bc.flash.display
 		}
 		public override void render(AsRenderSupport support, float alpha)
 		{
-			setAlpha((alpha * this.getAlpha()));
+			alpha = (alpha * this.getAlpha());
 			int numChildren = (int)(mChildren.getLength());
 			int i = 0;
 			for (; (i < numChildren); ++i)
