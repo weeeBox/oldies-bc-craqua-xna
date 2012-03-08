@@ -45,7 +45,7 @@ namespace bc.flash
 
         public static float atan2(float y, float x)
         {
-            return (float)Math.Atan2(x, y);
+            return (float)Math.Atan2(y, x);
         }
 
         public static float ceil(float x)
