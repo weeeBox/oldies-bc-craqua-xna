@@ -11,17 +11,17 @@ namespace bc.flash
 
     public class AsVector<T> : AsObject, IEnumerable<T>
     {
-        private List<T> mData;
+        public List<T> internalList;
 
         public AsVector(params T[] elements)
         {
-            mData = new List<T>(elements.Length);
+            internalList = new List<T>(elements.Length);
             init(elements);
         }
 
         public AsVector(uint length, bool _fixed)
         {
-            mData = new List<T>((int)length);
+            internalList = new List<T>((int)length);
             setLength(length);
         }
 
@@ -32,14 +32,14 @@ namespace bc.flash
 
         public AsVector()
         {
-            mData = new List<T>();
+            internalList = new List<T>();
         }
 
         public void init(params T[] values)
         {
             foreach (T obj in values)
             {
-                mData.Add(obj);
+                internalList.Add(obj);
             }
         }
 
@@ -47,13 +47,13 @@ namespace bc.flash
         {
             get
             {
-                Debug.Assert(i >= 0 && i < mData.Count, i + ">=" + 0 + "&&" + i + "<" + mData.Count);
-                return mData[i];
+                Debug.Assert(i >= 0 && i < internalList.Count, i + ">=" + 0 + "&&" + i + "<" + internalList.Count);
+                return internalList[i];
             }
             set
             {
-                Debug.Assert(i >= 0 && i < mData.Count, i + ">=" + 0 + "&&" + i + "<" + mData.Count);
-                mData[i] = value;
+                Debug.Assert(i >= 0 && i < internalList.Count, i + ">=" + 0 + "&&" + i + "<" + internalList.Count);
+                internalList[i] = value;
             }
         }
 
@@ -61,45 +61,45 @@ namespace bc.flash
         {
             get
             {
-                Debug.Assert(i >= 0 && i < mData.Count, i + ">=" + 0 + "&&" + i + "<" + mData.Count);
-                return mData[(int)i];
+                Debug.Assert(i >= 0 && i < internalList.Count, i + ">=" + 0 + "&&" + i + "<" + internalList.Count);
+                return internalList[(int)i];
             }
             set
             {
-                Debug.Assert(i >= 0 && i < mData.Count, i + ">=" + 0 + "&&" + i + "<" + mData.Count);
-                mData[(int)i] = value;
+                Debug.Assert(i >= 0 && i < internalList.Count, i + ">=" + 0 + "&&" + i + "<" + internalList.Count);
+                internalList[(int)i] = value;
             }
         }
 
         public virtual uint getLength()
         {
-            return (uint)mData.Count;
+            return (uint)internalList.Count;
         }
 
         public virtual void setLength(uint newLength)
         {
-            if (mData.Count > newLength)
+            if (internalList.Count > newLength)
             {
                 List<T> newData = new List<T>((int)newLength);
                 for (int i = 0; i < newLength; ++i)
                 {
-                    newData.Add(mData[i]);
+                    newData.Add(internalList[i]);
                 }
-                mData = newData;
+                internalList = newData;
             }
-            else if (mData.Count < newLength)
+            else if (internalList.Count < newLength)
             {
-                int diff = ((int)newLength) - mData.Count;
+                int diff = ((int)newLength) - internalList.Count;
                 for (int i = 0; i < diff; ++i)
                 {
-                    mData.Add(default(T));
+                    internalList.Add(default(T));
                 }
             }
         }
 
         public virtual int indexOf(T searchElement, int fromIndex)
         {
-            return mData.IndexOf(searchElement, fromIndex);
+            return internalList.IndexOf(searchElement, fromIndex);
         }
 
         public virtual int indexOf(T searchElement)
@@ -119,7 +119,7 @@ namespace bc.flash
 
         public virtual int lastIndexOf(T searchElement, int fromIndex)
         {
-            return mData.LastIndexOf(searchElement, fromIndex);
+            return internalList.LastIndexOf(searchElement, fromIndex);
         }
 
         public virtual int lastIndexOf(T searchElement)
@@ -129,16 +129,16 @@ namespace bc.flash
 
         public virtual T pop()
         {
-            Debug.Assert(mData.Count > 0);
-            int lastIndex = mData.Count - 1;
-            T lastElement = mData[lastIndex];
-            mData.RemoveAt(lastIndex);
+            Debug.Assert(internalList.Count > 0);
+            int lastIndex = internalList.Count - 1;
+            T lastElement = internalList[lastIndex];
+            internalList.RemoveAt(lastIndex);
             return lastElement;
         }
         public virtual int push(T arg)
         {
-            mData.Add(arg);
-            return mData.Count;
+            internalList.Add(arg);
+            return internalList.Count;
         }
         public virtual AsVector<T> reverse()
         {
@@ -154,7 +154,7 @@ namespace bc.flash
             T[] data = new T[count];
             for (int i = startIndex; i < endIndex; ++i)
             {
-                data[i] = mData[i];
+                data[i] = internalList[i];
             }
 
             return new AsVector<T>(data);
@@ -165,7 +165,7 @@ namespace bc.flash
         }
         public virtual AsVector<T> slice()
         {
-            return new AsVector<T>(mData.ToArray());
+            return new AsVector<T>(internalList.ToArray());
         }
         public AsVector<T> concat()
         {
@@ -174,7 +174,7 @@ namespace bc.flash
         public virtual AsVector<T> sort(AsVectorSorter<T> sorter)
         {
             ComparationHelper comparation = new ComparationHelper(sorter);
-            mData.Sort(comparation.compare);
+            internalList.Sort(comparation.compare);
             return this;
         }
         public virtual AsVector<T> splice(int startIndex)
@@ -191,7 +191,7 @@ namespace bc.flash
 
             if (deleteCount > 0)
             {
-                mData.RemoveRange(startIndex, (int)deleteCount);
+                internalList.RemoveRange(startIndex, (int)deleteCount);
             }            
             return this;
         }
@@ -204,19 +204,19 @@ namespace bc.flash
 
             if (deleteCount > 0)
             {
-                mData.RemoveRange(startIndex, (int)deleteCount);
+                internalList.RemoveRange(startIndex, (int)deleteCount);
             }
 
             if (elements.Length > 0)
             {
-                mData.InsertRange(startIndex, elements);
+                internalList.InsertRange(startIndex, elements);
             }
 
             return this;
         }
         public IEnumerator<T> GetEnumerator()
         {
-            return mData.GetEnumerator();
+            return internalList.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -235,8 +235,8 @@ namespace bc.flash
 
             public int compare(T x, T y)
             {
-                sorter(x, y);
-                return 0;
+                int result = (int)sorter(x, y);
+                return result;
             }
         }
     }    
