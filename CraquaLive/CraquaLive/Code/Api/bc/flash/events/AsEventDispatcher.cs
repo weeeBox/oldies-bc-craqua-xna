@@ -47,11 +47,15 @@ namespace bc.flash.events
 				if((listeners) != null)
 				{
 					AsVector<AsEventListenerCallback> remainListeners = new AsVector<AsEventListenerCallback>();
-					foreach (AsEventListenerCallback eventListener in listeners)
+					AsVector<AsEventListenerCallback> __eventListeners_ = listeners;
+					if (__eventListeners_ != null)
 					{
-						if((eventListener != listener))
+						foreach (AsEventListenerCallback eventListener in __eventListeners_)
 						{
-							remainListeners.push(eventListener);
+							if((eventListener != listener))
+							{
+								remainListeners.push(eventListener);
+							}
 						}
 					}
 					if((remainListeners.getLength() > 0))

@@ -29,11 +29,15 @@ namespace bc.flash.xml
 		}
 		public override String attributeValue(String arg)
 		{
-			foreach (AsXML attr in mAttributes.list())
+			AsVector<AsXML> __attrs_ = mAttributes.list();
+			if (__attrs_ != null)
 			{
-				if((attr.name() == arg))
+				foreach (AsXML attr in __attrs_)
 				{
-					return ((AsXMLAttribute)(attr))._value();
+					if((attr.name() == arg))
+					{
+						return ((AsXMLAttribute)(attr))._value();
+					}
 				}
 			}
 			return null;
@@ -45,11 +49,15 @@ namespace bc.flash.xml
 		public override AsXMLList child(String name)
 		{
 			AsXMLList result = new AsXMLList();
-			foreach (AsXML child in mChildren.list())
+			AsVector<AsXML> __childs_ = mChildren.list();
+			if (__childs_ != null)
 			{
-				if((child.name() == name))
+				foreach (AsXML child in __childs_)
 				{
-					result.appendChild(child);
+					if((child.name() == name))
+					{
+						result.appendChild(child);
+					}
 				}
 			}
 			return result;
@@ -60,11 +68,15 @@ namespace bc.flash.xml
 		}
 		public override bool contains(String name)
 		{
-			foreach (AsXML child in mChildren.list())
+			AsVector<AsXML> __childs_ = mChildren.list();
+			if (__childs_ != null)
 			{
-				if((child.name() == name))
+				foreach (AsXML child in __childs_)
 				{
-					return true;
+					if((child.name() == name))
+					{
+						return true;
+					}
 				}
 			}
 			return false;
@@ -76,11 +88,15 @@ namespace bc.flash.xml
 				return mChildren;
 			}
 			AsXMLList result = new AsXMLList();
-			foreach (AsXML child in mChildren.list())
+			AsVector<AsXML> __childs_ = mChildren.list();
+			if (__childs_ != null)
 			{
-				if(((child.name() == name) && (child.nodeKind() == nodeKind())))
+				foreach (AsXML child in __childs_)
 				{
-					result.appendChild(child);
+					if(((child.name() == name) && (child.nodeKind() == nodeKind())))
+					{
+						result.appendChild(child);
+					}
 				}
 			}
 			return result;

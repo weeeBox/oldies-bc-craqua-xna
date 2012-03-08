@@ -56,26 +56,38 @@ namespace bc.flash.events
 			{
 				sProcessedTouchIDs.setLength(0);
 				sHoveringTouchData.setLength(0);
-				foreach (AsTouch currentTouch in mCurrentTouches)
+				AsVector<AsTouch> __currentTouchs_ = mCurrentTouches;
+				if (__currentTouchs_ != null)
 				{
-					if(((currentTouch.getPhase() == AsTouchPhase.BEGAN) || (currentTouch.getPhase() == AsTouchPhase.MOVED)))
+					foreach (AsTouch currentTouch in __currentTouchs_)
 					{
-						currentTouch.setPhase(AsTouchPhase.STATIONARY);
+						if(((currentTouch.getPhase() == AsTouchPhase.BEGAN) || (currentTouch.getPhase() == AsTouchPhase.MOVED)))
+						{
+							currentTouch.setPhase(AsTouchPhase.STATIONARY);
+						}
 					}
 				}
-				foreach (AsTouchData touchData in sHoveringTouchData)
+				AsVector<AsTouchData> __touchDatas_ = sHoveringTouchData;
+				if (__touchDatas_ != null)
 				{
-					if((touchData.touch.getTarget() != touchData.target))
+					foreach (AsTouchData touchData in __touchDatas_)
 					{
-						touchData.target.dispatchEvent(new AsTouchEvent(AsTouchEvent.TOUCH, mCurrentTouches, mShiftDown, mCtrlDown));
+						if((touchData.touch.getTarget() != touchData.target))
+						{
+							touchData.target.dispatchEvent(new AsTouchEvent(AsTouchEvent.TOUCH, mCurrentTouches, mShiftDown, mCtrlDown));
+						}
 					}
 				}
-				foreach (int touchID in sProcessedTouchIDs)
+				AsVector<int> __touchIDs_ = sProcessedTouchIDs;
+				if (__touchIDs_ != null)
 				{
-					touch = getCurrentTouch(touchID);
-					if((touch.getTarget()) != null)
+					foreach (int touchID in __touchIDs_)
 					{
-						touch.getTarget().dispatchEvent(new AsTouchEvent(AsTouchEvent.TOUCH, mCurrentTouches, mShiftDown, mCtrlDown));
+						touch = getCurrentTouch(touchID);
+						if((touch.getTarget()) != null)
+						{
+							touch.getTarget().dispatchEvent(new AsTouchEvent(AsTouchEvent.TOUCH, mCurrentTouches, mShiftDown, mCtrlDown));
+						}
 					}
 				}
 				for (i = (int)((mCurrentTouches.getLength() - 1)); (i >= 0); --i)
@@ -132,13 +144,17 @@ namespace bc.flash.events
 		{
 			AsTouch nearbyTap = null;
 			float minSqDist = (MULTITAP_DISTANCE * MULTITAP_DISTANCE);
-			foreach (AsTouch tap in mLastTaps)
+			AsVector<AsTouch> __taps_ = mLastTaps;
+			if (__taps_ != null)
 			{
-				float sqDist = (AsMath.pow((tap.getGlobalX() - touch.getGlobalX()), 2) + AsMath.pow((tap.getGlobalY() - touch.getGlobalY()), 2));
-				if((sqDist <= minSqDist))
+				foreach (AsTouch tap in __taps_)
 				{
-					nearbyTap = tap;
-					break;
+					float sqDist = (AsMath.pow((tap.getGlobalX() - touch.getGlobalX()), 2) + AsMath.pow((tap.getGlobalY() - touch.getGlobalY()), 2));
+					if((sqDist <= minSqDist))
+					{
+						nearbyTap = tap;
+						break;
+					}
 				}
 			}
 			if((nearbyTap) != null)
@@ -166,11 +182,15 @@ namespace bc.flash.events
 		}
 		private AsTouch getCurrentTouch(int touchID)
 		{
-			foreach (AsTouch touch in mCurrentTouches)
+			AsVector<AsTouch> __touchs_ = mCurrentTouches;
+			if (__touchs_ != null)
 			{
-				if((touch.getId() == touchID))
+				foreach (AsTouch touch in __touchs_)
 				{
-					return touch;
+					if((touch.getId() == touchID))
+					{
+						return touch;
+					}
 				}
 			}
 			return null;
