@@ -338,6 +338,8 @@
     <Compile Include="Code\Converted\bc\world\player\AsBcPlayerLevel.cs" />
     <Compile Include="Code\Converted\bc\world\player\AsBcPlayerSprite.cs" />
     <Compile Include="Code\Converted\bc\world\player\AsBcPlayerWeapon.cs" />
+    <Compile Include="Code\Native\bc\flash\media\AsMusicChannel.cs" />
+    <Compile Include="Code\Native\bc\flash\media\AsSoundEffectChannel.cs" />
     <Compile Include="Code\Native\bc\flash\native\BcRenderSupport.cs" />
     <Compile Include="Code\Native\bc\flash\native\BcEffect.cs" />
     <Compile Include="Code\Native\bc\flash\native\input\GamePadListener.cs" />

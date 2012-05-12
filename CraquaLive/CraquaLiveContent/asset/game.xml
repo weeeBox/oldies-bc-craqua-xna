@@ -162,34 +162,34 @@
 	
 	<resource path="audio/data.xml"/>
 	
-	<resource path="audio/item_gem.mp3"/>
-	<resource path="audio/item_money.mp3"/>
-	<resource path="audio/item_heal.mp3"/>
-	<resource path="audio/item_bomb.mp3"/>
+	<resource path="audio/item_gem.wav"/>
+	<resource path="audio/item_money.wav"/>
+	<resource path="audio/item_heal.wav"/>
+	<resource path="audio/item_bomb.wav"/>
 	
-	<resource path="audio/ui_over.mp3"/>
-	<resource path="audio/ui_click.mp3"/>
+	<resource path="audio/ui_over.wav"/>
+	<resource path="audio/ui_click.wav"/>
 	
-	<resource path="audio/boss_death.mp3"/>
-	<resource path="audio/bio_death1.mp3"/>
-	<resource path="audio/bio_death2.mp3"/>
-	<resource path="audio/tech_death1.mp3"/>
-	<resource path="audio/tech_death2.mp3"/>
-	<resource path="audio/enemy_death1.mp3"/>
-	<resource path="audio/enemy_death2.mp3"/>
-	<resource path="audio/enemy_shot1.mp3"/>
-	<resource path="audio/enemy_shot2.mp3"/>
+	<resource path="audio/boss_death.wav"/>
+	<resource path="audio/bio_death1.wav"/>
+	<resource path="audio/bio_death2.wav"/>
+	<resource path="audio/tech_death1.wav"/>
+	<resource path="audio/tech_death2.wav"/>
+	<resource path="audio/enemy_death1.wav"/>
+	<resource path="audio/enemy_death2.wav"/>
+	<resource path="audio/enemy_shot1.wav"/>
+	<resource path="audio/enemy_shot2.wav"/>
 	
-	<resource path="audio/player_missle1.mp3"/>
-	<resource path="audio/player_missle2.mp3"/>
-	<resource path="audio/player_plasma.mp3"/>
-	<resource path="audio/player_shot1.mp3"/>
-	<resource path="audio/player_shot2.mp3"/>
-	<resource path="audio/player_bomb.mp3"/>
-	<resource path="audio/player_hit.mp3"/>
-	<resource path="audio/player_shield.mp3"/>
-	<resource path="audio/player_upgrade.mp3"/>
-	<resource path="audio/player_downgrade.mp3"/>
+	<resource path="audio/player_missle1.wav"/>
+	<resource path="audio/player_missle2.wav"/>
+	<resource path="audio/player_plasma.wav"/>
+	<resource path="audio/player_shot1.wav"/>
+	<resource path="audio/player_shot2.wav"/>
+	<resource path="audio/player_bomb.wav"/>
+	<resource path="audio/player_hit.wav"/>
+	<resource path="audio/player_shield.wav"/>
+	<resource path="audio/player_upgrade.wav"/>
+	<resource path="audio/player_downgrade.wav"/>
 	
 	<!--  PLAYER ASSET -->
 	<resource path="data/player_init.xml"/>
@@ -237,7 +237,7 @@
 	
 	<resource path="ui/ddg.png"/>
 
-	<resource path="audio/tv_death.mp3"/>
-	<resource path="audio/tv_shot.mp3"/>
+	<resource path="audio/tv_death.wav"/>
+	<resource path="audio/tv_shot.wav"/>
 
 </asset>

@@ -89,23 +89,17 @@ namespace bc.flash.resources
         }
 
         private BcMusic LoadMusic(String path)
-        {
-            using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
-            {
-                String contentPath = CreateContentPath(path);
-                Song song = manager.Load<Song>(contentPath);
-                return new BcMusic(song);
-            }
+        {            
+            String contentPath = CreateContentPath(path);
+            Song song = content.Load<Song>(contentPath);
+            return new BcMusic(song);            
         }
 
         private BcSoundEffect LoadSoundEffect(String path)
-        {
-            using (ContentManager manager = new ContentManager(content.ServiceProvider, "Content"))
-            {
-                String contentPath = CreateContentPath(path);
-                SoundEffect effect = manager.Load<SoundEffect>(contentPath);
-                return new BcSoundEffect(effect);
-            }
+        {            
+            String contentPath = CreateContentPath(path);
+            SoundEffect effect = content.Load<SoundEffect>(contentPath);
+            return new BcSoundEffect(effect);         
         }
 
         public AsObject LoadXML(String path)

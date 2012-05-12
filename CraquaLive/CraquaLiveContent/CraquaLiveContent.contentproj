@@ -47,145 +47,10 @@
       <Importer>BinaryContentImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </Compile>
-    <Compile Include="asset\game\audio\bio_death1.mp3">
-      <Name>bio_death1</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\bio_death2.mp3">
-      <Name>bio_death2</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\boss_death.mp3">
-      <Name>boss_death</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
     <Compile Include="asset\game\audio\data.xml">
       <Name>data</Name>
       <Importer>BinaryContentImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\enemy_death1.mp3">
-      <Name>enemy_death1</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\enemy_death2.mp3">
-      <Name>enemy_death2</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\enemy_shot1.mp3">
-      <Name>enemy_shot1</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\enemy_shot2.mp3">
-      <Name>enemy_shot2</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\item_bomb.mp3">
-      <Name>item_bomb</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\item_gem.mp3">
-      <Name>item_gem</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\item_heal.mp3">
-      <Name>item_heal</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\item_money.mp3">
-      <Name>item_money</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\player_bomb.mp3">
-      <Name>player_bomb</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\player_downgrade.mp3">
-      <Name>player_downgrade</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\player_hit.mp3">
-      <Name>player_hit</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\player_missle1.mp3">
-      <Name>player_missle1</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\player_missle2.mp3">
-      <Name>player_missle2</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\player_plasma.mp3">
-      <Name>player_plasma</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\player_shield.mp3">
-      <Name>player_shield</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\player_shot1.mp3">
-      <Name>player_shot1</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\player_shot2.mp3">
-      <Name>player_shot2</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\player_upgrade.mp3">
-      <Name>player_upgrade</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\tech_death1.mp3">
-      <Name>tech_death1</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\tech_death2.mp3">
-      <Name>tech_death2</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\tv_death.mp3">
-      <Name>tv_death</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\tv_shot.mp3">
-      <Name>tv_shot</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\ui_click.mp3">
-      <Name>ui_click</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
-    <Compile Include="asset\game\audio\ui_over.mp3">
-      <Name>ui_over</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
     </Compile>
     <Compile Include="asset\game\bullet\default.png">
       <Name>default</Name>
@@ -1106,6 +971,143 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="asset\game\level\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="asset\game\audio\bio_death1.wav">
+      <Name>bio_death1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\bio_death2.wav">
+      <Name>bio_death2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\boss_death.wav">
+      <Name>boss_death</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\enemy_death1.wav">
+      <Name>enemy_death1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\enemy_death2.wav">
+      <Name>enemy_death2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\enemy_shot1.wav">
+      <Name>enemy_shot1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\enemy_shot2.wav">
+      <Name>enemy_shot2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\item_bomb.wav">
+      <Name>item_bomb</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\item_gem.wav">
+      <Name>item_gem</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\item_heal.wav">
+      <Name>item_heal</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\item_money.wav">
+      <Name>item_money</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\player_bomb.wav">
+      <Name>player_bomb</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\player_downgrade.wav">
+      <Name>player_downgrade</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\player_hit.wav">
+      <Name>player_hit</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\player_missle1.wav">
+      <Name>player_missle1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\player_missle2.wav">
+      <Name>player_missle2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\player_plasma.wav">
+      <Name>player_plasma</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\player_shield.wav">
+      <Name>player_shield</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\player_shot1.wav">
+      <Name>player_shot1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\player_shot2.wav">
+      <Name>player_shot2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\player_upgrade.wav">
+      <Name>player_upgrade</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\tech_death1.wav">
+      <Name>tech_death1</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\tech_death2.wav">
+      <Name>tech_death2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\tv_death.wav">
+      <Name>tv_death</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\tv_shot.wav">
+      <Name>tv_shot</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\ui_click.wav">
+      <Name>ui_click</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="asset\game\audio\ui_over.wav">
+      <Name>ui_over</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

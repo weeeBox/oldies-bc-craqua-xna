@@ -1,37 +1,34 @@
 using System;
- 
+
 using bc.flash;
 using bc.flash.error;
 using bc.flash.media;
- 
+
 namespace bc.flash.media
 {
-	public class AsSoundChannel : AsObject
-	{
-		private AsSoundTransform mSoundTransform;
-		public virtual float getLeftPeak()
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual float getPosition()
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual float getRightPeak()
-		{
-			throw new AsNotImplementedError();
-		}
-		public virtual AsSoundTransform getSoundTransform()
-		{
-			return mSoundTransform;
-		}
-		public virtual void setSoundTransform(AsSoundTransform sndTransform)
-		{
-			mSoundTransform = sndTransform;
-		}
-		public virtual void stop()
-		{
-			
-		}
-	}
+    public abstract class AsSoundChannel : AsObject
+    {
+        protected AsSoundTransform mSoundTransform;
+
+        protected AsSoundChannel(AsSoundTransform transform)
+        {
+            mSoundTransform = transform;
+        }
+
+        public abstract float getLeftPeak();
+        public abstract float getPosition();
+        public abstract float getRightPeak();
+
+        public abstract void play(int loopsCount);
+        public abstract void stop();
+
+        public virtual AsSoundTransform getSoundTransform()
+        {
+            return mSoundTransform;
+        }
+        public virtual void setSoundTransform(AsSoundTransform sndTransform)
+        {
+            mSoundTransform = sndTransform;
+        }
+    }
 }

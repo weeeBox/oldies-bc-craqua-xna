@@ -19,23 +19,24 @@ namespace bc.flash.resources
 
         public override AsSoundChannel Play(float startTime, int loops, AsSoundTransform sndTransform)
         {
-            return new AsSoundChannel();
+            AsMusicChannel channel = new AsMusicChannel(mSong, sndTransform);
+            channel.play(loops);
+            return channel;
         }
 
         public override void Close()
         {
-            
-        }
-
-        public override void Dispose()
-        {
-            base.Dispose();
-
             if (mSong != null)
             {
                 mSong.Dispose();
                 mSong = null;
             }
+        }
+
+        public override void Dispose()
+        {
+            Close();
+            base.Dispose();            
         }
     }
 }
