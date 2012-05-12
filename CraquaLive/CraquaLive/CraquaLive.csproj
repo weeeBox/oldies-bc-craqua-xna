@@ -221,7 +221,6 @@
     <Compile Include="Code\Converted\bc\core\motion\tweens\AsBcTweenFactory.cs" />
     <Compile Include="Code\Converted\bc\core\resources\AsBcResLoaderListener.cs" />
     <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcBitmapLoader.cs" />
-    <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcFlashResLoaderFactory.cs" />
     <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcResLoader.cs" />
     <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcResLoaderFactory.cs" />
     <Compile Include="Code\Converted\bc\core\resources\loaders\AsBcSoundLoader.cs" />
