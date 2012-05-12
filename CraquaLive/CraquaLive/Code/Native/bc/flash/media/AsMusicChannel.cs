@@ -13,6 +13,7 @@ namespace bc.flash.media
         public AsMusicChannel(Song song, AsSoundTransform transform) : base(transform)
         {
             this.mSong = song;
+            applyTransform(transform);
         }
 
         public override float getLeftPeak()
@@ -28,7 +29,12 @@ namespace bc.flash.media
         public override float getPosition()
         {
             return (float)MediaPlayer.PlayPosition.TotalSeconds;
-        }        
+        }
+
+        protected override void applyTransform(AsSoundTransform transform)
+        {
+            MediaPlayer.Volume = transform.getVolume();
+        }
 
         public override void play(int loopsCount)
         {

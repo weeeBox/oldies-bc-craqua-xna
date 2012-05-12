@@ -15,6 +15,7 @@ namespace bc.flash.media
             mSoundTransform = transform;
         }
 
+        protected abstract void applyTransform(AsSoundTransform transform);
         public abstract float getLeftPeak();
         public abstract float getPosition();
         public abstract float getRightPeak();
@@ -29,6 +30,7 @@ namespace bc.flash.media
         public virtual void setSoundTransform(AsSoundTransform sndTransform)
         {
             mSoundTransform = sndTransform;
+            applyTransform(sndTransform);
         }
     }
 }

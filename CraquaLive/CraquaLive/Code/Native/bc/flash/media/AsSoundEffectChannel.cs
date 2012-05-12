@@ -13,6 +13,7 @@ namespace bc.flash.media
         public AsSoundEffectChannel(SoundEffect effect, AsSoundTransform transform) : base(transform)
         {
             mInstance = effect.CreateInstance();
+            applyTransform(transform);
         }
 
         public override float getLeftPeak()
@@ -28,6 +29,12 @@ namespace bc.flash.media
         public override float getRightPeak()
         {
             return 0.0f;
+        }
+
+        protected override void applyTransform(AsSoundTransform transform)
+        {
+            mInstance.Volume = transform.getVolume();
+            mInstance.Pan = transform.getPan();
         }
 
         public override void play(int loopsCount)
