@@ -45,7 +45,7 @@ namespace bc.flash.display
 				mChildren.splice(index, (uint)(0), child);
 				child.setParent(this);
 				child.dispatchEvent(new AsEvent(AsEvent.ADDED, true));
-				if((getStage()) != null)
+				if(getStage() != null)
 				{
 					child.dispatchEventOnChildren(new AsEvent(AsEvent.ADDED_TO_STAGE));
 				}
@@ -73,7 +73,7 @@ namespace bc.flash.display
 			{
 				AsDisplayObject child = mChildren[index];
 				child.dispatchEvent(new AsEvent(AsEvent.REMOVED, true));
-				if((getStage()) != null)
+				if(getStage() != null)
 				{
 					child.dispatchEventOnChildren(new AsEvent(AsEvent.REMOVED_FROM_STAGE));
 				}
@@ -263,7 +263,7 @@ namespace bc.flash.display
 				getTransformationMatrix(child, sHelperMatrix);
 				AsGlobal.transformCoords(sHelperMatrix, localX, localY, sHelperPoint);
 				AsDisplayObject target = child.hitTest(sHelperPoint, forTouch);
-				if((target) != null)
+				if(target != null)
 				{
 					return target;
 				}
@@ -317,7 +317,7 @@ namespace bc.flash.display
 			{
 				listeners.push(_object);
 			}
-			if((container) != null)
+			if(container != null)
 			{
 				AsVector<AsDisplayObject> children = container.mChildren;
 				int numChildren = (int)(children.getLength());

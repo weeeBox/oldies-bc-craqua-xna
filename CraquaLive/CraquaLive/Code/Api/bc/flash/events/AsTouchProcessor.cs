@@ -84,7 +84,7 @@ namespace bc.flash.events
 					foreach (int touchID in __touchIDs_)
 					{
 						touch = getCurrentTouch(touchID);
-						if((touch.getTarget()) != null)
+						if(touch.getTarget() != null)
 						{
 							touch.getTarget().dispatchEvent(new AsTouchEvent(AsTouchEvent.TOUCH, mCurrentTouches, mShiftDown, mCtrlDown));
 						}
@@ -157,7 +157,7 @@ namespace bc.flash.events
 					}
 				}
 			}
-			if((nearbyTap) != null)
+			if(nearbyTap != null)
 			{
 				touch.setTapCount((nearbyTap.getTapCount() + 1));
 				mLastTaps.splice(mLastTaps.indexOf(nearbyTap), (uint)(1));

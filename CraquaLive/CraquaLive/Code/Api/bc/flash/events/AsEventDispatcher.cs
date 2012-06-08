@@ -41,10 +41,10 @@ namespace bc.flash.events
 		}
 		public virtual void removeEventListener(String type, AsEventListenerCallback listener)
 		{
-			if((mEventListeners) != null)
+			if(mEventListeners != null)
 			{
 				AsVector<AsEventListenerCallback> listeners = (AsVector<AsEventListenerCallback>)(mEventListeners[type]);
-				if((listeners) != null)
+				if(listeners != null)
 				{
 					AsVector<AsEventListenerCallback> remainListeners = new AsVector<AsEventListenerCallback>();
 					AsVector<AsEventListenerCallback> __eventListeners_ = listeners;
@@ -86,7 +86,7 @@ namespace bc.flash.events
 		}
 		public virtual void dispatchEvent(AsEvent _event)
 		{
-			AsVector<AsEventListenerCallback> listeners = (AsVector<AsEventListenerCallback>)((((mEventListeners) != null) ? (mEventListeners[_event.getType()]) : (null)));
+			AsVector<AsEventListenerCallback> listeners = (AsVector<AsEventListenerCallback>)(((mEventListeners != null) ? (mEventListeners[_event.getType()]) : (null)));
 			if(((listeners == null) && !(_event.getBubbles())))
 			{
 				return;
@@ -122,7 +122,7 @@ namespace bc.flash.events
 					targetDisplayObject.getParent().dispatchEvent(_event);
 				}
 			}
-			if((previousTarget) != null)
+			if(previousTarget != null)
 			{
 				_event.setTarget(previousTarget);
 			}

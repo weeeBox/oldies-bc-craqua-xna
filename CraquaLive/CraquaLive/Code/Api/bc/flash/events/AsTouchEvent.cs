@@ -31,7 +31,7 @@ namespace bc.flash.events
 		public AsTouchEvent(String type, AsVector<AsTouch> touches, bool shiftKey, bool ctrlKey, bool bubbles)
 		 : base(type, bubbles)
 		{
-			mTouches = (((touches) != null) ? (touches) : (new AsVector<AsTouch>()));
+			mTouches = ((touches != null) ? (touches) : (new AsVector<AsTouch>()));
 			mShiftKey = shiftKey;
 			mCtrlKey = ctrlKey;
 			mTimestamp = -1.0f;

@@ -49,7 +49,7 @@ namespace bc.flash.display
 		}
 		public virtual void removeFromParent(bool dispose)
 		{
-			if((mParent) != null)
+			if(mParent != null)
 			{
 				mParent.removeChild(this);
 			}
@@ -91,7 +91,7 @@ namespace bc.flash.display
 		}
 		public virtual AsMatrix getTransformationMatrix(AsDisplayObject targetSpace, AsMatrix resultMatrix)
 		{
-			if((resultMatrix) != null)
+			if(resultMatrix != null)
 			{
 				resultMatrix.identity();
 			}
@@ -131,7 +131,7 @@ namespace bc.flash.display
 					if((targetSpace == null))
 					{
 						currentObject = this;
-						while((currentObject) != null)
+						while(currentObject != null)
 						{
 							currentObject.getTransformationMatrix(currentObject.mParent, sHelperMatrix);
 							resultMatrix.concat(sHelperMatrix);
@@ -152,7 +152,7 @@ namespace bc.flash.display
 			}
 			sAncestors.setLength(0);
 			AsDisplayObject commonParent = null;
-			while((currentObject) != null)
+			while(currentObject != null)
 			{
 				sAncestors.push(currentObject);
 				currentObject = currentObject.getParent();
@@ -197,7 +197,7 @@ namespace bc.flash.display
 		{
 			sTargetMatrix.identity();
 			AsDisplayObject currentObject = this;
-			while((currentObject) != null)
+			while(currentObject != null)
 			{
 				currentObject.getTransformationMatrix(currentObject.mParent, sHelperMatrix);
 				sTargetMatrix.concat(sHelperMatrix);
@@ -209,7 +209,7 @@ namespace bc.flash.display
 		{
 			sTargetMatrix.identity();
 			AsDisplayObject currentObject = this;
-			while((currentObject) != null)
+			while(currentObject != null)
 			{
 				currentObject.getTransformationMatrix(currentObject.mParent, sHelperMatrix);
 				sTargetMatrix.concat(sHelperMatrix);
@@ -283,7 +283,7 @@ namespace bc.flash.display
 		public virtual AsDisplayObject getRoot()
 		{
 			AsDisplayObject currentObject = this;
-			while((currentObject.getParent()) != null)
+			while(currentObject.getParent() != null)
 			{
 				currentObject = currentObject.getParent();
 			}
