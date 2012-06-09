@@ -71,13 +71,17 @@ namespace bc.flash.native.input
 
         public void Tick()
         {
+            #if !WINDOWSPHONE
             UpdateGamePad();
-#if WINDOWS
+            #endif
+
+            #if WINDOWS
             UpdateKeyboard();
-#endif
-#if WINDOWS || WINDOWSPHONE
+            #endif
+
+            #if WINDOWS || WINDOWSPHONE
             UpdatePointer();
-#endif
+            #endif
         }
 
         public int getPlayersCount()
@@ -91,13 +95,13 @@ namespace bc.flash.native.input
 
         private void UpdateGamePad()
         {
-            for (int playerIndex = 0; playerIndex < getPlayersCount(); ++playerIndex)
+            for (uint playerIndex = 0; playerIndex < getPlayersCount(); ++playerIndex)
             {
                 UpdateGamePad(playerIndex);
             }
         }
 
-        private void UpdateGamePad(int playerIndex)
+        private void UpdateGamePad(uint playerIndex)
         {
             GamePadState oldState = currentGamePadStates[playerIndex];
             currentGamePadStates[playerIndex] = GamePad.GetState((PlayerIndex)playerIndex, deadZone);
@@ -157,7 +161,7 @@ namespace bc.flash.native.input
             gamePadListeners.Remove(listener);
         }
 
-        private void FireGamePadConnected(int playerIndex)
+        private void FireGamePadConnected(uint playerIndex)
         {
             foreach (GamePadListener l in gamePadListeners)
             {
@@ -165,7 +169,7 @@ namespace bc.flash.native.input
             }
         }
 
-        private void FireGamePadDisconnected(int playerIndex)
+        private void FireGamePadDisconnected(uint playerIndex)
         {
             foreach (GamePadListener l in gamePadListeners)
             {
@@ -189,7 +193,7 @@ namespace bc.flash.native.input
             }
         }
 
-        public GamePadThumbSticks ThumbSticks(int playerIndex)
+        public GamePadThumbSticks ThumbSticks(uint playerIndex)
         {
             Debug.Assert(playerIndex >= 0 && playerIndex < getPlayersCount());
             return currentGamePadStates[playerIndex].ThumbSticks;
@@ -200,13 +204,13 @@ namespace bc.flash.native.input
             return Triggers(0);
         }
 
-        public GamePadTriggers Triggers(int playerIndex)
+        public GamePadTriggers Triggers(uint playerIndex)
         {
             Debug.Assert(playerIndex >= 0 && playerIndex < getPlayersCount());
             return currentGamePadStates[playerIndex].Triggers;
         }
 
-        public bool IsGamePadConnected(int playerIndex)
+        public bool IsGamePadConnected(uint playerIndex)
         {
 #if WINDOWS
             return true;

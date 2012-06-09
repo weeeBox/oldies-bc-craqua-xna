@@ -12,6 +12,7 @@ using System;
 using bc.ui;
 using bc.game;
 using bc.flash.core;
+using bc.flash.input;
 
 namespace bc.flash.native
 {
@@ -60,8 +61,23 @@ namespace bc.flash.native
 
         public void Tick(float deltaTime)
         {
-            input.Tick();            
+            input.Tick();
+            updateGamePads();
+
             stage.tick(deltaTime);
+        }
+
+        private void updateGamePads()
+        {
+            for (uint playerIndex = 0; playerIndex < input.getPlayersCount(); ++playerIndex)
+            {
+                AsGamePad gamePad = AsGamePad.player(playerIndex);
+                GamePadTriggers triggers = input.Triggers(playerIndex);
+                GamePadThumbSticks sticks = input.ThumbSticks(playerIndex);
+                gamePad.update(triggers.Left, triggers.Right);
+                gamePad.getLeftStick().update(sticks.Left.X, sticks.Left.Y);
+                gamePad.getRightStick().update(sticks.Right.X, sticks.Right.Y);
+            }
         }
 
         public void Draw(GraphicsDevice device)
@@ -93,28 +109,29 @@ namespace bc.flash.native
 
         public void ButtonPressed(ButtonEventArg e)
         {
-            KeyCode code = InputHelper.GetKeyCode(e.button);
-            // KeyAction action = InputHelper.GetKeyAction(e.button);
-            // application.KeyPressed(new KeyEvent(e.playerIndex, code, action));
-            stage.keyPressed((uint)code);
+            uint playerIndex = e.playerIndex;
+            uint code = (uint)e.button;           
+            
+            stage.buttonPressed(playerIndex, code);
         }
 
         public void ButtonReleased(ButtonEventArg e)
         {
-            KeyCode code = InputHelper.GetKeyCode(e.button);
-            // KeyAction action = InputHelper.GetKeyAction(e.button);
-            // application.KeyPressed(new KeyEvent(e.playerIndex, code, action));
-            stage.keyReleased((uint)code);
+            uint playerIndex = e.playerIndex;
+            uint code = (uint)e.button;
+
+            stage.buttonReleased(playerIndex, code);
         }
 
-        public void GamePadConnected(int playerIndex)
+        public void GamePadConnected(uint playerIndex)
         {
             // application.GamePadConnected(playerIndex);
+            stage.gamePadConnected(playerIndex);
         }
 
-        public void GamePadDisconnected(int playerIndex)
+        public void GamePadDisconnected(uint playerIndex)
         {
-            // application.GamePadDisconnected(playerIndex);
+            stage.gamePadDisconnected(playerIndex);
         }
 
         public void KeyPressed(Keys key)

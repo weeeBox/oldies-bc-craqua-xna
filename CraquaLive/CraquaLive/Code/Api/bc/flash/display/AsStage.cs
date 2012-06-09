@@ -173,6 +173,22 @@ namespace bc.flash.display
 		{
 			dispatchEvent(new AsKeyboardEvent(AsKeyboardEvent.KEY_UP, code));
 		}
+		public virtual void buttonPressed(uint playerIndex, uint code)
+		{
+			dispatchEvent(new AsGamePadEvent(AsGamePadEvent.BUTTON_DOWN, playerIndex, code));
+		}
+		public virtual void buttonReleased(uint playerIndex, uint code)
+		{
+			dispatchEvent(new AsGamePadEvent(AsGamePadEvent.BUTTON_UP, playerIndex, code));
+		}
+		public virtual void gamePadConnected(uint playerIndex)
+		{
+			dispatchEvent(new AsGamePadEvent(AsGamePadEvent.CONNECTED, playerIndex));
+		}
+		public virtual void gamePadDisconnected(uint playerIndex)
+		{
+			dispatchEvent(new AsGamePadEvent(AsGamePadEvent.DISCONNECTED, playerIndex));
+		}
 		public virtual void touchDown(float x, float y, int touchId)
 		{
 			dispatchEvent(new AsMouseEvent(AsMouseEvent.MOUSE_DOWN, x, y));

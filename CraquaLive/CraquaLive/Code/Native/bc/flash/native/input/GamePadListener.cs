@@ -9,9 +9,9 @@ namespace bc.flash.native.input
     public struct ButtonEventArg
     {
         public Buttons button;
-        public int playerIndex;
+        public uint playerIndex;
 
-        public ButtonEventArg(int playerIndex, Buttons button)
+        public ButtonEventArg(uint playerIndex, Buttons button)
         {
             this.playerIndex = playerIndex;
             this.button = button;
@@ -22,7 +22,7 @@ namespace bc.flash.native.input
     {
         void ButtonPressed(ButtonEventArg e);
         void ButtonReleased(ButtonEventArg e);
-        void GamePadConnected(int playerIndex);
-        void GamePadDisconnected(int playerIndex);
+        void GamePadConnected(uint playerIndex);
+        void GamePadDisconnected(uint playerIndex);
     }
 }

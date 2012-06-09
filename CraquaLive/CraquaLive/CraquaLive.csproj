@@ -129,6 +129,7 @@
     <Compile Include="Code\Api\bc\flash\events\AsEnterFrameEvent.cs" />
     <Compile Include="Code\Api\bc\flash\events\AsEvent.cs" />
     <Compile Include="Code\Api\bc\flash\events\AsEventDispatcher.cs" />
+    <Compile Include="Code\Api\bc\flash\events\AsGamePadEvent.cs" />
     <Compile Include="Code\Api\bc\flash\events\AsIOErrorEvent.cs" />
     <Compile Include="Code\Api\bc\flash\events\AsKeyboardEvent.cs" />
     <Compile Include="Code\Api\bc\flash\events\AsMouseEvent.cs" />
@@ -144,6 +145,8 @@
     <Compile Include="Code\Api\bc\flash\geom\AsRectangle.cs" />
     <Compile Include="Code\Api\bc\flash\geom\AsTransform.cs" />
     <Compile Include="Code\Api\bc\flash\geom\AsVector3D.cs" />
+    <Compile Include="Code\Api\bc\flash\input\AsGamePad.cs" />
+    <Compile Include="Code\Api\bc\flash\input\AsThumbStick.cs" />
     <Compile Include="Code\Api\bc\flash\media\AsSound.cs" />
     <Compile Include="Code\Api\bc\flash\media\AsSoundChannel.cs" />
     <Compile Include="Code\Api\bc\flash\media\AsSoundLoaderContext.cs" />
@@ -180,6 +183,7 @@
     <Compile Include="Code\Converted\bc\core\device\AsBcDeviceSingleton.cs" />
     <Compile Include="Code\Converted\bc\core\device\AsBcIApplication.cs" />
     <Compile Include="Code\Converted\bc\core\device\AsBcTimer.cs" />
+    <Compile Include="Code\Converted\bc\core\device\messages\AsBcGamePadMessage.cs" />
     <Compile Include="Code\Converted\bc\core\device\messages\AsBcKeyboardMessage.cs" />
     <Compile Include="Code\Converted\bc\core\device\messages\AsBcMouseMessage.cs" />
     <Compile Include="Code\Converted\bc\core\display\AsBcApplication.cs" />
@@ -284,7 +288,6 @@
     <Compile Include="Code\Converted\bc\world\common\AsBcShadowSprite.cs" />
     <Compile Include="Code\Converted\bc\world\common\AsBcTrailParticles.cs" />
     <Compile Include="Code\Converted\bc\world\core\AsBcCheckPoint.cs" />
-    <Compile Include="Code\Converted\bc\world\core\AsBcInput.cs" />
     <Compile Include="Code\Converted\bc\world\core\AsBcLevel.cs" />
     <Compile Include="Code\Converted\bc\world\core\AsBcWorld.cs" />
     <Compile Include="Code\Converted\bc\world\enemy\actions\AsBcEnemyBitmapAction.cs" />
@@ -323,6 +326,9 @@
     <Compile Include="Code\Converted\bc\world\hud\AsBcHudBombSprite.cs" />
     <Compile Include="Code\Converted\bc\world\hud\AsBcHudExp.cs" />
     <Compile Include="Code\Converted\bc\world\hud\AsBcHudField.cs" />
+    <Compile Include="Code\Converted\bc\world\input\AsBcEditorInput.cs" />
+    <Compile Include="Code\Converted\bc\world\input\AsBcInput.cs" />
+    <Compile Include="Code\Converted\bc\world\input\AsBcPlayerInput.cs" />
     <Compile Include="Code\Converted\bc\world\item\AsBcItem.cs" />
     <Compile Include="Code\Converted\bc\world\item\AsBcItemData.cs" />
     <Compile Include="Code\Converted\bc\world\item\AsBcItemDataCreator.cs" />
